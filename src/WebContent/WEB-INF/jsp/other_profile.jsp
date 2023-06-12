@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>他の人のプロフィール画面</h1>
 </body>
 </html>
