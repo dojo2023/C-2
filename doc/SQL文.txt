@@ -1,0 +1,74 @@
+【ドライバ】
+org.h2.Driver
+
+【JDBC URL】
+jdbc:h2:file:C:/dojo6/monoshiriplus
+
+
+
+table (users,profiles,restaurants,posts,comments,gathers,reactions)
+
+【ユーザー名】	【パスワード】
+users_id		****
+
+【usersテーブルを作成するSQL文】
+CREATE TABLE users (
+  ID INT PRIMARY KEY,
+  MAIL_ADDRESS VARCHAR(50) UNIQUE KEY,
+  USERPW VARCHAR(20) NOT NULL
+);
+
+【profilesテーブルを作成するSQL文】
+CREATE TABLE profiles (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERS_ID INT UNIQUE KEY　NOT NULL,
+  NAME VARCHAR(30),
+  ICON VARCHAR(30),
+  INTRODUCTION VARCHAR(140)
+);
+
+【restaurantsテーブルを作成するSQL文】
+ CREATE TABLE restaurants (
+  POSTS_RESTAURANT VARCHAR(20) PRIMARY KEY NOT NULL,
+  TIME INT,
+  PRICE INT,
+  POSTS_GENRE INT
+);
+
+【postsテーブルを作成するSQL文】
+CREATE TABLE posts (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERS_ID INT NOT NULL,
+  DATE DATE,
+  PHOTO VARCHAR(30),
+  RESTAURANT VARCHAR(20),
+  WALK INT,
+  SERVE INT,
+  PRICE INT,
+  GENRE INT,
+  TEXT VARCHAR(140),
+  POINT INT
+);
+
+【commentsテーブルを作成するSQL文】
+CREATE TABLE comments (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERS_ID INT NOT NULL,
+  DATE DATE,
+  POINT INT,
+);
+
+【gathersテーブルを作成するSQL文】
+CREATE TABLE gathers (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERS_ID INT NOT NULL,
+  DATE DATE,
+  POINT INT,
+);
+
+【reactionsテーブルを作成するSQL文】
+CREATE TABLE reactions (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERS_ID INT NOT NULL UNIQUE KEY,
+  GATHERS_ID INT NOT NULL,
+);
