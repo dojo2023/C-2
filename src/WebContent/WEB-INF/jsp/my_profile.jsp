@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MYプロフィール｜物知りプラス</title>
 </head>
 <body>
+
 
 </body>
 </html>
