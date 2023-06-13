@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>店舗詳細</title>
- <link rel="logo" href="img/logo.png">
+ <link rel="logo" href="/img/logo.png">
  <link rel="stylesheet" href="/buster_moon/css/restaurant.css">
 </head>
 <body>
