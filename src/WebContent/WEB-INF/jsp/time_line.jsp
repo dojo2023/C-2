@@ -9,21 +9,21 @@
 <body>
 <h1>ランキング</h1>
 
-<h1>投稿</h1>
-<div>
-<h2>店名：</h2>
-<div id="">
-<table>
-<tr><td>ジャンル:</td><td>仮（投稿表から取り出して表示のみ）</td></tr>
-<tr><td>徒歩時間:</td><td>仮（投稿表から取り出して表示のみ）</td></tr>
-<tr><td>提供時間:</td><td>仮（投稿表から取り出して表示のみ）</td></tr>
-<tr><td>価格:</td><td>仮（投稿表から取り出して表示のみ）</td></tr>
-</table>
-<div>（投稿表から取り出したテキスト表示）</div>
-<div><img>（投稿表から取り出した写真表示）</div>
+<c:forEach var="e" items="リスト名">
+<div class="post">
+	<div><img>(投稿者アイコン)</div>
+	<div>店名：（投稿表から取り出して表示のみ）</div>
+		<div id="post_inf">
+		<table>
+			<tr><td>ジャンル:</td><td value="${e.genre}">（投稿表から取り出して表示のみ）</td></tr>
+			<tr><td>徒歩時間:</td><td value="${e.walk}">（投稿表から取り出して表示のみ）</td></tr>
+			<tr><td>提供時間:</td><td value="${e.serve}">（投稿表から取り出して表示のみ）</td></tr>
+			<tr><td>価格:</td><td value="${e.price}">（投稿表から取り出して表示のみ）</td></tr>
+		</table>
+		<div>（投稿表から取り出したテキスト表示）</div>
+		<div><img>（投稿表から取り出した写真表示）</div>
+	</div>
 </div>
-
-
-</div>
+</c:forEach>
 </body>
 </html>
