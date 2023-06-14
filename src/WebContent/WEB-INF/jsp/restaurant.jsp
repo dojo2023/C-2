@@ -10,17 +10,17 @@
 </head>
 <body>
 <ul class="nav">
-  <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.png" alt=""></a></li>
-  <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.png" alt=""></a></li>
-  <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.jpeg" alt=""></a></li>
-  <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.png" alt=""></a></li>
-  <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.png" alt=""></a></li>
+  <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
+  <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
+  <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
+  <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
+  <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
   </ul>
   <hr>
 
 
 	<%-- 店舗情報を表示するテーブル　
-	　　　<c:forEach var="e" items="${}" > --%>
+	　　　<c:forEach var="e" items="${}" >
 
 	<table class="restaurantTable">
 		<tr>
@@ -37,7 +37,7 @@
 		<th>テキスト一覧</th><td>${e.}</td>
 		</tr>
 	</table>
-		<hr>
+		<hr> --%>
   </ul>
 </body>
 </html>

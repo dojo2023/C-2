@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.IdpwDAO;
-import model.Idpw;
+import dao.UsersDao;
+import model.Users;
 import model.LoginUser;
 
 /**
@@ -40,14 +40,14 @@ public class LoginServlet extends HttpServlet {
 				String pw = request.getParameter("PW");
 
 				// ログイン処理を行う
-				IdpwDAO iDao = new IdpwDAO();
+				UsersDao iDao = new UsersDao();
 				if (iDao.isLoginOK(new Idpw(id, pw))) {	// ログイン成功
 					// セッションスコープにIDを格納する
 					HttpSession session = request.getSession();
 					session.setAttribute("id", new LoginUser(id));
 
 					// タイムラインサーブレットにリダイレクトする
-					response.sendRedirect("/simpleBC/Time_lineServlet");
+					response.sendRedirect("/buster_moon/Time_lineServlet");
 				}
 				else {									// ログイン失敗
 					// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
