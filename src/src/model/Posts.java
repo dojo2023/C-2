@@ -31,6 +31,13 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.text = text;
 		this.point = point;
 	}
+	public Posts(String restaurant, String text, String point ) { //コンストラクタ
+		super();
+		this.restaurant = restaurant;
+		this.text = text;
+		this.point = point;
+	}
+
 	public Posts() { //引数なしのコンストラクタ
 		super();
 		this.id = "";

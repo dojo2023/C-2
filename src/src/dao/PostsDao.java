@@ -123,9 +123,9 @@ public class PostsDao {
   }
 
     //"select restaurant, photo, text from posts where restsursnt = '?'"
-  public List<Posts> select(Posts param) {
+  public List<Posts> select(Posts detail) {
 		Connection conn = null;
-		List<Posts> postsList = new ArrayList<Posts>();
+		List<Posts> shousaiList = new ArrayList<Posts>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -139,20 +139,20 @@ public class PostsDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getRestaurant() != null) {
-				pStmt.setString(1, "%" + param.getRestaurant() + "%");
+			if (detail.getRestaurant() != null) {
+				pStmt.setString(1, "%" + detail.getRestaurant() + "%");
 			}
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (param.getPhoto() != null) {
-				pStmt.setString(2, "%" + param.getPhoto() + "%");
+			if (detail.getPhoto() != null) {
+				pStmt.setString(2, "%" + detail.getPhoto() + "%");
 			}
 			else {
 				pStmt.setString(2, "%");
 			}
-			if (param.getText() != null) {
-				pStmt.setString(3, "%" + param.getText() + "%");
+			if (detail.getText() != null) {
+				pStmt.setString(3, "%" + detail.getText() + "%");
 			}
 			else {
 				pStmt.setString(3, "%");
@@ -163,30 +163,21 @@ public class PostsDao {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Bc card = new Bc(
-				rs.getString("NUMBER"),
-				rs.getString("COMPANY"),
-				rs.getString("DEPARTMENT"),
-				rs.getString("POSITION"),
-				rs.getString("NAME"),
-				rs.getString("ZIPCODE"),
-				rs.getString("ADDRESS"),
-				rs.getString("TEL"),
-				rs.getString("FAX"),
-				rs.getString("EMAIL"),
-				rs.getString("MEMO")
-
+				Posts shousai= new Posts(
+				rs.getString("RESTAURANT"),
+				rs.getString("PHOTO"),
+				rs.getString("TEXT")
 				);
-				cardList.add(card);
+				shousaiList.add(shousai);
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			cardList = null;
+			shousaiList = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			cardList = null;
+			shousaiList = null;
 		}
 		finally {
 			// データベースを切断
@@ -196,12 +187,12 @@ public class PostsDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
+					shousaiList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return cardList;
+		return shousaiList;
 	}
 }
