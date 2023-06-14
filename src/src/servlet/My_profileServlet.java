@@ -29,7 +29,7 @@ public class My_profileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 自分のプロフィール画面にフォワードする。
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_member.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/my_profile.jsp");
 		dispatcher.forward(request, response);
 	}
 

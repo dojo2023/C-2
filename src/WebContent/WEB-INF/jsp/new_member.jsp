@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>新規会員登録｜物知りプラス</title>
 <link rel="logo" href="img/logo.png">
+<link rel="stylesheet" href="/buster_moon/css/common.css">
 </head>
 <body>
 
