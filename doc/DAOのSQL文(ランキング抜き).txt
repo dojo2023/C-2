@@ -19,8 +19,7 @@ select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  ser
 
 
 店舗詳細の表示
-select * from restaurants WHERE posts_restaurant = '?'
-select photo, text from posts where restaurant = '?'
+select restaurant, photo, text from posts where restaurant = '?'
 
 投稿
 insert into posts values (?,?,?,?,?,?,?,?,?,?.?)

@@ -103,11 +103,7 @@ public class RestaurantsDao {
 			return restaurantList;
 		}
 
-		//店舗詳細の表示
-		//"select * from restaurants WHERE posts_restaurant = '?'"
 
-
-		//"select photo, text from posts where restaurant = '?'"
 
 
 
