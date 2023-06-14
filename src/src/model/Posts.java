@@ -9,7 +9,7 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 	private String photo;
 	private String restaurant;
 	private String walk;
-	private String sereve;
+	private String serve;
 	private String price;
 	private String genre;
 	private String text;
@@ -25,7 +25,7 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.photo = photo;
 		this.restaurant = restaurant;
 		this.walk = walk;
-		this.sereve = sereve;
+		this.serve = serve;
 		this.price = price;
 		this.genre = genre;
 		this.text = text;
@@ -39,7 +39,7 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.photo = "";
 		this.restaurant = "";
 		this.walk = "";
-		this.sereve = "";
+		this.serve = "";
 		this.price = "";
 		this.genre = "";
 		this.text = "";
@@ -82,10 +82,10 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.walk = walk;
 	}
 	public String getSereve() {
-		return sereve;
+		return serve;
 	}
-	public void setSereve(String sereve) {
-		this.sereve = sereve;
+	public void setSereve(String serve) {
+		this.serve = serve;
 	}
 	public String getPrice() {
 		return price;
