@@ -1,28 +1,29 @@
 募集をかける
-insert into gathers values (?, ?, ?)
+insert into gathers values (?, ?, ?, ?)
 
 募集の削除
 delete from gathers where id = ?
 
 プロフィール表示
-select * from profiles where user_id = ?
+select * from profiles where users_id = ?
 
 
 編集
-update PROFILES set NAME = ? , ICON = ? , INTRODUCTION = ?
+update PROFILES set NAME='' , ICON='' , INTRODUCTION='' where users_id=?
 
 投稿削除
-delete from POST where ID = ?
+delete from POSTS where ID = ?
 
 検索
-select * from restaurants WHERE posts_restaurant like ?, walk = ?, serve = ?, price = ?, post = ? ORDER BY post_resutaurant
+select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  serve = ? and price = ? and posts_genre = ? ORDER BY posts_resutaurant
+
 
 店舗詳細の表示
-select * from restaurants WHERE posts_restaurant = ?
-select photo, text from posts where restaurant = ?
+select * from restaurants WHERE posts_restaurant = '?'
+select photo, text from posts where restaurant = '?'
 
 投稿
-insert into posts values (?,?,?,?,?,?,?,?,?)
+insert into posts values (?,?,?,?,?,?,?,?,?,?.?)
 
 新規会員登録
-insert into users values (?,?)
+insert into users values (?,?,?)
