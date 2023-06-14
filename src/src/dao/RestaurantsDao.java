@@ -102,12 +102,4 @@ public class RestaurantsDao {
 			// 結果を返す
 			return restaurantList;
 		}
-
-
-
-
-
-
-
-
 }
