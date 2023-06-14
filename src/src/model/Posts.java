@@ -9,14 +9,14 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 	private String photo;
 	private String restaurant;
 	private String walk;
-	private String serve;
+	private String sereve;
 	private String price;
 	private String genre;
 	private String text;
 	private String point;
 
 
-	public Posts(String id, String users_id, String date, String photo, String restaurant, String walk, String serve, String price, String genre,
+	public Posts(String id, String users_id, String date, String photo, String restaurant, String walk, String sereve, String price, String genre,
 			String text, String point ) { //コンストラクタ
 		super();
 		this.id = id;
@@ -25,7 +25,7 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.photo = photo;
 		this.restaurant = restaurant;
 		this.walk = walk;
-		this.serve = serve;
+		this.sereve = sereve;
 		this.price = price;
 		this.genre = genre;
 		this.text = text;
@@ -39,7 +39,7 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.photo = "";
 		this.restaurant = "";
 		this.walk = "";
-		this.serve = "";
+		this.sereve = "";
 		this.price = "";
 		this.genre = "";
 		this.text = "";
@@ -82,10 +82,10 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.walk = walk;
 	}
 	public String getSereve() {
-		return serve;
+		return sereve;
 	}
 	public void setSereve(String serve) {
-		this.serve = serve;
+		this.sereve = serve;
 	}
 	public String getPrice() {
 		return price;
