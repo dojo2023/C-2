@@ -28,7 +28,7 @@ public class RankDao {
 
 	//それぞれのポイント列等を取得する
 //	select p.users_id,t_point,g_point,c_point,icon,name
-//	from profilestest as p
+//	from profiles as p
 //	group by p.users_id
 
 
@@ -82,7 +82,7 @@ public class RankDao {
 
 			//SQL文のユーザーを全部取り出す部分を完成させる
 
-			String x;;
+			String x;
 
 			for (int i = 0; i <= profilesList.size(); i++) {
 
@@ -93,18 +93,23 @@ public class RankDao {
 
 			}
 
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
+			//select部分
+			String sql2 ="select p.users_id,name,icon,t_point,g_point,c_point,\r\n"
+					+ "from profiles as p\r\n"
+					+ "group by p.users_id";
+
+			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+			ResultSet rs = pStmt2.executeQuery();
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Profiles profiles = new Profiles(
-				rs.getString("ユーザーID"),
-				rs.getString("名前"),
-				rs.getString("tポイント"),
-				rs.getString("gポイント"),
-				rs.getString("cポイント"),
-				rs.getString("アイコン")
+				rs.getString("USERS_ID"),
+				rs.getString("NAME"),
+				rs.getString("ICON"),
+				rs.getString("T_POINT"),
+				rs.getString("G_POINT"),
+				rs.getString("C_POINT")
 				);
 				profilesList.add(profiles);
 			}
