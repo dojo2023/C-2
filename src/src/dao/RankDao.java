@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,17 +26,16 @@ public class RankDao {
 //	having p.users_id=2 )
 //	where users_id=2
 
-	//それぞれのポイント列を足し合わせる
-//	select p.users_id,t_point+g_point+c_point
+	//それぞれのポイント列等を取得する
+//	select p.users_id,t_point,g_point,c_point,icon,name
 //	from profilestest as p
-//	group by p.users_id desc
+//	group by p.users_id
 
 
 	//更新
-	public String update(Profiles profiles) {
+	public List<Profiles> select() {
 		Connection conn = null;
 		List<Profiles> profilesList = new ArrayList<Profiles>();
-		boolean result = false;
 
 		try {
 			// JDBCドライバを読み込む
@@ -85,28 +85,37 @@ public class RankDao {
 			String x;;
 
 			for (int i = 0; i <= profilesList.size(); i++) {
-				profilesList.get(i);
-				x = profiles.getUsers_id();
+
+				x = String.valueOf(i);
 
 				pStmt.setString(5, x);
 				pStmt.setString(6, x);
 
 			}
 
-			/*			pStmt.setString(5, x);
-						pStmt.setString(6, x);
-			*/
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
 
-			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
-				result = true;
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Profiles profiles = new Profiles(
+				rs.getString("ユーザーID"),
+				rs.getString("名前"),
+				rs.getString("tポイント"),
+				rs.getString("gポイント"),
+				rs.getString("cポイント"),
+				rs.getString("アイコン")
+				);
+				profilesList.add(profiles);
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
+			profilesList = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			profilesList = null;
 		}
 		finally {
 			// データベースを切断
@@ -116,17 +125,13 @@ public class RankDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
+					profilesList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return result;
+		return profilesList;
 	}
-
-
-
-	//選択
-
 
 }
