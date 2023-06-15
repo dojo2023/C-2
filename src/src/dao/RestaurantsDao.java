@@ -29,7 +29,7 @@ public class RestaurantsDao {
 
 				// SQL文を準備する
 				String sql = "select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  serve = ? "
-						+ "and price = ? and posts_genre = ? ORDER BY posts_resutaurant";
+						+ "and price = ? and posts_genre = ? ORDER BY posts_restaurant";
 				PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
 
 				// SQL文を完成させる

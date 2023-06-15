@@ -18,6 +18,9 @@ public class Restaurants implements Serializable {
 		this.price = price;
 		this.posts_genre = posts_genre;
 	}
+	public Restaurants() {
+
+	}
 
 	public String getPosts_restaurant() {
 		return posts_restaurant;
