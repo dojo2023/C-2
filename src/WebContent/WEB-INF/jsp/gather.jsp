@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/buster_moon/css/gather.css">
 </head>
 <body>
 <div class="wrapper">
@@ -34,39 +35,35 @@
 <!-- 募集を呼びかける掲示板画面のためのdiv -->
 <div class="gather_board">
 
-<!-- ここから募集を表示 -->
-
-<form id="gather_form" method="POST" action="/buster_moon/GatherServlet">
-
-<!-- お店・集合時間・集合場所がまとまった「一緒にどう？」ボタン？ -->
-<input type="button" name="gather" value="一緒にどう？">
-
-<!-- 送信ボタン -->
-<input type="submit" name="submit" value="送信"><br>
-
-
-<!-- お店の名前を入力する欄 -->
-お店：<input type="text" name="TEXT"><br>
-
-<!-- 集合時間プルダウン -->
-時間：<select name="time">
-<option>12:00</option>
-<option>12:05</option>
-<option>12:10</option>
-</select><br>
-
-場所：<!-- 集合場所プルダウン -->
-<select name="place">
-<option>エレベーター前</option>
-<option>玄関</option>
-</select>
-
-</form>
+<div class="dropdown">
+        <input type="button" name="gather" class="dropdown__btn" id="dropdown__btn" value="一緒にどう？">
+        <div class="dropdown__body">
+          <ul class="dropdown__list">
+            <li class="dropdown__item">
+                お店：<input type="text" name="TEXT"><br>
+            </li>
+            <li class="dropdown__item">
+                時間：<select name="time">
+                      <option>12:00</option>
+                      <option>12:05</option>
+                      <option>12:10</option>
+                      </select><br>
+            </li>
+            <li class="dropdown__item">
+                場所：<!-- 集合場所プルダウン -->
+				<select name="place">
+				<option>エレベーター前</option>
+				</select>
+            </li>
+          </ul>
+        </div>
+      </div>
 <!-- 募集を呼びかける掲示板画面のための/div -->
 </div>
 
 <!-- 一緒にどう？送信ここまで -->
 <!-- メインここまで -->
 </div>
+<script src="/buster_moon/js/gather.js"></script>
 </body>
 </html>
