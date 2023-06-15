@@ -15,7 +15,7 @@ update PROFILES set NAME='' , ICON='' , INTRODUCTION='' where users_id=?
 delete from POSTS where ID = ?
 
 検索
-select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  serve = ? and price = ? and posts_genre = ? ORDER BY posts_resutaurant
+select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  serve = ? and price = ? and posts_genre = ? ORDER BY posts_restaurant
 
 
 店舗詳細の表示
