@@ -16,18 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 public class GatherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GatherServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+				/*HttpSession session = request.getSession();
+				if (session.getAttribute("id") == null) {
+					response.sendRedirect("/buster_moon/LoginServlet");
+					return;
+				}*/
+
 		// 募集JSPにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
 				dispatcher.forward(request, response);
@@ -36,9 +35,16 @@ public class GatherServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			// もしもログインしていなかったらログインサーブレットにリダイレクトする
+			HttpSession session = request.getSession();
+			if (session.getAttribute("id") == null) {
+				response.sendRedirect("/buster_moon/LoginServlet");
+				return;
+			}
+
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		// doGet(request, response);
+	}*/
 
 }

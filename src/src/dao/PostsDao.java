@@ -11,7 +11,7 @@ import java.util.List;
 import model.Posts;
 
 //"insert into posts values (?,?,?,?,?,?,?,?,?)"
-public class PostsDao {
+public class PostsDao<Posts_restaurant> {
   public boolean insert(Posts posts) {
 	  Connection conn = null;
 	  boolean result = false;
@@ -196,3 +196,5 @@ public class PostsDao {
 		return shousaiList;
 	}
 }
+
+
