@@ -8,15 +8,23 @@ import java.sql.SQLException;
 public class RankDao {
 
 	//ランキングの表示
-	//"select   select sum(point) from posts, comments, gathers order by desc"
+	//各ポイント取得テーブルからポイントを取得し、対応するポイント列を更新
+//	update profilestest
+//	set c_point=(select SUM(c.point) as cポイントの合計
+//	from profilestest as p
+//	join  comments as c on p.users_id = c.users_id
+//	where c.date>='2023-03-01' and date<'2023-04-01'
+//	group by p.users_id
+//	having p.users_id=2 )
+//	where users_id=2
 
-	//select p.名前, j.ユーザID, t.ポイント, c.ポイント, g.ポイント
-	//from profiles as p
-	//join posts as t on p.id = t.user_id
-	//join comments as t on p.id = c.user_id
-	//join gathers as t on p.id = g.user_id
-	//where
+	//それぞれのポイント列を足し合わせる
+//	select p.users_id,t_point+g_point+c_point
+//	from profilestest as p
+//	group by p.users_id desc
 
+
+	//更新
 	public boolean update() {
 		Connection conn = null;
 		boolean result = false;
@@ -115,6 +123,8 @@ public class RankDao {
 		// 結果を返す
 		return result;
 	}
+
+	//選択
 
 
 }

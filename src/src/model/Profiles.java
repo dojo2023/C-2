@@ -23,6 +23,19 @@ public class Profiles implements Serializable {
 		this.t_point=g_point;
 		this.t_point=c_point;
 	}
+
+	//ランキング用のBeans
+	public Profiles(String users_id, String name, String icon ,String t_point,String g_point,String c_point) { //コンストラクタ
+		super();
+		this.users_id = users_id;
+		this.name = name;
+		this.icon = icon;
+		this.t_point=t_point;
+		this.t_point=g_point;
+		this.t_point=c_point;
+	}
+
+
 	public Profiles() { //引数なしのコンストラクタ
 		super();
 		this.id = "";

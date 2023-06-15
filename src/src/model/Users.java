@@ -4,12 +4,11 @@ import java.io.Serializable;
 
 public class Users implements Serializable {
 	private String id;
-	private String mail_address;
 	private String password;
 
-	public Users(String id, String mail_address,String password) {
+	public Users(String id, String password) {
 		super();
-		this.mail_address = mail_address;
+		this.id = id;
 		this.password = password;
 	}
 
@@ -21,12 +20,6 @@ public class Users implements Serializable {
 		this.id = id;
 	}
 
-	public String getMail_address() {
-		return mail_address;
-	}
-	public void setMail_address(String mail_address) {
-		this.mail_address = mail_address;
-	}
 	public String getPassword() {
 		return password;
 	}
