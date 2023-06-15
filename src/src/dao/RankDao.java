@@ -4,8 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import model.Profiles;
 
 public class RankDao {
+
+
 
 	//ランキングの表示
 	//各ポイント取得テーブルからポイントを取得し、対応するポイント列を更新
@@ -25,8 +32,9 @@ public class RankDao {
 
 
 	//更新
-	public boolean update() {
+	public String update(Profiles profiles) {
 		Connection conn = null;
+		List<Profiles> profilesList = new ArrayList<Profiles>();
 		boolean result = false;
 
 		try {
@@ -37,65 +45,57 @@ public class RankDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/ttBC", "sa", "");
 
 			// SQL文を準備する
-			String sql = "update BC set NAME=?, READING=?, FEATURE=?, COMPANY=?, PHONE=?, EMAIL=?, ZIPCODE=?, ADDRESS=?, IMPORTANCE=? where NUMBER=?";
+			String sql = "update profiles\r\n"
+					+ "	set c_point=(select SUM(c.point)\r\n"
+					+ "	from profilestest as p\r\n"
+					+ "	join  comments as c on p.users_id = c.users_id\r\n"
+					+ "	where c.date>='?-?-01' and date<'?-?-01'\r\n"
+					+ "	group by p.users_id\r\n"
+					+ "	having p.users_id=? )\r\n"
+					+ "	where users_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を完成させる
-			if (card.getName() != null && !card.getName().equals("")) {
-				pStmt.setString(1, card.getName());
+			// SQL文の日付の指定部分を完成させる
+			Calendar calendar=Calendar.getInstance();
+			int year=calendar.get(Calendar.YEAR);
+            int month=calendar.get(Calendar.MONTH)+1;
+            int year2;
+            int month2;
+
+            if (month == 12) {
+            	year2=calendar.get(Calendar.YEAR)+1;
+            	month2=1;
+            } else {
+            	year2=calendar.get(Calendar.YEAR);
+                month2=calendar.get(Calendar.MONTH)+2;
+            }
+
+            String monthS = String.format("%02d",month);
+            String monthS2 = String.format("%02d",month2);
+            String yearS = String.valueOf(year);
+            String yearS2 = String.valueOf(year2);
+
+			pStmt.setString(1, yearS);
+			pStmt.setString(2, monthS);
+			pStmt.setString(3, yearS2);
+			pStmt.setString(4, monthS2);
+
+			//SQL文のユーザーを全部取り出す部分を完成させる
+
+			String x;;
+
+			for (int i = 0; i <= profilesList.size(); i++) {
+				profilesList.get(i);
+				x = profiles.getUsers_id();
+
+				pStmt.setString(5, x);
+				pStmt.setString(6, x);
+
 			}
-			else {
-				pStmt.setString(1, null);
-			}
-			if (card.getReading() != null && !card.getReading().equals("")) {
-				pStmt.setString(2, card.getReading());
-			}
-			else {
-				pStmt.setString(2, null);
-			}
-			if (card.getFeature() != null && !card.getFeature().equals("")) {
-				pStmt.setString(3, card.getFeature());
-			}
-			else {
-				pStmt.setString(3, null);
-			}
-			if (card.getCompany() != null && !card.getCompany().equals("")) {
-				pStmt.setString(4, card.getCompany());
-			}
-			else {
-				pStmt.setString(4, null);
-			}
-			if (card.getPhone() != null && !card.getPhone().equals("")) {
-				pStmt.setString(5, card.getPhone());
-			}
-			else {
-				pStmt.setString(5, null);
-			}
-			if (card.getEmail() != null && !card.getEmail().equals("")) {
-				pStmt.setString(6, card.getEmail());
-			}
-			else {
-				pStmt.setString(6, null);
-			}
-			if (card.getZipcode() != null && !card.getZipcode().equals("")) {
-				pStmt.setString(7, card.getZipcode());
-			}
-			else {
-				pStmt.setString(7, null);
-			}
-			if (card.getAddress() != null && !card.getAddress().equals("")) {
-				pStmt.setString(8, card.getAddress());
-			}
-			else {
-				pStmt.setString(8, null);
-			}
-			if (card.getImportance() != null && !card.getImportance().equals("")) {
-				pStmt.setString(9, card.getImportance());
-			}
-			else {
-				pStmt.setString(9, null);
-			}
-			pStmt.setString(10, card.getNumber());
+
+			/*			pStmt.setString(5, x);
+						pStmt.setString(6, x);
+			*/
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -123,6 +123,8 @@ public class RankDao {
 		// 結果を返す
 		return result;
 	}
+
+
 
 	//選択
 
