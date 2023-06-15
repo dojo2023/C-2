@@ -22,11 +22,11 @@ public class UsersDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 
 				// SELECT文を準備する
-				String sql = "select count(*) from USERS where mail_address = ? and password = ?";
+				String sql = "select count(*) from USERS where id = ? and password = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, users.getMail_address());
+				pStmt.setString(1, users.getId());
 				pStmt.setString(2,users.getPassword());
-				
+
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
 
@@ -35,8 +35,8 @@ public class UsersDao {
 				if (rs.getInt("count(*)") == 1) {
 					loginResult = true;
 				}
-			
-				
+
+
 			}
 			catch (SQLException e) {
 				e.printStackTrace();
@@ -62,7 +62,7 @@ public class UsersDao {
 			// 結果を返す
 			return loginResult;
 		}
-	
+
 		//引数usersで指定されたレコードを登録し、成功したらtrueを返す
 		public boolean insert(Users users) {
 			Connection conn = null;
@@ -73,9 +73,9 @@ public class UsersDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/date/buster_moon", "sa", "");
 				// SELECT文を準備する
-				String sql ="insert into USERS values (?,?,?)";
+				String sql ="insert into USERS values (?,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 				if (users.getId() != null && !users.getId().equals("")) {
@@ -83,19 +83,13 @@ public class UsersDao {
 				}
 				else {
 					pStmt.setString(1, null);
-				}	
-				if (users.getMail_address() != null && !users.getMail_address().equals("")) {
-					pStmt.setString(2, users.getMail_address());
+				}
+				if (users.getPassword() != null && !users.getPassword().equals("")) {
+					pStmt.setString(2, users.getPassword());
 				}
 				else {
 					pStmt.setString(2, null);
 				}
-				if (users.getPassword() != null && !users.getPassword().equals("")) {
-					pStmt.setString(3, users.getPassword());
-				}
-				else {
-					pStmt.setString(3, null);
-				}					
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
@@ -122,5 +116,5 @@ public class UsersDao {
 				return result;
 		}
 }
-		
+
 
