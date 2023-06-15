@@ -16,6 +16,7 @@
 <a href="/buster_moon/My_profileServlet">プロフィールボタン</a><br>
 <a href="/buster_moon/PostServlet"></a><br>
 
+<c:forEach var="e" items="${restaurantList}">
 ジャンル
 <select id="genre">
   <option value="" selected>選択してください</option>
@@ -34,10 +35,16 @@
   <option value="13">沖縄料理</option>
 </select><br>
 
+
 店名
 <select id="restaurant_name">
-  <option value="" selected>選択してください</option>
+  <option value="1" selected>選択してください</option>
+
+  <option value="${e.posts_restaurant}"></option>
+
+
 </select><br>
+</c:forEach>
 
 写真
 <form action="/buster_moon/RestaurantServlet" method="post" enctype="multipart/form-data">
@@ -60,6 +67,7 @@
   <option value="3">10～15分</option>
   <option value="4">15分～</option>
 </select><br>
+
 提供時間
 <select name="serve">
   <option value="" selected>選択してください</option>
@@ -71,13 +79,15 @@
 
 テキスト
 <textarea name="text"></textarea><br>
+
 <input type="submit" name="post_button" value="投稿">
 </body>
 </html>
 
 
-
+<%--
 <script>
+
 var array = new Array();
 array[''] = new Array ({cd:"0", label:"選択してください"});
 array["1"] = new Array(
@@ -108,6 +118,6 @@ document.getElementById('genre').onchange = function(){
 	    restaurant_name.appendChild(op);
 	  }
 	}
-</script>
+</script>--%>
 
 
