@@ -2,7 +2,6 @@ package test;
 import java.util.List;
 
 import dao.PostsDao;
-import model.Bc;
 import model.Posts;
 
 public class PostsDaoTest {
@@ -33,26 +32,19 @@ public class PostsDaoTest {
 			else {
 				System.out.println("登録失敗！");
 			}
-	}
-}
+
+
 
 
 
 //select()のテスト
 		System.out.println("---------- select()のテスト ----------");
-		List<Bc> cardList2 = dao.select(new Bc());
-		for (Bc card : cardList2) {
-			System.out.println("NUMBER：" + card.getNumber());
-			System.out.println("COMPANY：" + card.getCompany());
-			System.out.println("DEPARTMENT：" + card.getDepartment());
-			System.out.println("POSITION：" + card.getPosition());
-			System.out.println("NAME：" + card.getName());
-			System.out.println("ZIPCODE：" + card.getZipcode());
-			System.out.println("ADDRESS：" + card.getAddress());
-			System.out.println("PHONE：" + card.getPhone());
-			System.out.println("FAX：" + card.getFax());
-			System.out.println("EMAIL：" + card.getEmail());
-			System.out.println("REMARKS：" + card.getRemarks());
+		List<Posts> shousaiList = dao.select(new Posts());
+		for (Posts card : shousaiList) {
+			System.out.println("RESTAURANT：" + card.getRestaurant());
+			System.out.println("PHOTO：" + card.getPhoto());
+			System.out.println("TEXT：" + card.getText());
 			System.out.println();
 		}
-
+	}
+}
