@@ -5,10 +5,12 @@ import dao.PostsDao;
 import model.Posts;
 
 public class PostsDaoTest {
+	public static void main(String[] args) {
+		PostsDao dao = new PostsDao();
 
 	// insert()のテスト
 			System.out.println("---------- insert()のテスト ----------");
-			Posts insRec = new Posts(9, 9, "2023-09-09", "写真9", "店名1", 3, 3, 700, 1, "テキスト9", 100);
+			Posts insRec = new Posts("9", "9", "2023-09-09", "写真9", "店名1", "3", "3", "700", "1", "テキスト9", "100");
 			if (dao.insert(insRec)) {
 				System.out.println("登録成功！");
 				List<Posts> shousaiList = dao.select(insRec);
@@ -30,5 +32,5 @@ public class PostsDaoTest {
 			else {
 				System.out.println("登録失敗！");
 			}
-
+	}
 }

@@ -1,0 +1,8 @@
+2023-06-16 15:39:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "POSTS" が見つかりません
+Table "POSTS" not found; SQL statement:
+insert into posts values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [42102-199]
+2023-06-16 15:40:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: テーブル "POSTS" が見つかりません
+Table "POSTS" not found; SQL statement:
+insert into posts values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [42102-199]
