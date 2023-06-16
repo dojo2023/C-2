@@ -6,12 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import model.Profiles;
 
-public class RankDao {
+public class RankSUMDao {
 
 
 
@@ -63,7 +62,6 @@ public class RankDao {
 						+ "	set c_point=(select SUM(c.point)"
 						+ "	from profiles as p"
 						+ "	join  comments as c on p.users_id = c.users_id"
-						+ "	where c.date>=? and c.date<?"
 						+ "	group by p.users_id"
 						+ "	having p.users_id=? )"
 						+ "	where users_id=?";
@@ -72,7 +70,6 @@ public class RankDao {
 						+ "	set t_point=(select SUM(t.point)"
 						+ "	from profiles as p"
 						+ "	join  posts as t on p.users_id = t.users_id"
-						+ "	where t.date>=? and t.date<?"
 						+ "	group by p.users_id"
 						+ "	having p.users_id=? )"
 						+ "	where users_id=?";
@@ -81,7 +78,6 @@ public class RankDao {
 						+ "	set g_point=(select SUM(g.point)"
 						+ "	from profiles as p"
 						+ "	join  gathers as g on p.users_id = g.users_id"
-						+ "	where g.date>=? and g.date<?"
 						+ "	group by p.users_id"
 						+ "	having p.users_id=? )"
 						+ "	where users_id=?";
@@ -90,42 +86,17 @@ public class RankDao {
 				PreparedStatement pStmtT = conn.prepareStatement(sqlT);
 				PreparedStatement pStmtG = conn.prepareStatement(sqlG);
 
-				// SQL文の日付の指定部分を完成させる
-				Calendar calendar=Calendar.getInstance();
-				int year=calendar.get(Calendar.YEAR);
-	            int month=calendar.get(Calendar.MONTH)+1;
-	            int year2=0;
-	            int month2=0;
 
-	            if (month == 12) {
-	            	year2=calendar.get(Calendar.YEAR)+1;
-	            	month2=1;
-	            } else {
-	            	year2=calendar.get(Calendar.YEAR);
-	                month2=calendar.get(Calendar.MONTH)+2;
-	            }
-
-	            String monthS = String.format("%02d",month);
-	            String monthS2 = String.format("%02d",month2);
-	            String yearS = String.valueOf(year);
-	            String yearS2 = String.valueOf(year2);
-
-				pStmt.setString(1, yearS+"-"+monthS+"-01");
-				pStmt.setString(2, yearS2+"-"+monthS2+"-01");
-				pStmtT.setString(1, yearS+"-"+monthS+"-01");
-				pStmtT.setString(2, yearS2+"-"+monthS2+"-01");
-				pStmtG.setString(1, yearS+"-"+monthS+"-01");
-				pStmtG.setString(2, yearS2+"-"+monthS2+"-01");
 
 				//ユーザIDを入れていく
 				String x = String.valueOf(i);
 
-					pStmt.setString(3, x);
-					pStmt.setString(4, x);
-					pStmtT.setString(3, x);
-					pStmtT.setString(4, x);
-					pStmtG.setString(3, x);
-					pStmtG.setString(4, x);
+					pStmt.setString(1, x);
+					pStmt.setString(2, x);
+					pStmtT.setString(1, x);
+					pStmtT.setString(2, x);
+					pStmtG.setString(1, x);
+					pStmtG.setString(2, x);
 
 					//SQL文実行
 					pStmt.executeUpdate();
