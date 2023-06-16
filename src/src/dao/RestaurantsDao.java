@@ -30,7 +30,7 @@ public class RestaurantsDao {
 				// SQL文を準備する
 				String sql = "select * from restaurants "
 						+ "WHERE posts_restaurant like ? "
-						+ "and walk = ? "
+						+ "and walk (SELECT AVG(WALK) restaurant FROM POSTS GROUP BY restaurant) = ? "
 						+ "and serve = ? "
 						+ "and price = ? "
 						+ "and posts_genre = ? "
