@@ -28,8 +28,13 @@ public class RestaurantsDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 				// SQL文を準備する
-				String sql = "select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  serve = ? "
-						+ "and price = ? and posts_genre = ? ORDER BY posts_restaurant";
+				String sql = "select * from restaurants "
+						+ "WHERE posts_restaurant like ? "
+						+ "and walk = ? "
+						+ "and serve = ? "
+						+ "and price = ? "
+						+ "and posts_genre = ? "
+						+ "ORDER BY posts_restaurant";
 				PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
 
 				// SQL文を完成させる
@@ -39,12 +44,12 @@ public class RestaurantsDao {
 				else {
 					pStmt.setString(1, "%");
 				}
-				if (param.getWalk() != null) {
-					pStmt.setString(2, "%" + param.getWalk() + "%");
-				}
-				else {
-					pStmt.setString(2, "%");
-				}
+
+
+				pStmt.setString(2, param.getWalk());
+
+//				pStmt.setInt(2, param.getWalk());
+
 				if (param.getServe() != null) {
 					pStmt.setString(3, "%" + param.getServe() + "%");
 				}
