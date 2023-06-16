@@ -20,8 +20,8 @@ public class Profiles implements Serializable {
 		this.icon = icon;
 		this.introduction = introduction;
 		this.t_point=t_point;
-		this.t_point=g_point;
-		this.t_point=c_point;
+		this.g_point=g_point;
+		this.c_point=c_point;
 	}
 
 	//ランキング用のBeans
@@ -31,8 +31,8 @@ public class Profiles implements Serializable {
 		this.name = name;
 		this.icon = icon;
 		this.t_point=t_point;
-		this.t_point=g_point;
-		this.t_point=c_point;
+		this.g_point=g_point;
+		this.c_point=c_point;
 	}
 
 
