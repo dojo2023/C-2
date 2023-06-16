@@ -73,9 +73,9 @@ public class UsersDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/date/buster_moon", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 				// SELECT文を準備する
-				String sql ="insert into USERS values (?,?)";
+				String sql ="insert into USERS values (?,?,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				// SQL文を完成させる
 				if (users.getId() != null && !users.getId().equals("")) {
@@ -84,11 +84,17 @@ public class UsersDao {
 				else {
 					pStmt.setString(1, null);
 				}
-				if (users.getPassword() != null && !users.getPassword().equals("")) {
-					pStmt.setString(2, users.getPassword());
+				if (users.getMail_address() != null && !users.getMail_address().equals("")) {
+					pStmt.setString(2, users.getMail_address());
 				}
 				else {
 					pStmt.setString(2, null);
+				}
+				if (users.getPassword() != null && !users.getPassword().equals("")) {
+					pStmt.setString(3, users.getPassword());
+				}
+				else {
+					pStmt.setString(3, null);
 				}
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
