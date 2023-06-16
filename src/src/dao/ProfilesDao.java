@@ -25,7 +25,7 @@ public class ProfilesDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select * from profiles where users_id = ?";
+			String sql = "select * from profiles where users_id like ?";
 		    PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -42,8 +42,14 @@ public class ProfilesDao {
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Profiles profiles = new Profiles(
-				);
+				Profiles profiles = new Profiles();
+				profiles.setUsers_id(rs.getString("users_id"));
+			    profiles.setName(rs.getString("name"));
+			    profiles.setIcon(rs.getString("icon"));
+			    profiles.setIntroduction(rs.getString("introduction"));
+			    profiles.setT_point(rs.getString("t_point"));
+			    profiles.setG_point(rs.getString("g_point"));
+			    profiles.setC_point(rs.getString("c_point"));
 				profilesList.add(profiles);
 			}
 		}
@@ -71,7 +77,7 @@ public class ProfilesDao {
 		// 結果を返す
 		return profilesList;
 	}
-	
+
 	//編集
 	public boolean update(Profiles profiles) {
 		Connection conn = null;
@@ -85,7 +91,7 @@ public class ProfilesDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 
 			// SQL文を準備する
-			String sql = "update PROFILES set NAME='?' , ICON='?' , INTRODUCTION='?' where users_id=?";
+			String sql = "update PROFILES set name=? , icon=? , introduction=? where users_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -95,20 +101,23 @@ public class ProfilesDao {
 			else {
 				pStmt.setString(1, null);
 			}
-			
+
 			if (profiles.getIcon() != null && !profiles.getIcon().equals("")) {
 				pStmt.setString(2, profiles.getIcon());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-			
+
 			if (profiles.getIntroduction() != null && !profiles.getIntroduction().equals("")) {
 				pStmt.setString(3, profiles.getIntroduction());
 			}
 			else {
 				pStmt.setString(3, null);
 			}
+
+			pStmt.setString(4, profiles.getUsers_id());
+
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -135,7 +144,7 @@ public class ProfilesDao {
 		// 結果を返す
 		return result;
 	}
-			
+
 	//投稿削除
 	// 引数numberで指定されたレコードを削除し、成功したらtrueを返す
 	public boolean delete(String number) {
@@ -150,7 +159,7 @@ public class ProfilesDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 
 			// SQL文を準備する
-			String sql = "delete from POSTS where ID = ?";
+			String sql = "delete from PROFILES where ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -183,7 +192,7 @@ public class ProfilesDao {
 		return result;
 	}
 }
-	
+
 
 
 
