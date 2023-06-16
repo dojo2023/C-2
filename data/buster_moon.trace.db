@@ -1141,3 +1141,312 @@ select * from restaurants WHERE posts_restaurant like '%1%'and walk = 2 and  ser
 	at org.h2.server.web.WebThread.process(WebThread.java:178)
 	at org.h2.server.web.WebThread.run(WebThread.java:94)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 10:15:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: パラメータ "parameterIndex" に対する値 "5" が不正です
+Invalid value "5" for parameter "parameterIndex" [90008-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:587)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1573)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:427)
+	at dao.RestaurantsDao.select(RestaurantsDao.java:64)
+	at test.RestaurantsDaoTest.main(RestaurantsDaoTest.java:13)
+2023-06-16 11:33:43 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "WALK" はリストによりグループ化されなければなりません
+Column "WALK" must be in the GROUP BY list; SQL statement:
+SELECT WALK, COUNT(*) AS cnt
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY RESTAURANT) [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:182)
+	at org.h2.command.dml.Select.updateAgg(Select.java:545)
+	at org.h2.command.dml.Select.gatherGroup(Select.java:525)
+	at org.h2.command.dml.Select.queryGroup(Select.java:487)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 11:34:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "WALK" はリストによりグループ化されなければなりません
+Column "WALK" must be in the GROUP BY list; SQL statement:
+SELECT WALK, COUNT(*) AS cnt
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY WALK) [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:182)
+	at org.h2.command.dml.Select.updateAgg(Select.java:545)
+	at org.h2.command.dml.Select.gatherGroup(Select.java:525)
+	at org.h2.command.dml.Select.queryGroup(Select.java:487)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 11:35:48 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT WALK, RESTAURANT COUNT([*]*) AS CNT
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY RESTAURANT)"
+Syntax error in SQL statement "SELECT WALK, RESTAURANT COUNT([*]*) AS CNT
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY RESTAURANT)"; SQL statement:
+SELECT WALK, RESTAURANT COUNT(*) AS cnt
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY RESTAURANT) [42000-200]
+2023-06-16 11:37:16 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT * COUNT[*](*) AS CNT
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY WALK)"
+Syntax error in SQL statement "SELECT * COUNT[*](*) AS CNT
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY WALK)"; SQL statement:
+SELECT * COUNT(*) AS cnt
+FROM POSTS
+GROUP BY RESTAURANT
+HAVING COUNT(*) >= ALL(SELECT COUNT(*) FROM POSTS
+                       GROUP BY WALK) [42000-200]
+2023-06-16 11:48:32 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT *  COUNT[*](WALK) AS CNT
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(CNT)
+                    FROM (SELECT COUNT(WALK) AS CNT
+                          FROM POSTS
+                          GROUP BY WALK) TMP)"
+Syntax error in SQL statement "SELECT *  COUNT[*](WALK) AS CNT
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(CNT)
+                    FROM (SELECT COUNT(WALK) AS CNT
+                          FROM POSTS
+                          GROUP BY WALK) TMP)"; SQL statement:
+SELECT *  COUNT(WALK) AS cnt
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(cnt)
+                    FROM (SELECT COUNT(WALK) AS cnt
+                          FROM POSTS
+                          GROUP BY WALK) TMP) [42000-200]
+2023-06-16 11:50:13 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "SELECT RESTAURANT COUNT([*]WALK) AS CNT
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(CNT)
+                    FROM (SELECT COUNT(WALK) AS CNT
+                          FROM POSTS
+                          GROUP BY WALK) TMP)"
+Syntax error in SQL statement "SELECT RESTAURANT COUNT([*]WALK) AS CNT
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(CNT)
+                    FROM (SELECT COUNT(WALK) AS CNT
+                          FROM POSTS
+                          GROUP BY WALK) TMP)"; SQL statement:
+SELECT RESTAURANT COUNT(WALK) AS cnt
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(cnt)
+                    FROM (SELECT COUNT(WALK) AS cnt
+                          FROM POSTS
+                          GROUP BY WALK) TMP) [42000-200]
+2023-06-16 11:50:49 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "RESTAURANT" はリストによりグループ化されなければなりません
+Column "RESTAURANT" must be in the GROUP BY list; SQL statement:
+SELECT RESTAURANT, COUNT(WALK) AS cnt
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(cnt)
+                    FROM (SELECT COUNT(WALK) AS cnt
+                          FROM POSTS
+                          GROUP BY WALK) TMP) [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:182)
+	at org.h2.command.dml.Select.updateAgg(Select.java:545)
+	at org.h2.command.dml.Select.gatherGroup(Select.java:525)
+	at org.h2.command.dml.Select.queryGroup(Select.java:487)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 11:55:48 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "PUBLIC.POSTS.ID" はリストによりグループ化されなければなりません
+Column "PUBLIC.POSTS.ID" must be in the GROUP BY list; SQL statement:
+SELECT *, COUNT(WALK) AS cnt
+FROM POSTS
+GROUP BY restaurant
+HAVING COUNT(*) >= (SELECT MAX(cnt)
+                    FROM (SELECT COUNT(WALK) AS cnt
+                          FROM POSTS
+                          GROUP BY WALK) TMP) [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:182)
+	at org.h2.command.dml.Select.updateAgg(Select.java:545)
+	at org.h2.command.dml.Select.gatherGroup(Select.java:525)
+	at org.h2.command.dml.Select.queryGroup(Select.java:487)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 11:56:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "WALK" はリストによりグループ化されなければなりません
+Column "WALK" must be in the GROUP BY list; SQL statement:
+SELECT RESTAURANT, WALK, COUNT(WALK) AS cnt
+FROM POSTS
+GROUP BY restaurant
+HAVING COUNT(*) >= (SELECT MAX(cnt)
+                    FROM (SELECT COUNT(WALK) AS cnt
+                          FROM POSTS
+                          GROUP BY WALK) TMP) [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:182)
+	at org.h2.command.dml.Select.updateAgg(Select.java:545)
+	at org.h2.command.dml.Select.gatherGroup(Select.java:525)
+	at org.h2.command.dml.Select.queryGroup(Select.java:487)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 11:56:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: 列 "RESTAURANT" はリストによりグループ化されなければなりません
+Column "RESTAURANT" must be in the GROUP BY list; SQL statement:
+SELECT RESTAURANT, WALK, COUNT(WALK) AS cnt
+FROM POSTS
+GROUP BY WALK
+HAVING COUNT(*) >= (SELECT MAX(cnt)
+                    FROM (SELECT COUNT(WALK) AS cnt
+                          FROM POSTS
+                          GROUP BY WALK) TMP) [90016-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:576)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:182)
+	at org.h2.command.dml.Select.updateAgg(Select.java:545)
+	at org.h2.command.dml.Select.gatherGroup(Select.java:525)
+	at org.h2.command.dml.Select.queryGroup(Select.java:487)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:839)
+	at org.h2.command.dml.Query.queryWithoutCacheLazyCheck(Query.java:201)
+	at org.h2.command.dml.Query.query(Query.java:489)
+	at org.h2.command.dml.Query.query(Query.java:451)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:222)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:201)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1459)
+	at org.h2.server.web.WebApp.query(WebApp.java:1116)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1078)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1065)
+	at org.h2.server.web.WebThread.process(WebThread.java:178)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-06-16 13:19:25 jdbc[5]: null
+org.h2.message.DbException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:309)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:289)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:785)
+	at org.h2.server.web.WebApp.login(WebApp.java:1008)
+	at org.h2.server.web.WebApp.process(WebApp.java:223)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:173)
+	at org.h2.server.web.WebThread.process(WebThread.java:139)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: アプリケーションにより閉じられていない接続がガベージコレクトされました
+The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 16 more
+2023-06-16 13:29:53 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: SQLステートメントに文法エラーがあります "DROP POSTS[*]"; 期待されるステートメント "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"
+Syntax error in SQL statement "DROP POSTS[*]"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+DROP POSTS [42001-200]

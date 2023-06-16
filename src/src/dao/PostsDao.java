@@ -64,8 +64,8 @@ public class PostsDao<Posts_restaurant> {
 		  else {
 			  pStmt.setString(6, null);
 		  }
-		  if (posts.getSereve() != null || !posts.getSereve().equals("")) {
-			  pStmt.setString(7, posts.getSereve());
+		  if (posts.getServe() != null || !posts.getServe().equals("")) {
+			  pStmt.setString(7, posts.getServe());
 		  }
 		  else {
 			  pStmt.setString(7, null);
