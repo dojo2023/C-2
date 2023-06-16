@@ -21,19 +21,17 @@ public class PostsDao<Posts_restaurant> {
 		  Class.forName("org.h2.Driver");
 
 		  //データベースに接続する
-		  conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/date/buster_moon", "sa", "");
+		  conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 		  //SQL文を準備する
 		  String sql = "insert into posts values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		  PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		  //SQL文を完成させる
-		  if (posts.getId() != null || !posts.getId().equals("")) {
+
 			  pStmt.setString(1, posts.getId());
-		  }
-		  else {
-			  pStmt.setString(1, null);
-		  }
+
+
 		  if (posts.getUsers_id() != null || !posts.getUsers_id().equals("")) {
 			  pStmt.setString(2, posts.getUsers_id());
 		  }
@@ -132,7 +130,7 @@ public class PostsDao<Posts_restaurant> {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/date/buster_moon", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
 			String sql = "select restaurant, photo, text from posts where restaurant = ?";
@@ -145,18 +143,7 @@ public class PostsDao<Posts_restaurant> {
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (detail.getPhoto() != null) {
-				pStmt.setString(2, "%" + detail.getPhoto() + "%");
-			}
-			else {
-				pStmt.setString(2, "%");
-			}
-			if (detail.getText() != null) {
-				pStmt.setString(3, "%" + detail.getText() + "%");
-			}
-			else {
-				pStmt.setString(3, "%");
-			}
+
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

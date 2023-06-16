@@ -2,6 +2,7 @@ package test;
 import java.util.List;
 
 import dao.PostsDao;
+import model.Bc;
 import model.Posts;
 
 public class PostsDaoTest {
@@ -10,7 +11,7 @@ public class PostsDaoTest {
 
 	// insert()のテスト
 			System.out.println("---------- insert()のテスト ----------");
-			Posts insRec = new Posts("9", "9", "2023-09-09", "写真9", "店名1", "3", "3", "700", "1", "テキスト9", "100");
+			Posts insRec = new Posts(null, "9", "2023-09-09", "写真9", "店名1", "3", "3", "700", "1", "テキスト9", "100");
 			if (dao.insert(insRec)) {
 				System.out.println("登録成功！");
 				List<Posts> shousaiList = dao.select(insRec);
@@ -34,3 +35,24 @@ public class PostsDaoTest {
 			}
 	}
 }
+
+
+
+//select()のテスト
+		System.out.println("---------- select()のテスト ----------");
+		List<Bc> cardList2 = dao.select(new Bc());
+		for (Bc card : cardList2) {
+			System.out.println("NUMBER：" + card.getNumber());
+			System.out.println("COMPANY：" + card.getCompany());
+			System.out.println("DEPARTMENT：" + card.getDepartment());
+			System.out.println("POSITION：" + card.getPosition());
+			System.out.println("NAME：" + card.getName());
+			System.out.println("ZIPCODE：" + card.getZipcode());
+			System.out.println("ADDRESS：" + card.getAddress());
+			System.out.println("PHONE：" + card.getPhone());
+			System.out.println("FAX：" + card.getFax());
+			System.out.println("EMAIL：" + card.getEmail());
+			System.out.println("REMARKS：" + card.getRemarks());
+			System.out.println();
+		}
+
