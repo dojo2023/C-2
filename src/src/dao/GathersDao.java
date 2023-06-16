@@ -18,7 +18,7 @@ public class GathersDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 
 			// SQL文を準備する
 			String sql = "insert into GATHERS values (?, ?, ?, ?)";
@@ -88,7 +88,7 @@ public class GathersDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
 
 				// SQL文を準備する
 				String sql = "delete from gathers where id = ?";
