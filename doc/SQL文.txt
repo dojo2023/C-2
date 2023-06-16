@@ -15,15 +15,15 @@ users_id		****
 CREATE TABLE users (
   ID INT PRIMARY KEY AUTO_INCREMENT,
   MAIL_ADDRESS VARCHAR(50) UNIQUE NOT NULL,
-  USERPW VARCHAR(20) NOT NULL
+  PASSWORD VARCHAR(20) NOT NULL
 );
 
 【usersテーブルにサンプルデータを登録するSQL文】
-INSERT INTO users(ID, MAIL_ADDRESS, USERPW) VALUES (0001,'mail1@company1.jp','a1a1');
-INSERT INTO users(ID, MAIL_ADDRESS, USERPW) VALUES (0002,'mail2@company2.jp','b2b2');
-INSERT INTO users(ID, MAIL_ADDRESS, USERPW) VALUES (0003,'mail3@company3.jp','c3c3');
-INSERT INTO users(ID, MAIL_ADDRESS, USERPW) VALUES (0004,'mail4@company4.jp','d4d4');
-INSERT INTO users(ID, MAIL_ADDRESS, USERPW) VALUES (0005,'mail5@company5.jp','e5e5');
+INSERT INTO users(ID, MAIL_ADDRESS, PASSWORD) VALUES (0001,'mail1@company1.jp','a1a1');
+INSERT INTO users(ID, MAIL_ADDRESS, PASSWORD) VALUES (0002,'mail2@company2.jp','b2b2');
+INSERT INTO users(ID, MAIL_ADDRESS, PASSWORD) VALUES (0003,'mail3@company3.jp','c3c3');
+INSERT INTO users(ID, MAIL_ADDRESS, PASSWORD) VALUES (0004,'mail4@company4.jp','d4d4');
+INSERT INTO users(ID, MAIL_ADDRESS, PASSWORD) VALUES (0005,'mail5@company5.jp','e5e5');
 
 【profilesテーブルを作成するSQL文】
 CREATE TABLE profiles (
