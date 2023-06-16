@@ -30,7 +30,7 @@ public class ProfilesDaoTest {
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		Profiles upRec = new Profiles("6", "6", "name6", "icon6", "6666", "6", "6", "6");
+		Profiles upRec = new Profiles("6", "4", "name6", "icon6", "6666", "6", "6", "6");
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
 			List<Profiles> ProfilesList2 = dao.select(upRec);
