@@ -88,10 +88,10 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 	public void setWalk(String walk) {
 		this.walk = walk;
 	}
-	public String getSereve() {
+	public String getServe() {
 		return serve;
 	}
-	public void setSereve(String serve) {
+	public void setServe(String serve) {
 		this.serve = serve;
 	}
 	public String getPrice() {
