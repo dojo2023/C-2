@@ -2,7 +2,7 @@
 org.h2.Driver
 
 【JDBC URL】
-jdbc:h2:file:C:/dojo6/monoshiriplus
+jdbc:h2:file:C:/dojo6/data/buster_moon
 
 
 
