@@ -3,6 +3,7 @@ import java.util.List;
 
 import dao.PostsDao;
 import model.Posts;
+import model.Restaurants;
 
 public class PostsDaoTest {
 	public static void main(String[] args) {
@@ -31,6 +32,14 @@ public class PostsDaoTest {
 			}
 			else {
 				System.out.println("登録失敗！");
+			}
+
+		//投稿の際のジャンルでの店舗絞り込みテスト
+			System.out.println("---------- selectGenre()のテスト ----------");
+			List<Restaurants> shiborikomiList = dao.selectGenre("2");
+			for (Restaurants card : shiborikomiList) {
+				System.out.println("RESTAURANT：" + card.getRestaurant());
+				System.out.println("GENRE：" + card.getGenre());
 			}
 
 	}

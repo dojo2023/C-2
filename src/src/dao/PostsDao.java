@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Posts;
+import model.Restaurants;
 
 //"insert into posts values (?,?,?,?,?,?,?,?,?)"
 public class PostsDao{
@@ -120,7 +121,7 @@ public class PostsDao{
 	  return result;
   }
 
-    //"select restaurant, photo, text from posts where restsursnt = '?'"
+    //"select restaurant, photo, text from posts where restaursnt = '?'"
   public List<Posts> select() {
 		Connection conn = null;
 		List<Posts> postsList = new ArrayList<Posts>();
@@ -181,6 +182,66 @@ public class PostsDao{
 		// 結果を返す
 		return postsList;
 	}
+
+//投稿する際ジャンルで店舗名を絞り込み
+		// 引数paramで検索項目を指定し、検索結果のリストを返す
+			public List<Restaurants> selectGenre(String genre) {
+				Connection conn = null;
+				List<Restaurants> shiborikomiList = new ArrayList<Restaurants>();
+
+				try {
+					// JDBCドライバを読み込む
+					Class.forName("org.h2.Driver");
+
+					// データベースに接続する
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
+
+					// SQL文を準備する
+					String sql = "select posts_restaurant,walk,serve,price,posts_genre from restaurants WHERE posts_genre=?";
+					PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
+
+					// SQL文を完成させる
+
+						pStmt.setString(1, genre);
+
+					// SQL文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					// 結果表をコレクションにコピーする
+					while (rs.next()) {
+						Restaurants restaurant = new Restaurants(
+								rs.getString("POSTS_RESTAURANT"),
+								rs.getString("WALK"),
+								rs.getString("SERVE"),
+								rs.getString("PRICE"),
+								rs.getString("posts_GENRE")
+								);
+						shiborikomiList.add(restaurant);
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					shiborikomiList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					shiborikomiList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							shiborikomiList = null;
+						}
+					}
+				}
+				// 結果を返す
+				return shiborikomiList;
+			}
 }
 
 
