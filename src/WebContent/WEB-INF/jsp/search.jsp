@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>物知りプラス</title>
+<title>検索｜物知りプラス</title>
 <link rel="stylesheet" href="/buster_moon/css/search.css">
 </head>
 <body>
 <h1>検索</h1>
 <!-- メニューバーの表示 -->
-  
+<!--  
 <ul class="nav">
   <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
   <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
@@ -17,15 +18,15 @@
   <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
   <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
   </ul>
+-->
 
- 
- <!-- 検索の絞り込みの表示 -->
+ <!-- 検索結果の表示 -->
 <form method="POST" action="/buster_moon/SearchServlet">  
-<input type="text" style="width: 300px; height: 25px;" name="ID" placeholder="キーワードを入力してください">
+<input type="text" style="width: 300px; height: 25px;" name="ID" placeholder="キーワードを入力してください。">
 <input type="submit" name="SEARCH" value="検索" class="button1">
 <div class="table">
   <table id="list">    
-    <tr>   
+    <tr>
       <td>
       <select name="ja">
       <option value="genre">ジャンル</option>
@@ -88,31 +89,24 @@
       </td>
   </tr>
   </table>
-
 <!-- 検索結果の表示 -->
-<!--    
-  <c:if test="${empty resutaurantList }">
-  </c:if>
-<c:if test="${empty resutaurantList }">
-</c:if>
-
 <div id="table">
   <table id="list">
-  <c:forEach var="e" items="${resutaurantList}" >
+  <c:forEach var="e" items="${restaurantList}" >
   <form method="POST" action="/sim/SearchServlet">
 	<tr>
-	  <td><input class="data" type="text" name="POSTS_RESTAURANT" value="${e.posts_restaurant}"></td>
+	  <td><a href="restaurant.jsp#">${e.posts_restaurant}</a></td>
 	</tr>
 	<tr>
-	  <td><a href="resutaurant.jsp#news"><input class="data" type="text" name="POSTS_GENRE" value="${e.posts_genre}"></a></td>
-	  <td><input class="data" type="text" name="PRICE" value="${e.price}"></td>
-	  <td><input class="data" type="text" name="WALK" value="${e.walk}"></td>
-	  <td><input class="data" type="text" name="SERVE" value="${e.serve}"></td>
+	  <td>${e.posts_genre}</td>
+	  <td>${e.price}</td>
+	  <td>${e.walk}</td>
+	  <td>${e.serve}</td>
 	</tr>
   </form>
   </c:forEach>
   </table>
-  -->
+</div>
   </div>
   </form>
 </body>
