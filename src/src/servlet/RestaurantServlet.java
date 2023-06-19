@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.PostsDao;
+import dao.RestaurantsDao;
+import model.Posts;
+import model.Restaurants;
+
 
 /**
  * Servlet implementation class RestaurantServlet
@@ -39,6 +46,46 @@ public class RestaurantServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-	}
 
+
+	// リクエストパラメータを取得する
+			request.setCharacterEncoding("UTF-8");
+			String restaurant = request.getParameter("RESTAURANT");
+			String walk = request.getParameter("WALK");
+			String serve = request.getParameter("SERVE");
+			String price = request.getParameter("PRICE");
+			String genre = request.getParameter("GENRE");
+
+	// 検索処理を行う
+			RestaurantsDao ResDao = new RestaurantsDao();
+			List<Restaurants> restaurantList = ResDao.select(new Restaurants(restaurant, walk, serve, price, genre));
+
+	// 検索結果をリクエストスコープに格納する
+			request.setAttribute("restaurantList", restaurantList);
+
+	// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
+			dispatcher.forward(request, response);
+
+
+
+	// リクエストパラメータを取得する
+			request.setCharacterEncoding("UTF-8");
+			String photo = request.getParameter("PHOTO");
+			String text = request.getParameter("TEXT");
+
+	// 検索処理を行う
+			PostsDao PosDao = new PostsDao();
+			List<Posts> shousaiList = PosDao.select(new Posts(photo, text));
+
+	// 検索結果をリクエストスコープに格納する
+			request.setAttribute("shousaiList", shousaiList);
+
+	// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
+			dispatcher.forward(request, response);
+	}
 }
+
+
+

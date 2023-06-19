@@ -40,15 +40,31 @@
 		</tr>
 	</c:forEach>
 	</table> --%>
+<style>
+
+.ex1 {
+width: 200px;
+height: 160px;
+}
+.ex1 {
+display: flex;
+padding-right: 5px;
+}
+
+
+</style>
+<h1>階段の途中</h1>
+
+<div class="ex1">
+	<img src="/buster_moon/img/kaidan1.jpg" alt="" hspace="10">
+	<img src="/buster_moon/img/kaidan2.jpg" alt="" hspace="10">
+	<img src="/buster_moon/img/kaidan3.jpg" alt="" hspace="10">
+</div><br>
+
+		<%--画像を横並びにするためには、CSSプロパティの「display: flex;」を使用する --%>
+
 
 	<table class="restaurantTable">
-		<tr>
-		<th>店名</th><td colspan="3">階段の途中</td>
-		</tr>
-		<tr>
-		<th>写真</th><td colspan="3"><img src="/buster_moon/img/logo.png" width="100" height="100" alt=""></td>
-		<%--画像を横並びにするためには、CSSプロパティの「display: flex;」を使用する --%>
-		</tr>
 		<tr>
 		<th>ジャンル</th><td>イタリアン</td>
 		<th>価格</th><td>1500円</td>
@@ -57,9 +73,11 @@
 		<th>徒歩時間</th><td>約3分</td>
 		<th>提供時間</th><td>約10分</td>
 		</tr>
-		<tr>
-		<th>レビュー</th><td colspan="3">アクアパッツァがおいしい</td>
-		</tr>
 	</table>
+
+<h2>レビュー</h2>
+<p>・アクアパッツァがおいしい</p>
+<p>・リゾットおいしい</p>
+
 </body>
 </html>
