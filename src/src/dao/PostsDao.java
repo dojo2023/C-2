@@ -122,7 +122,7 @@ public class PostsDao{
   }
 
     //"select restaurant, photo, text from posts where restaursnt = '?'"
-  public List<Posts> select() {
+  public List<Posts> select(Posts param) {
 		Connection conn = null;
 		List<Posts> postsList = new ArrayList<Posts>();
 

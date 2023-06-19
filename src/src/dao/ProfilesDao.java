@@ -22,7 +22,7 @@ public class ProfilesDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
 			String sql = "select * from profiles where users_id like ?";
