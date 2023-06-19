@@ -120,7 +120,7 @@ public class PostsDao<Posts_restaurant> {
 	  return result;
   }
 
-    //"select restaurant, photo, text from posts where restsursnt = '?'"
+    //"select restaurant, photo, text from posts where restaurant = '?'"
   public List<Posts> select(Posts detail) {
 		Connection conn = null;
 		List<Posts> shousaiList = new ArrayList<Posts>();

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Posts;
 import model.Restaurants;
 
 public class RestaurantsDao {
@@ -28,57 +29,25 @@ public class RestaurantsDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 				// SQL文を準備する
-				String sql = "select * from restaurants "
-						+ "WHERE posts_restaurant like ? "
-						+ "and walk (SELECT AVG(WALK) restaurant FROM POSTS GROUP BY restaurant) = ? "
-						+ "and serve = ? "
-						+ "and price = ? "
-						+ "and posts_genre = ? "
-						+ "ORDER BY posts_restaurant";
+				String sql = "SELECT RESTAURANT, AVG( CAST(WALK AS DOUBLE) ), AVG(CAST(SERVE AS DOUBLE)), AVG(PRICE), "
+						+ "GENRE FROM POSTS WHERE RESTAURANT = ? GROUP BY RESTAURANT, GENRE ";
 				PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
 
 				// SQL文を完成させる
-				if (param.getPosts_restaurant() != null) {
-					pStmt.setString(1, "%" + param.getPosts_restaurant() + "%");
-				}
-				else {
-					pStmt.setString(1, "%");
-				}
+					pStmt.setString(1, "%" + param.getRestaurant() + "%");
 
 
-				pStmt.setString(2, param.getWalk());
-
-//				pStmt.setInt(2, param.getWalk());
-
-				if (param.getServe() != null) {
-					pStmt.setString(3, "%" + param.getServe() + "%");
-				}
-				else {
-					pStmt.setString(3, "%");
-				}
-				if (param.getPrice() != null) {
-					pStmt.setString(4, "%" + param.getPrice() + "%");
-				}
-				else {
-					pStmt.setString(4, "%");
-				}
-				if (param.getPosts_genre() != null) {
-					pStmt.setString(5, "%" + param.getPosts_genre() + "%");
-				}
-				else {
-					pStmt.setString(5, "%");
-				}
 				// SQL文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
 
 				// 結果表をコレクションにコピーする
 				while (rs.next()) {
 					Restaurants retaurant = new Restaurants(
-					rs.getString("POSTS_RESTAURANT"),
+					rs.getString("RESTAURANT"),
 					rs.getString("WALK"),
 					rs.getString("SERVE"),
 					rs.getString("PRICE"),
-					rs.getString("POSTS_GENRE")
+					rs.getString("GENRE")
 					);
 					restaurantList.add(retaurant);
 				}
@@ -107,12 +76,9 @@ public class RestaurantsDao {
 			// 結果を返す
 			return restaurantList;
 		}
-		//ジャンルで絞り込み検索
-		//"select posts_restaurant from posts WHERE genre=?
-		// 引数paramで検索項目を指定し、検索結果のリストを返す
-			public List<Restaurants> select(String param) {
+		 public List<Posts> select(Posts detail) {
 				Connection conn = null;
-				List<Restaurants> Posts_restaurantList = new ArrayList<Restaurants>();
+				List<Posts> shousaiList = new ArrayList<Posts>();
 
 				try {
 					// JDBCドライバを読み込む
@@ -122,7 +88,68 @@ public class RestaurantsDao {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 					// SQL文を準備する
-					String sql = "select posts_restaurant from posts WHERE genre=?";
+					String sql = "select restaurant, photo, text from posts where restaurant = ?";
+					PreparedStatement pStmt = conn.prepareStatement(sql);
+
+					// SQL文を完成させる
+					pStmt.setString(1, "%" + detail.getRestaurant() + "%");
+
+
+
+					// SQL文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					// 結果表をコレクションにコピーする
+					while (rs.next()) {
+						Posts shousai= new Posts(
+						rs.getString("RESTAURANT"),
+						rs.getString("PHOTO"),
+						rs.getString("TEXT")
+						);
+						shousaiList.add(shousai);
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					shousaiList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					shousaiList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							shousaiList = null;
+						}
+					}
+				}
+
+				// 結果を返す
+				return shousaiList;
+			}
+
+		//ジャンルで絞り込み検索
+		//"select posts_restaurant from posts WHERE genre=?
+		// 引数paramで検索項目を指定し、検索結果のリストを返す
+			public List<Restaurants> select(String param) {
+				Connection conn = null;
+				List<Restaurants> shiborikomiList = new ArrayList<Restaurants>();
+
+				try {
+					// JDBCドライバを読み込む
+					Class.forName("org.h2.Driver");
+
+					// データベースに接続する
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
+
+					// SQL文を準備する
+					String sql = "select restaurant from posts WHERE genre=?";
 					PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
 
 					// SQL文を完成させる
@@ -135,22 +162,22 @@ public class RestaurantsDao {
 					// 結果表をコレクションにコピーする
 					while (rs.next()) {
 						Restaurants restaurant = new Restaurants(
-								rs.getString("POSTS_RESTAURANT"),
+								rs.getString("RESTAURANT"),
 								rs.getString("WALK"),
 								rs.getString("SERVE"),
 								rs.getString("PRICE"),
-								rs.getString("POSTS_GENRE")
+								rs.getString("GENRE")
 								);
-						Posts_restaurantList.add(restaurant);
+						shiborikomiList.add(restaurant);
 					}
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					Posts_restaurantList = null;
+					shiborikomiList = null;
 				}
 				catch (ClassNotFoundException e) {
 					e.printStackTrace();
-					Posts_restaurantList = null;
+					shiborikomiList = null;
 				}
 				finally {
 					// データベースを切断
@@ -160,11 +187,11 @@ public class RestaurantsDao {
 						}
 						catch (SQLException e) {
 							e.printStackTrace();
-							Posts_restaurantList = null;
+							shiborikomiList = null;
 						}
 					}
 				}
 				// 結果を返す
-				return Posts_restaurantList;
+				return shiborikomiList;
 			}
 }
