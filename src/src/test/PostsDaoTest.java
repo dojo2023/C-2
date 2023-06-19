@@ -8,13 +8,13 @@ public class PostsDaoTest {
 	public static void main(String[] args) {
 		PostsDao dao = new PostsDao();
 
-	// insert()のテスト
+	// insert()とselect()のテスト
 			System.out.println("---------- insert()のテスト ----------");
 			Posts insRec = new Posts(null, "9", "2023-09-09", "写真9", "店名1", "3", "3", "700", "1", "テキスト9", "100");
 			if (dao.insert(insRec)) {
 				System.out.println("登録成功！");
-				List<Posts> shousaiList = dao.select(insRec);
-				for (Posts card : shousaiList) {
+				List<Posts> postsList = dao.select();
+				for (Posts card : postsList) {
 					System.out.println("ID：" + card.getId());
 					System.out.println("USERS_ID：" + card.getUsers_id());
 					System.out.println("DATE：" + card.getDate());
@@ -33,18 +33,5 @@ public class PostsDaoTest {
 				System.out.println("登録失敗！");
 			}
 
-
-
-
-
-//select()のテスト
-		System.out.println("---------- select()のテスト ----------");
-		List<Posts> shousaiList = dao.select(new Posts());
-		for (Posts card : shousaiList) {
-			System.out.println("RESTAURANT：" + card.getRestaurant());
-			System.out.println("PHOTO：" + card.getPhoto());
-			System.out.println("TEXT：" + card.getText());
-			System.out.println();
-		}
 	}
 }

@@ -19,7 +19,7 @@ public class RankSUMDao {
 
 
 	//更新取得
-	public List<Profiles> select() {
+	public List<Profiles> select(String users_id) {
 		Connection conn = null;
 		List<Profiles> profilesList = new ArrayList<Profiles>();
 		List<Profiles> profilesList2 = new ArrayList<Profiles>();
@@ -29,7 +29,7 @@ public class RankSUMDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/buster_moon", "sa", "");
 
 			//profilesテーブルのリストの数を調べるための作業
 			String sql3 ="select p.users_id,name,icon,t_point,g_point,c_point "
@@ -122,9 +122,11 @@ public class RankSUMDao {
 			//select部分
 			String sql2 ="select p.users_id,name,icon,t_point,g_point,c_point "
 					+ "from profiles as p "
+					+ "where users_id=?"
 					+ "group by p.users_id";
 
 			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+			pStmt2.setString(1,users_id);
 			ResultSet rs = pStmt2.executeQuery();
 
 			// 結果表をコレクションにコピーする

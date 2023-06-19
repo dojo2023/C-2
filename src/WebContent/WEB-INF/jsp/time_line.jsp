@@ -8,9 +8,20 @@
 </head>
 <body>
 <h1>ランキング</h1>
+<c:forEach var="profile" items="ProfilesList">
+<div class="ranks">
+		<table>
+			<tr>
+				<td value="${profile.name}">（名前）</td>
+				<td value="${profile.icon}">（アイコン）</td>
+				<td value="${profile.t_point+profile.g_point+profile.c_point}">（TGCポイントを足し合わせたもの）</td>
+			</tr>
+		</table>
+</div>
+</c:forEach>
 
-<c:forEach var="e" items="リスト名">
-<div class="post">
+<c:forEach var="e" items="shousaiList">
+<div class="posts">
 	<div><img>(投稿者アイコン)</div>
 	<div>店名：（投稿表から取り出して表示のみ）</div>
 		<div id="post_inf">

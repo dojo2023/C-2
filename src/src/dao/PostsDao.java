@@ -11,7 +11,7 @@ import java.util.List;
 import model.Posts;
 
 //"insert into posts values (?,?,?,?,?,?,?,?,?)"
-public class PostsDao<Posts_restaurant> {
+public class PostsDao{
   public boolean insert(Posts posts) {
 	  Connection conn = null;
 	  boolean result = false;
@@ -120,10 +120,10 @@ public class PostsDao<Posts_restaurant> {
 	  return result;
   }
 
-    //"select restaurant, photo, text from posts where restaurant = '?'"
-  public List<Posts> select(Posts detail) {
+    //"select restaurant, photo, text from posts where restsursnt = '?'"
+  public List<Posts> select() {
 		Connection conn = null;
-		List<Posts> shousaiList = new ArrayList<Posts>();
+		List<Posts> postsList = new ArrayList<Posts>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -133,38 +133,37 @@ public class PostsDao<Posts_restaurant> {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select restaurant, photo, text from posts where restaurant = ?";
+			String sql = "select * from posts order by date asc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-			if (detail.getRestaurant() != null) {
-				pStmt.setString(1, "%" + detail.getRestaurant() + "%");
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
-
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Posts shousai= new Posts(
-				rs.getString("RESTAURANT"),
+				Posts posts= new Posts(
+				rs.getString("ID"),
+				rs.getString("USERS_ID"),
+				rs.getString("DATE"),
 				rs.getString("PHOTO"),
-				rs.getString("TEXT")
+				rs.getString("RESTAURANT"),
+				rs.getString("WALK"),
+				rs.getString("SERVE"),
+				rs.getString("PRICE"),
+				rs.getString("GENRE"),
+				rs.getString("TEXT"),
+				rs.getString("POINT")
 				);
-				shousaiList.add(shousai);
+				postsList.add(posts);
 			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			shousaiList = null;
+			postsList = null;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			shousaiList = null;
+			postsList = null;
 		}
 		finally {
 			// データベースを切断
@@ -174,13 +173,13 @@ public class PostsDao<Posts_restaurant> {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					shousaiList = null;
+					postsList = null;
 				}
 			}
 		}
 
 		// 結果を返す
-		return shousaiList;
+		return postsList;
 	}
 }
 

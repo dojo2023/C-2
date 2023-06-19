@@ -30,7 +30,7 @@ public class RankDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/buster_moon", "sa", "");
 
 			//profilesテーブルのリストの数を調べるための作業
 			String sql3 ="select p.users_id,name,icon,t_point,g_point,c_point "
@@ -151,7 +151,8 @@ public class RankDao {
 			//select部分
 			String sql2 ="select p.users_id,name,icon,t_point,g_point,c_point "
 					+ "from profiles as p "
-					+ "group by p.users_id";
+					+ "group by p.users_id"
+					+"order by t_point+g_point+c_point desc";
 
 			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 			ResultSet rs = pStmt2.executeQuery();

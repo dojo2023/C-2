@@ -14,7 +14,7 @@ public class RankSUMDaoTest {
 
 		// select()のテスト
 		System.out.println("---------- ランクのselect()のテスト ----------");
-		List<Profiles> profilesList2 = rankSUMDao.select();
+		List<Profiles> profilesList2 = rankSUMDao.select("2");
 		for(Profiles profiles:profilesList2)
 		{
 			System.out.println("ユーザID："+profiles.getUsers_id());
