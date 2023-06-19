@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>ランキング</h1>
-<c:forEach var="profile" items="ProfilesList">
+<c:forEach var="profile" items="profilesList">
 <div class="ranks">
 		<table>
 			<tr>
@@ -20,7 +20,7 @@
 </div>
 </c:forEach>
 
-<c:forEach var="e" items="shousaiList">
+<c:forEach var="e" items="postsList">
 <div class="posts">
 	<div><img>(投稿者アイコン)</div>
 	<div>店名：（投稿表から取り出して表示のみ）</div>
@@ -31,10 +31,12 @@
 			<tr><td>提供時間:</td><td value="${e.serve}">（投稿表から取り出して表示のみ）</td></tr>
 			<tr><td>価格:</td><td value="${e.price}">（投稿表から取り出して表示のみ）</td></tr>
 		</table>
-		<div>（投稿表から取り出したテキスト表示）</div>
-		<div><img>（投稿表から取り出した写真表示）</div>
+		<div value="${e.text}">（投稿表から取り出したテキスト表示）</div>
+		<div><img >（投稿表から取り出した写真表示）</div>
 	</div>
 </div>
-</c:forEach>
+</c:forEach >
+
+<h1>コメント返信</h1>
 </body>
 </html>
