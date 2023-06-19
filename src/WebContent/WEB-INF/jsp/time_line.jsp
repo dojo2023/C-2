@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +8,13 @@
 </head>
 <body>
 <h1>ランキング</h1>
-<c:forEach var="profile" items="profilesList">
+<c:forEach var="p" items="profilesList">
 <div class="ranks">
 		<table>
 			<tr>
-				<td value="${profile.name}">（名前）</td>
-				<td value="${profile.icon}">（アイコン）</td>
-				<td value="${profile.t_point+profile.g_point+profile.c_point}">（TGCポイントを足し合わせたもの）</td>
+			    <td>"${p.name}"</td>
+				<td>"${p.icon}"</td>
+				<td>"${p.t_point+p.g_point+p.c_point}"</td>
 			</tr>
 		</table>
 </div>

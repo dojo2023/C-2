@@ -14,8 +14,8 @@ public class RankDaoTest {
 
 		// select()のテスト
 		System.out.println("---------- ランクのselect()のテスト ----------");
-		List<Profiles> profilesList2 = rankDao.select();
-		for(Profiles profiles:profilesList2)
+		List<Profiles> profilesList = rankDao.select();
+		for(Profiles profiles:profilesList)
 		{
 			System.out.println("ユーザID："+profiles.getUsers_id());
 			System.out.println("名前："+profiles.getName());

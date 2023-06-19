@@ -152,7 +152,7 @@ public class RankDao {
 			String sql2 ="select p.users_id,name,icon,t_point,g_point,c_point "
 					+ "from profiles as p "
 					+ "group by p.users_id"
-					+"order by t_point+g_point+c_point desc";
+					+" order by t_point+g_point+c_point desc";
 
 			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
 			ResultSet rs = pStmt2.executeQuery();
@@ -160,12 +160,12 @@ public class RankDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Profiles profiles = new Profiles(
-				rs.getString("USERS_ID"),
-				rs.getString("NAME"),
-				rs.getString("ICON"),
-				rs.getString("T_POINT"),
-				rs.getString("G_POINT"),
-				rs.getString("C_POINT")
+				rs.getString("users_id"),
+				rs.getString("name"),
+				rs.getString("icon"),
+				rs.getString("t_point"),
+				rs.getString("g_point"),
+				rs.getString("c_point")
 				);
 				profilesList.add(profiles);
 			}
