@@ -28,7 +28,7 @@ public class My_profileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // 検索処理を行う
 	    ProfilesDao profilesDao = new ProfilesDao();
-	    List<Profiles> profilesList = profilesDao.select(new Profiles("", "", "", "", "", "", "", ""));
+	    List<Profiles> profilesList = profilesDao.select(new Profiles("", "", "", "", "", 0, 0, 0));
 
 	    PostsDao postsDao = new PostsDao();
 	    List<Posts> postsList = postsDao.select(new Posts("", "", "", "", "", "", "", "", "", "", ""));

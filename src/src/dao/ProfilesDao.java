@@ -47,9 +47,9 @@ public class ProfilesDao {
 			    profiles.setName(rs.getString("name"));
 			    profiles.setIcon(rs.getString("icon"));
 			    profiles.setIntroduction(rs.getString("introduction"));
-			    profiles.setT_point(rs.getString("t_point"));
-			    profiles.setG_point(rs.getString("g_point"));
-			    profiles.setC_point(rs.getString("c_point"));
+			    profiles.setT_point(rs.getInt("t_point"));
+			    profiles.setG_point(rs.getInt("g_point"));
+			    profiles.setC_point(rs.getInt("c_point"));
 				profilesList.add(profiles);
 			}
 		}
@@ -88,7 +88,7 @@ public class ProfilesDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
 			String sql = "update PROFILES set name=? , icon=? , introduction=? where users_id=?";
@@ -156,7 +156,7 @@ public class ProfilesDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
 			String sql = "delete from PROFILES where ID = ?";
