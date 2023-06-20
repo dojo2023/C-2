@@ -27,6 +27,8 @@ public class PostsDaoTest {
 					System.out.println("GENRE：" + card.getGenre());
 					System.out.println("TEXT：" + card.getText());
 					System.out.println("POINT：" + card.getPoint());
+					System.out.println("NAME：" + card.getName());
+					System.out.println("ICON：" + card.getIcon());
 					System.out.println();
 				}
 			}
