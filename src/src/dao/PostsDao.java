@@ -45,13 +45,13 @@ public class PostsDao{
 		  else {
 			  pStmt.setString(3, null);
 		  }
-		  if (posts.getPhoto() != null || !posts.getDate().equals("")) {
+		  if (posts.getPhoto() != null || !posts.getPhoto().equals("")) {
 			  pStmt.setString(4, posts.getPhoto());
 		  }
 		  else {
 			  pStmt.setString(4, null);
 		  }
-		  if (posts.getRestaurant() != null || !posts.getDate().equals("")) {
+		  if (posts.getRestaurant() != null || !posts.getRestaurant().equals("")) {
 			  pStmt.setString(5, posts.getRestaurant());
 		  }
 		  else {
@@ -122,7 +122,7 @@ public class PostsDao{
   }
 
     //"select restaurant, photo, text from posts where restaursnt = '?'"
-  public List<Posts> select(Posts param) {
+  public List<Posts> select() {
 		Connection conn = null;
 		List<Posts> postsList = new ArrayList<Posts>();
 
@@ -134,7 +134,7 @@ public class PostsDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select * from posts order by date asc";
+			String sql = "select * from posts join profiles on posts.users_id=profiles.users_id order by date asc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を実行し、結果表を取得する
@@ -153,7 +153,9 @@ public class PostsDao{
 				rs.getString("PRICE"),
 				rs.getString("GENRE"),
 				rs.getString("TEXT"),
-				rs.getString("POINT")
+				rs.getString("POINT"),
+				rs.getString("NAME"),
+				rs.getString("ICON")
 				);
 				postsList.add(posts);
 			}

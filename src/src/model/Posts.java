@@ -14,10 +14,31 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 	private String genre;
 	private String text;
 	private String point;
+	private String name;
+	private String icon;
 
-
+//selectの時のコンストラクタ
 	public Posts(String id, String users_id, String date, String photo, String restaurant, String walk, String serve, String price, String genre,
-			String text, String point ) { //コンストラクタ
+			String text, String point,String name, String icon ) { //コンストラクタ
+		super();
+		this.id = id;
+		this.users_id = users_id;
+		this.date = date;
+		this.photo = photo;
+		this.restaurant = restaurant;
+		this.walk = walk;
+		this.serve = serve;
+		this.price = price;
+		this.genre = genre;
+		this.text = text;
+		this.point = point;
+		this.name=name;
+		this.icon=icon;
+	}
+
+//insertの時のコンストラクタ
+	public Posts(String id, String users_id, String date, String photo, String restaurant, String walk, String serve, String price, String genre,
+			String text, String point ) {
 		super();
 		this.id = id;
 		this.users_id = users_id;
@@ -31,6 +52,8 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 		this.text = text;
 		this.point = point;
 	}
+
+
 	public Posts(String restaurant, String text, String photo ) { //コンストラクタ
 		super();
 		this.restaurant = restaurant;
@@ -117,6 +140,18 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 	}
 	public void setPoint(String point) {
 		this.point = point;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
 }
