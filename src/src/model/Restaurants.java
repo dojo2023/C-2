@@ -5,51 +5,50 @@ import java.io.Serializable;
 public class Restaurants implements Serializable {
 
 	private String restaurant;
-	private String walk;
-	private String serve;
-	private String price;
-	private String genre;
+	private int genre;
+	private int price;
+	private int walk;
+	private int serve;
 
-	public Restaurants(String restaurant,String walk,String serve,String price,String genre) {
+	public Restaurants(String restaurant,int genre,int price,int walk,int serve) {
 		super();
 		this.restaurant =restaurant;
+		this.genre = genre;
+		this.price = price;
 		this.walk = walk;
 		this.serve = serve;
-		this.price = price;
-		this.genre = genre;
 	}
 	public Restaurants() {
-
 	}
 
 	public String getRestaurant() {
 		return restaurant;
 	}
-	public void setRestaurant(String Restaurant) {
+	public void setRestaurant(String restaurant) {
 		this.restaurant = restaurant;
 	}
-	public String getWalk() {
-		return walk;
-	}
-	public void setWalk(String walk) {
-		this.walk = walk;
-	}
-	public String getServe() {
-		return serve;
-	}
-	public void setServe(String serve) {
-		this.serve = serve;
-	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	public String getGenre() {
+	public int getGenre() {
 		return genre;
 	}
-	public void setGenre(String genre) {
+	public void setGenre(int genre) {
 		this.genre = genre;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getWalk() {
+		return walk;
+	}
+	public void setWalk(int walk) {
+		this.walk = walk;
+	}
+	public int getServe() {
+		return serve;
+	}
+	public void setServe(int serve) {
+		this.serve = serve;
 	}
 }
