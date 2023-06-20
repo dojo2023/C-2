@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CommentsDao;
 import dao.PostsDao;
 import dao.RankDao;
+import model.Comments;
 import model.Posts;
 import model.Profiles;
 
@@ -26,17 +28,18 @@ public class Time_lineServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// タイムライン画面にフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/time_line.jsp");
-				dispatcher.forward(request, response);
 
 
-				// ランキング（並び替え後の）表示処理を行う
+				request.setCharacterEncoding("UTF-8");
+
+				// ランキング（並び替え後の）select処理を行う
 				RankDao rankDao = new RankDao();
 				List<Profiles> profilesList = rankDao.select();
 
 				// ランキングselectの結果をリクエストスコープに格納する
 				request.setAttribute("profilesList", profilesList);
+
+				//--------------------------------------------------------------------
 
 				// 投稿の表示処理を行う
 				PostsDao postsDao = new PostsDao();
@@ -44,14 +47,45 @@ public class Time_lineServlet extends HttpServlet {
 
 				// 投稿をリクエストスコープに格納する
 				request.setAttribute("postsList", postsList);
+
+				// タイムライン画面にフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/time_line.jsp");
+				dispatcher.forward(request, response);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		// TODOAuto-generated method stub
+
+
+		request.setCharacterEncoding("UTF-8");
+		String id;
+		String users_id;
+		String posts_id = request.getParameter("ID");
+		String text;
+		String name;
+		String icon;
+
+
+		CommentsDao cDao=new CommentsDao();
+		if(request.getParameter("SUBMIT").equals("コメント表示"))
+		{
+			List<Comments> commentsList = cDao.select(posts_id);
+			request.setAttribute("commentsList", commentsList);
+			doGet(request,response);
+		}
+
+//		if(request.getParameter("SUBMIT").equals("送信"))
+//		{
+//			List<Comments> commentsList = cDao.insert(null,users_id,posts_id,text);
+//			request.setAttribute("commentsList", commentsList);
+//			doGet(request,response);
+//		}
+
 	}
 
 }
