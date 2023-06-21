@@ -67,11 +67,16 @@ padding-right: 5px;
 	<table class="restaurantTable">
 		<tr>
 		<th>ジャンル</th><td>${e.genre}</td>
-		<th>価格</th><td>約${e.price}円</td>
+
 		</tr>
 		<tr>
 		<th>徒歩時間</th><td>約${e.serve}分</td>
+		</tr>
+		<tr>
 		<th>提供時間</th><td>約${e.walk}分</td>
+		</tr>
+		<tr>
+		<th>価格</th><td>約${e.price}円</td>
 		</tr>
 	</table>
 

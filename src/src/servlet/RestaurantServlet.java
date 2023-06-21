@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.PostsDao;
 import dao.RestaurantsDao;
 import model.Posts;
 import model.Restaurants;
@@ -62,7 +61,7 @@ public class RestaurantServlet extends HttpServlet {
 
 	// 検索処理を行う
 			RestaurantsDao ResDao = new RestaurantsDao();
-			List<Restaurants> restaurantList = ResDao.select(new Restaurants(restaurant, walk, serve, price, genre));
+			List<Restaurants> restaurantList = ResDao.select(restaurant, walk, serve, price, genre);
 
 	// 検索結果をリクエストスコープに格納する
 			request.setAttribute("restaurantList", restaurantList);
@@ -79,8 +78,8 @@ public class RestaurantServlet extends HttpServlet {
 			String text = request.getParameter("TEXT");
 
 	// 検索処理を行う
-			PostsDao PosDao = new PostsDao();
-			List<Posts> shousaiList = PosDao.select(new Posts(restaurant, photo, text));
+			RestaurantsDao RessDao = new RestaurantsDao();
+			List<Posts> shousaiList = RessDao.text_photo(restaurant, photo, text);
 
 	// 検索結果をリクエストスコープに格納する
 			request.setAttribute("shousaiList", shousaiList);
