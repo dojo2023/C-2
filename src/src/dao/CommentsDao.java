@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Comments;
@@ -27,6 +28,13 @@ public class CommentsDao{
 		  PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		  //SQL文を完成させる
+		  Calendar calendar=Calendar.getInstance();
+		  int year=calendar.get(Calendar.YEAR);
+          int month=calendar.get(Calendar.MONTH)+1;
+          int date =calendar.get(Calendar.DATE);
+          String monthS = String.format("%02d",month);
+          String yearS = String.valueOf(year);
+          String dateS=String.format("%02d", date);
 
 			  pStmt.setString(1, comments.getId());
 
@@ -43,18 +51,11 @@ public class CommentsDao{
 		  else {
 			  pStmt.setString(3, null);
 		  }
-		  if (comments.getDate() != null || !comments.getDate().equals("")) {
-			  pStmt.setString(4, comments.getDate());
-		  }
-		  else {
-			  pStmt.setString(4, null);
-		  }
-		  if (comments.getPoint() != null || !comments.getPoint().equals("")) {
-			  pStmt.setString(5, comments.getPoint());
-		  }
-		  else {
-			  pStmt.setString(5, null);
-		  }
+
+		  pStmt.setString(4, yearS+"-"+monthS+"-"+dateS);
+
+		  pStmt.setString(5, "200");
+
 		  if (comments.getText() != null || !comments.getText().equals("")) {
 			  pStmt.setString(6, comments.getText());
 		  }

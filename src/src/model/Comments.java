@@ -28,13 +28,10 @@ public class Comments implements Serializable {
   }
 
   //insertの時のコンストラクタ
-   public Comments (String id, String users_id ,String posts_id,String date ,String point,String text) {
+   public Comments (String users_id ,String posts_id,String text) {
      super();
-     this.id = id;
      this.users_id = users_id;
      this.posts_id=posts_id;
-     this.date = date;
-     this.point = point;
      this.text = text;
 
    }
