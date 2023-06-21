@@ -49,11 +49,11 @@ public class LoginServlet extends HttpServlet {
 			// タイムラインサーブレットにリダイレクトする
 			response.sendRedirect("/buster_moon/Time_lineServlet");
 		}
-		else {									// ログイン失敗
-			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-			request.setAttribute("result",
-			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/buster_moon/LoginServlet"));
-		}
+//		else {									// ログイン失敗
+//			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+//			request.setAttribute("result",
+//			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/buster_moon/LoginServlet"));
+//		}
 	}
 
 }

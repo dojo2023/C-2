@@ -19,13 +19,13 @@ public class UsersDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 				// SELECT文を準備する
-				String sql = "select count(*) from USERS where id = ? and password = ?";
+				String sql = "select count(*) from USERS where mail_address = ? and password = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
-				pStmt.setString(1, users.getId());
-				pStmt.setString(2,users.getPassword());
+				pStmt.setString(1, users.getMail_address());
+				pStmt.setString(2, users.getPassword());
 
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt.executeQuery();
@@ -73,7 +73,7 @@ public class UsersDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/monoshiriplus", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 				// SELECT文を準備する
 				String sql ="insert into USERS values (?,?,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
