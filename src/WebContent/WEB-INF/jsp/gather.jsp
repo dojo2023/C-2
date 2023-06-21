@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,9 +32,11 @@
 <!-- ｌここから一緒にどう？送信 -->
 
 <!-- 募集を呼びかける掲示板画面のためのdiv -->
+<form method="POST" action="/buster_moon/GatherServlet">
 <div class="gather_board">
 
 <div class="dropdown">
+
         <input type="button" name="gather" class="dropdown__btn" id="dropdown__btn" value="一緒にどう？">
         <div class="dropdown__body">
           <ul class="dropdown__list">
@@ -53,17 +54,25 @@
                 場所：<!-- 集合場所プルダウン -->
 				<select name="place">
 				<option>エレベーター前</option>
+				<option>玄関前</option>
 				</select>
+            </li>
+            <li>
+               
+               <input type="submit"  name="submit" value="送信"  class="button1">
+               
             </li>
           </ul>
         </div>
       </div>
+      </div>
+      </form>
 <!-- 募集を呼びかける掲示板画面のための/div -->
 </div>
 
 <!-- 一緒にどう？送信ここまで -->
 <!-- メインここまで -->
-</div>
+
 <script src="/buster_moon/js/gather.js"></script>
 </body>
 </html>
