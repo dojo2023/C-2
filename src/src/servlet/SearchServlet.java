@@ -68,6 +68,15 @@ public class SearchServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
 		dispatcher.forward(request, response);
 
+
+		//店舗詳細ページにフォワードする
+		//RestaurantsDao rDao=new RestaurantsDao();
+		if(request.getParameter("SUBMIT").equals("店舗詳細表示"))
+		{
+			RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
+			dispatcher.forward(request, response);
+		}
+
 	}
 
 }

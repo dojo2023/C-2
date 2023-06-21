@@ -55,10 +55,10 @@ padding-right: 5px;
 </style>
 
 
-<h1>${e.restaurant}</h1>
+<h1>${restaurant}</h1>
 
 <div class="ex1">
-	${e.photo}
+	${photo}
 </div><br>
 
 		<%--画像を横並びにするためには、CSSプロパティの「display: flex;」を使用する --%>
@@ -66,22 +66,22 @@ padding-right: 5px;
 
 	<table class="restaurantTable">
 		<tr>
-		<th>ジャンル</th><td>${e.genre}</td>
+		<th>ジャンル</th><td>${genre}</td>
 
 		</tr>
 		<tr>
-		<th>徒歩時間</th><td>約${e.serve}分</td>
+		<th>徒歩時間</th><td>約${serve}分</td>
 		</tr>
 		<tr>
-		<th>提供時間</th><td>約${e.walk}分</td>
+		<th>提供時間</th><td>約${walk}分</td>
 		</tr>
 		<tr>
-		<th>価格</th><td>約${e.price}円</td>
+		<th>価格</th><td>約${price}円</td>
 		</tr>
 	</table>
 
 <h2>レビュー</h2>
-<p>・${e.text}</p>
+<p>・${text}</p>
 
 
 </body>
