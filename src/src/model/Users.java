@@ -20,6 +20,11 @@ public class Users implements Serializable {
 		this.password = password;
 	}
 
+	public Users(String id) {
+		super();
+		this.id = id;
+	}
+
 	public String getId() {
 		return id;
 	}
