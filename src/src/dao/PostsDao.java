@@ -213,10 +213,10 @@ public class PostsDao{
 					while (rs.next()) {
 						Restaurants restaurant = new Restaurants(
 								rs.getString("POSTS_RESTAURANT"),
-								rs.getString("WALK"),
-								rs.getString("SERVE"),
-								rs.getString("PRICE"),
-								rs.getString("posts_GENRE")
+								rs.getInt("WALK"),
+								rs.getInt("SERVE"),
+								rs.getInt("PRICE"),
+								rs.getInt("posts_GENRE")
 								);
 						shiborikomiList.add(restaurant);
 					}
