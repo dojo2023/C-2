@@ -113,7 +113,7 @@ public class RestaurantsDao {
 			// 結果を返す
 			return restaurantList;
 		}
-		 public List<Posts> text_photo(String restaurant, String text, String photo) {
+		 public List<Posts> text_photo(String restaurant) {
 				Connection conn = null;
 				List<Posts> shousaiList = new ArrayList<Posts>();
 

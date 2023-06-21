@@ -64,17 +64,18 @@ public class SearchServlet extends HttpServlet {
 		request.setAttribute("restaurantList", restaurantList);
 
 
-		//結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
-		dispatcher.forward(request, response);
+//		//結果ページにフォワードする
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/search.jsp");
+//		dispatcher.forward(request, response);
+		doGet(request, response);
+
 
 
 		//店舗詳細ページにフォワードする
 		//RestaurantsDao rDao=new RestaurantsDao();
 		if(request.getParameter("SUBMIT").equals("店舗詳細表示"))
 		{
-			RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("/WEB-INF/jsp/restaurant.jsp");
 		}
 
 	}

@@ -58,12 +58,12 @@
 
       <td>
       <select name="WALK">
-      <option value=0>徒歩時間（片道）</option>
-      <option value=3>3分</option>
-      <option value=5>5分</option>
-      <option value=10>10分</option>
-      <option value=15>15分</option>
-      <option value=20>20分</option>
+      <option value="0">徒歩時間（片道）</option>
+      <option value="3">3分</option>
+      <option value="5">5分</option>
+      <option value="10">10分</option>
+      <option value="15">15分</option>
+      <option value="20">20分</option>
       </select>
       </td>
 
@@ -102,8 +102,8 @@
 </c:if>
 -->
 </form>
-
-	<div id="table">
+	<form method="POST" action="/buster_moon/RestaurantServlet">
+		<div id="table">
   		<table id="list">
   			<c:forEach var="r" items="${restaurantList}" >
 				<tr>
@@ -117,12 +117,11 @@
 				</tr>
  			 </c:forEach>
   		</table>
-  	<form method="POST" action="/buster_moon/RestaurantsServlet">
-  		<input type="text" name="RESTAURANT" value="${restaurant}">
 		<input type="submit" name="SUBMIT" value="店舗詳細表示" >
+		</div>
 	</form>
 
-  	</div>
+
 
 </body>
 </html>
