@@ -46,9 +46,9 @@ public class RankDao {
 				rs3.getString("USERS_ID"),
 				rs3.getString("NAME"),
 				rs3.getString("ICON"),
-				rs3.getString("T_POINT"),
-				rs3.getString("G_POINT"),
-				rs3.getString("C_POINT")
+				rs3.getInt("T_POINT"),
+				rs3.getInt("G_POINT"),
+				rs3.getInt("C_POINT")
 				);
 				profilesList2.add(profiles);
 			}
@@ -163,9 +163,9 @@ public class RankDao {
 				rs.getString("users_id"),
 				rs.getString("name"),
 				rs.getString("icon"),
-				rs.getString("t_point"),
-				rs.getString("g_point"),
-				rs.getString("c_point")
+				rs.getInt("t_point"),
+				rs.getInt("g_point"),
+				rs.getInt("c_point")
 				);
 				profilesList.add(profiles);
 			}

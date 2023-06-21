@@ -45,9 +45,9 @@ public class RankSUMDao {
 				rs3.getString("USERS_ID"),
 				rs3.getString("NAME"),
 				rs3.getString("ICON"),
-				rs3.getString("T_POINT"),
-				rs3.getString("G_POINT"),
-				rs3.getString("C_POINT")
+				rs3.getInt("T_POINT"),
+				rs3.getInt("G_POINT"),
+				rs3.getInt("C_POINT")
 				);
 				profilesList2.add(profiles);
 			}
@@ -135,9 +135,9 @@ public class RankSUMDao {
 				rs.getString("USERS_ID"),
 				rs.getString("NAME"),
 				rs.getString("ICON"),
-				rs.getString("T_POINT"),
-				rs.getString("G_POINT"),
-				rs.getString("C_POINT")
+				rs.getInt("T_POINT"),
+				rs.getInt("G_POINT"),
+				rs.getInt("C_POINT")
 				);
 				profilesList.add(profiles);
 			}

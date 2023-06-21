@@ -65,9 +65,6 @@ public class CommentsDao{
 
 		  //SQL文を実行する
 		  pStmt.executeUpdate();
-		  if (pStmt.executeUpdate() == 1) {
-			  result = true;
-		  }
 	  }
 	  catch (SQLException e) {
 		  e.printStackTrace();
