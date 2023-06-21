@@ -113,7 +113,7 @@ public class RestaurantsDao {
 			// 結果を返す
 			return restaurantList;
 		}
-		 public List<Posts> text_photo(Posts detail) {
+		 public List<Posts> text_photo(String restaurant, String text, String photo) {
 				Connection conn = null;
 				List<Posts> shousaiList = new ArrayList<Posts>();
 
@@ -129,7 +129,7 @@ public class RestaurantsDao {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
-					pStmt.setString(1, "%" + detail.getRestaurant() + "%");
+					pStmt.setString(1, "%" + restaurant + "%");
 
 
 
