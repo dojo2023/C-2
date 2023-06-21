@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<!-- メニューバーの表示 -->
+<ul class="nav">
+  <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
+  <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
+  <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
+  <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
+  <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
+  </ul>
+
 <h1>ランキング</h1>
 <c:forEach var="p" items="${profilesList}">
 <div class="ranks">
@@ -45,17 +54,19 @@
 </c:forEach >
 
 <h2>コメント返信表示欄</h2>
+<form method="POST" action="/buster_moon/Time_lineServlet">
 <c:forEach var="c" items="${commentsList}">
 	<p>アイコン:${c.icon}</p>
 	<p>名前:${c.name}</p>
 	<p>テキスト:${c.text}</p>
 	<p>日付:${c.date}</p>
+	<input type="text" name="POSTS_ID" value="${c.posts_id}">
+	<input type="text" name="ID" value="${c.id}">
+	<input type="submit" name="SUBMIT" value="削除" >
 </c:forEach>
 <h2>コメント入力欄</h2>
-<form method="POST" action="/buster_moon/Time_lineServlet">
 	<input type="text" name="TEXT" value="コメント入力">
 	<input type="submit" name="SUBMIT" value="送信" >
 </form>
-
 </body>
 </html>

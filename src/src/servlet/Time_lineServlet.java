@@ -64,13 +64,10 @@ public class Time_lineServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		String users_id="2";
-		String posts_id = request.getParameter("ID");
-		String text=request.getParameter("TEXT");
-
 		CommentsDao cDao=new CommentsDao();
 		if(request.getParameter("SUBMIT").equals("コメント表示"))
 		{
+			String posts_id = request.getParameter("ID");
 			List<Comments> commentsList = cDao.select(posts_id);
 			request.setAttribute("commentsList", commentsList);
 			doGet(request,response);
@@ -78,8 +75,18 @@ public class Time_lineServlet extends HttpServlet {
 
 		if(request.getParameter("SUBMIT").equals("送信"))
 		{
-			Comments comments =new Comments(users_id,posts_id,text);
-			cDao.insert(comments);
+			String users_id="2";
+			String posts_id=request.getParameter("POSTS_ID");
+			String text=request.getParameter("TEXT");
+			cDao.insert(new Comments(users_id,posts_id,text));
+			doGet(request,response);
+		}
+
+		if(request.getParameter("SUBMIT").equals("削除"))
+		{
+
+			String id=request.getParameter("ID");
+			cDao.delete(id);
 			doGet(request,response);
 		}
 
