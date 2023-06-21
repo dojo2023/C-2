@@ -102,11 +102,9 @@
 </c:if>
 -->
 
-<%= request.getAttribute("restaurantList") %>
-
 <div id="table">
   <table id="list">
-  <c:forEach var="r" items="${resutaurantList}" >
+  <c:forEach var="r" items="${restaurantList}" >
 	<tr>
 	  <td>店名${r.restaurant}</td>
 	</tr>
