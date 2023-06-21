@@ -2,106 +2,107 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>投稿</title>
-<link rel="logo" href="img/logo.png">
-<link rel = "stylesheet" href = /buster_moon/css/common.css>
-<link rel = "stylesheet" href = /buster_moon/css/post.css>
-</head>
-<body>
-<a href="/buster_moon/Time_lineServlet">タイムラインボタン</a><br>
-<a href="/buster_moon/SearchServlet">検索ボタン</a><br>
-<a href="/buster_moon/GatherServlet">一緒にどう？ボタン</a><br>
-<a href="/buster_moon/My_profileServlet">プロフィールボタン</a><br>
-<a href="/buster_moon/PostServlet"></a><br>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>投稿</title>
+      <link rel="logo" href="img/logo.png">
+      <link rel = "stylesheet" href = /buster_moon/css/common.css>
+      <link rel = "stylesheet" href = /buster_moon/css/post.css>
+    </head>
 
-<form method="POST" id="posts_form" action="/buster_moon/Time_lineServlet">
-<c:forEach var="e" items="${restaurantList}">
-ジャンル
-<select id="genre">
-  <option value="" selected>選択してください</option>
-  <option value=1>中華</option>
-  <option value=2>ラーメン屋</option>
-  <option value=3>イタリアン</option>
-  <option value=4>和食・定食</option>
-  <option value=5>カフェ</option>
-  <option value=6>そば・うどん</option>
-  <option value=7>ハンバーガー</option>
-  <option value=8>スペイン料理</option>
-  <option value=9>フレンチ</option>
-  <option value=10>カレー</option>
-  <option value=11>韓国料理</option>
-  <option value=12>東南アジア料理</option>
-  <option value=13>沖縄料理</option>
-</select><br>
+    <body>
+      <!-- メニューバーの表示 -->
+      <ul class="nav">
+        <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
+        <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
+        <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
+        <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
+        <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
+      </ul>
 
+      <form method="POST" id="posts_form" action="/buster_moon/PostServlet">
+        <c:forEach var="e" items="${restaurantList}">
+          ジャンル
+          <select id="genre">
+             <option value="" selected>選択してください</option>
+             <option value=1>中華</option>
+             <option value=2>ラーメン屋</option>
+             <option value=3>イタリアン</option>
+             <option value=4>和食・定食</option>
+             <option value=5>カフェ</option>
+             <option value=6>そば・うどん</option>
+             <option value=7>ハンバーガー</option>
+             <option value=8>スペイン料理</option>
+             <option value=9>フレンチ</option>
+             <option value=10>カレー</option>
+             <option value=11>韓国料理</option>
+             <option value=12>東南アジア料理</option>
+             <option value=13>沖縄料理</option>
+          </select><br>
+          店名
+          <select id="restaurant_name">
+            <option value="" selected>選択してください</option>
+            <option value="${e.posts_restaurant}"></option>
+          </select><br>
+        </c:forEach>
+          写真
+          <input type="file" name="photo" accept="image/*">
+          <br>
 
-店名
-<select id="restaurant_name">
-  <option value="" selected>選択してください</option>
-  <option value="${e.posts_restaurant}"></option>
-</select><br>
-</c:forEach>
+          価格帯
+          <select name="price">
+           <option value="" selected>一番近いものを選択してください</option>
+           <option value="500">500円</option>
+           <option value="700">700円</option>
+           <option value="1000">1000円</option>
+           <option value="1500">1500円</option>
+           <option value="2000">2000円</option>
+         </select><br>
 
-写真
-<form name=photo_form action="/buster_moon/RestaurantServlet" method="post" enctype="multipart/form-data">
-  <input type="file" name="photo" accept="image/*">
-</form><br>
-価格帯
-<select name="price">
-  <option value="" selected>一番近いものを選択してください</option>
-  <option value="500">500円</option>
-  <option value="700">700円</option>
-  <option value="1000">1000円</option>
-  <option value="1500">1500円</option>
-  <option value="2000">2000円</option>
-</select><br>
+         片道時間
+        <select name="walk">
+          <option value="" selected>一番近いものを選択してください</option>
+          <option value="3">3分</option>
+          <option value="5">5分</option>
+          <option value="10">10分</option>
+          <option value="15">15分</option>
+          <option value="20">20分</option>
+        </select><br>
 
-片道時間
-<select name="walk">
-  <option value="" selected>一番近いものを選択してください</option>
-  <option value="3">3分</option>
-  <option value="5">5分</option>
-  <option value="10">10分</option>
-  <option value="15">15分</option>
-  <option value="20">20分</option>
-</select><br>
+        提供時間
+        <select name="serve">
+         <option value="" selected>一番近いものを選択してください</option>
+         <option value="3">3分</option>
+         <option value="5">5分</option>
+         <option value="10">10分</option>
+         <option value="15">15分</option>
+         <option value="20">20分</option>
+        </select><br>
+        <p></p>
+        テキスト（140字以内)<br>
+         <textarea name="text" onChange="check()"></textarea><br>
 
-提供時間
-<select name="serve">
- <option value="" selected>一番近いものを選択してください</option>
-  <option value="3">3分</option>
-  <option value="5">5分</option>
-  <option value="10">10分</option>
-  <option value="15">15分</option>
-  <option value="20">20分</option>
-</select><br>
-<p></p>
-テキスト（140字以内)<br>
-<textarea name="text" onChange="check()"></textarea><br>
-
-<input type="submit" name="post_button" value="投稿">
-</form>
-</body>
-</html>
+       <input type="submit" name="post_button" value="投稿">
+      </form>
+    </body>
+  </html>
 
 <script>
-'use strict';
+  'use strict';
 
-function check(){
+  function check(){
 	txt = document.posts_form.text.value;
     n = txt.length;
     if(n > 140){
     	console.log(window.confirm('テキストは140字以内で入力してください'));
     }
-}
+  }
 
 
-var formObj = document.getElementById('posts_form').onsubmit = function() {
+  var formObj = document.getElementById('posts_form').onsubmit = function() {
 	console.log('クリックされました');
-};
+  };
 
 
 </script>
