@@ -17,7 +17,7 @@ public class RestaurantsDao {
 	//"select * from restaurants WHERE posts_restaurant like '%?%'and walk = ? and  serve = ? and price = ? and
 	// posts_genre = ? ORDER BY posts_resutaurant"
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-		public List<Restaurants> select(Restaurants param) {
+		public List<Restaurants> select(String restaurant, int genre, int price, int walk, int serve) {
 			Connection conn = null;
 			List<Restaurants> restaurantList = new ArrayList<Restaurants>();
 
@@ -29,12 +29,49 @@ public class RestaurantsDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT RESTAURANT, AVG( CAST(WALK AS DOUBLE) ), AVG(CAST(SERVE AS DOUBLE)), AVG(PRICE), "
-						+ "GENRE FROM POSTS WHERE RESTAURANT = ? GROUP BY RESTAURANT, GENRE ";
+				String sql = "SELECT RESTAURANT, AVG( CAST(WALK AS DOUBLE) ) AS WALK, AVG(CAST(SERVE AS DOUBLE)) AS SERVE, AVG(PRICE) AS PRICE, GENRE "
+						+ "FROM POSTS "
+						+ "WHERE RESTAURANT LIKE ? ";
+							if (genre!=0) {
+								sql += " AND GENRE = ? ";
+							}
+							if (price!=0) {
+								sql += " AND PRICE = ? ";
+							}
+							if (walk!=0) {
+								sql += " AND WALK = ? ";
+							}
+							if (serve!=0) {
+								sql += " AND SERVE = ? ";
+							}
+						sql += "GROUP BY RESTAURANT, GENRE ";
 				PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
 
-				// SQL文を完成させる
-					pStmt.setString(1, "%" + param.getRestaurant() + "%");
+				int parameterIndex = 1;
+				// SQL文を完成させ
+				if (restaurant != null) {
+					pStmt.setString(parameterIndex, "%" + restaurant + "%");
+				}
+				else {
+					pStmt.setString(parameterIndex, "%");
+				}
+				if (genre != 0) {
+					parameterIndex++;
+					pStmt.setInt(parameterIndex, genre);
+				}
+				if (price != 0) {
+					parameterIndex++;
+					pStmt.setInt(parameterIndex, price);
+				}
+				if (walk != 0) {
+					parameterIndex++;
+					pStmt.setInt(parameterIndex, walk);
+				}
+				if (serve != 0) {
+					parameterIndex++;
+					pStmt.setInt(parameterIndex, serve);
+				}
+
 
 
 				// SQL文を実行し、結果表を取得する
@@ -44,10 +81,10 @@ public class RestaurantsDao {
 				while (rs.next()) {
 					Restaurants retaurant = new Restaurants(
 					rs.getString("RESTAURANT"),
-					rs.getString("WALK"),
-					rs.getString("SERVE"),
-					rs.getString("PRICE"),
-					rs.getString("GENRE")
+					rs.getInt("GENRE"),
+					rs.getInt("PRICE"),
+					rs.getInt("WALK"),
+					rs.getInt("SERVE")
 					);
 					restaurantList.add(retaurant);
 				}
@@ -76,7 +113,7 @@ public class RestaurantsDao {
 			// 結果を返す
 			return restaurantList;
 		}
-		 public List<Posts> select(Posts detail) {
+		 public List<Posts> text_photo(Posts detail) {
 				Connection conn = null;
 				List<Posts> shousaiList = new ArrayList<Posts>();
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,12 +53,12 @@ padding-right: 5px;
 
 
 </style>
-<h1>階段の途中</h1>
+
+
+<h1>${e.restaurant}</h1>
 
 <div class="ex1">
-	<img src="/buster_moon/img/kaidan1.jpg" alt="" hspace="10">
-	<img src="/buster_moon/img/kaidan2.jpg" alt="" hspace="10">
-	<img src="/buster_moon/img/kaidan3.jpg" alt="" hspace="10">
+	${e.photo}
 </div><br>
 
 		<%--画像を横並びにするためには、CSSプロパティの「display: flex;」を使用する --%>
@@ -66,18 +66,18 @@ padding-right: 5px;
 
 	<table class="restaurantTable">
 		<tr>
-		<th>ジャンル</th><td>イタリアン</td>
-		<th>価格</th><td>1500円</td>
+		<th>ジャンル</th><td>${e.genre}</td>
+		<th>価格</th><td>約${e.price}円</td>
 		</tr>
 		<tr>
-		<th>徒歩時間</th><td>約3分</td>
-		<th>提供時間</th><td>約10分</td>
+		<th>徒歩時間</th><td>約${e.serve}分</td>
+		<th>提供時間</th><td>約${e.walk}分</td>
 		</tr>
 	</table>
 
 <h2>レビュー</h2>
-<p>・アクアパッツァがおいしい</p>
-<p>・リゾットおいしい</p>
+<p>・${e.text}</p>
+
 
 </body>
 </html>

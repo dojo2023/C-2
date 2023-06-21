@@ -51,10 +51,14 @@ public class RestaurantServlet extends HttpServlet {
 	// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			String restaurant = request.getParameter("RESTAURANT");
-			String walk = request.getParameter("WALK");
-			String serve = request.getParameter("SERVE");
-			String price = request.getParameter("PRICE");
-			String genre = request.getParameter("GENRE");
+			String walkString = request.getParameter("WALK");
+			int walk = Integer.parseInt(walkString);
+			String serveString = request.getParameter("SERVE");
+			int serve = Integer.parseInt(serveString);
+			String priceString = request.getParameter("PRICE");
+			int price = Integer.parseInt(priceString);
+			String genreString = request.getParameter("GENRE");
+			int genre = Integer.parseInt(genreString);
 
 	// 検索処理を行う
 			RestaurantsDao ResDao = new RestaurantsDao();
@@ -76,14 +80,14 @@ public class RestaurantServlet extends HttpServlet {
 
 	// 検索処理を行う
 			PostsDao PosDao = new PostsDao();
-			List<Posts> shousaiList = PosDao.select(new Posts(photo, text));
+			List<Posts> shousaiList = PosDao.select(new Posts(restaurant, photo, text));
 
 	// 検索結果をリクエストスコープに格納する
 			request.setAttribute("shousaiList", shousaiList);
 
 	// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
-			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
+			dispatcher2.forward(request, response);
 	}
 }
 

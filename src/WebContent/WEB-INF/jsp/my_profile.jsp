@@ -17,25 +17,30 @@
 
 <!-- アイコン・名前・編集 -->
 
-<!-- アイコン -->
-<img src="${e.icon}" alt="アイコン">
-
-<!-- 名前 -->
-<input type="text" name="name" value="${e.name}">
-
-<!-- 編集ボタン -->
-<input type="submit" name="edit" value="編集">
-
-<!-- 自己紹介 -->
-<input type="text" name="introduction" value="${introduction}">
+<table>
+  <tr>
+    <td><img src="${e.icon}" alt="アイコン"></td>
+    <td><input type="text" name="name" value="${e.name}"></td>
+    <td><input type="submit" name="edit" value="編集"></td>
+    <td><input type="text" name="introduction" value="${e.introduction}"></td>
+  </tr>
+</table>
 
 <!-- ポイント合計 -->
 
 
 <!-- 投稿一覧 -->
-<c:forEach var="e" items="${profilesList}">
-    <img src="${e.icon}" alt="アイコン">
-    <input type="text" name="name" value="${e.name}">
+<c:forEach var="profile" items="${profilesList}">
+  <img src="${profile.icon}" alt="アイコン">
+  <c:forEach var="post" items="${postsList}">
+    <input type="text" name="restaurant" value="${post.restaurant}">
+    <input type="text" name="genre" value="${post.genre}">
+    <input type="text" name="walk" value="${post.walk}">
+    <input type="text" name="serve" value="${post.serve}">
+    <input type="text" name="price" value="${post.price}">
+    <input type="text" name="text" value="${post.text}">
+    <img src="${post.photo}" alt="料理の写真">
+  </c:forEach>
 </c:forEach>
 
 <!-- アイコン・名前・編集 -->
