@@ -185,6 +185,76 @@ public class PostsDao{
 		return postsList;
 	}
 
+  // プロフィール画面に自分の投稿を表示する
+  public List<Posts> select(Posts Posts) {
+		Connection conn = null;
+		List<Posts> postsList = new ArrayList<Posts>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
+
+			// SQL文を準備する
+			String sql = "select * from posts where users_id like ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+				if (Posts.getUsers_id() != null) {
+					pStmt.setString(1, "%1%");
+				}
+				else {
+					pStmt.setString(1, "%");
+			      }
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Posts posts= new Posts(
+				rs.getString("id"),
+				rs.getString("users_id"),
+				rs.getString("date"),
+				rs.getString("photo"),
+				rs.getString("restaurant"),
+				rs.getString("walk"),
+				rs.getString("serve"),
+				rs.getString("price"),
+				rs.getString("genre"),
+				rs.getString("text"),
+				rs.getString("point")
+				);
+				postsList.add(posts);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			postsList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			postsList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					postsList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return postsList;
+	}
+
 //投稿する際ジャンルで店舗名を絞り込み
 		// 引数paramで検索項目を指定し、検索結果のリストを返す
 			public List<Restaurants> selectGenre(String genre) {

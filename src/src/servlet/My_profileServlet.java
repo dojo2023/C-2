@@ -31,11 +31,11 @@ public class My_profileServlet extends HttpServlet {
 	    List<Profiles> profilesList = profilesDao.select(new Profiles("", "", "", "", "", 0, 0, 0));
 
 	    PostsDao postsDao = new PostsDao();
-	    List<Posts> postsList = postsDao.select(new Posts("", "", "", "", "", "", "", "", "", "", ""));
+	    List<Posts> postspList = postsDao.select(new Posts("", "", "", "", "", "", "", "", "", "", ""));
 
 	    // 検索結果をリクエストスコープに格納する
 	    request.setAttribute("profilesList", profilesList);
-	    request.setAttribute("postsList", postsList);
+	    request.setAttribute("postsList", postspList);
 
 	    // 自分のプロフィール画面にフォワードする。
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/my_profile.jsp");

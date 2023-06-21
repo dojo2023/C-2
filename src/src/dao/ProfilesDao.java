@@ -30,7 +30,7 @@ public class ProfilesDao {
 
 			// SQL文を完成させる
 			if (param.getUsers_id() != null) {
-				pStmt.setString(1, "%" + param.getUsers_id() + "%");
+				pStmt.setString(1, "%1%");
 			}
 			else {
 				pStmt.setString(1, "%");
