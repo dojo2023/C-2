@@ -17,7 +17,7 @@
   <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
   <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
   <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
-  </ul>
+</ul>
 
 
  <!-- 検索の絞り込みの表示 -->
@@ -101,23 +101,29 @@
 <c:if test="${resutaurantList}">
 </c:if>
 -->
+</form>
 
-<div id="table">
-  <table id="list">
-  <c:forEach var="r" items="${restaurantList}" >
-	<tr>
-	  <td>店名${r.restaurant}</td>
-	</tr>
-	<tr>
-	  <td>ジャンル${r.genre}</td>
-	  <td>価格${r.price}</td>
-	  <td>徒歩${r.walk}</td>
-	  <td>提供${r.serve}</td>
-	</tr>
-  </c:forEach>
-  </table>
-  </div>
-  </form>
+	<div id="table">
+  		<table id="list">
+  			<c:forEach var="r" items="${restaurantList}" >
+				<tr>
+	  				<td>店名${r.restaurant}</td>
+				</tr>
+				<tr>
+					<td>ジャンル${r.genre}</td>
+					<td>価格${r.price}</td>
+					<td>徒歩${r.walk}</td>
+					<td>提供${r.serve}</td>
+				</tr>
+ 			 </c:forEach>
+  		</table>
+  	<form method="POST" action="/buster_moon/RestaurantsServlet">
+  		<input type="text" name="RESTAURANT" value="${restaurant}">
+		<input type="submit" name="SUBMIT" value="店舗詳細表示" >
+	</form>
+
+  	</div>
+
 </body>
 </html>
 

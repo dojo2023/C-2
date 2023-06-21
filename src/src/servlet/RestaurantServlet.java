@@ -34,59 +34,57 @@ public class RestaurantServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 店舗情報にフォワードする
+		// 店舗詳細ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
 		dispatcher.forward(request, response);
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String restaurant = request.getParameter("RESTAURANT");
+		String walkString = request.getParameter("WALK");
+		int walk = Integer.parseInt(walkString);
+		String serveString = request.getParameter("SERVE");
+		int serve = Integer.parseInt(serveString);
+		String priceString = request.getParameter("PRICE");
+		int price = Integer.parseInt(priceString);
+		String genreString = request.getParameter("GENRE");
+		int genre = Integer.parseInt(genreString);
 
-	// リクエストパラメータを取得する
-			request.setCharacterEncoding("UTF-8");
-			String restaurant = request.getParameter("RESTAURANT");
-			String walkString = request.getParameter("WALK");
-			int walk = Integer.parseInt(walkString);
-			String serveString = request.getParameter("SERVE");
-			int serve = Integer.parseInt(serveString);
-			String priceString = request.getParameter("PRICE");
-			int price = Integer.parseInt(priceString);
-			String genreString = request.getParameter("GENRE");
-			int genre = Integer.parseInt(genreString);
+		// 検索処理を行う
+		RestaurantsDao ResDao = new RestaurantsDao();
+		List<Restaurants> restaurantList = ResDao.select(restaurant, walk, serve, price, genre);
 
-	// 検索処理を行う
-			RestaurantsDao ResDao = new RestaurantsDao();
-			List<Restaurants> restaurantList = ResDao.select(restaurant, walk, serve, price, genre);
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("restaurantList", restaurantList);
 
-	// 検索結果をリクエストスコープに格納する
-			request.setAttribute("restaurantList", restaurantList);
-
-	// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
-			dispatcher.forward(request, response);
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
+		dispatcher.forward(request, response);
 
 
 
-	// リクエストパラメータを取得する
-			request.setCharacterEncoding("UTF-8");
-			String photo = request.getParameter("PHOTO");
-			String text = request.getParameter("TEXT");
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String photo = request.getParameter("PHOTO");
+		String text = request.getParameter("TEXT");
 
-	// 検索処理を行う
-			RestaurantsDao RessDao = new RestaurantsDao();
-			List<Posts> shousaiList = RessDao.text_photo(restaurant, photo, text);
+		// 検索処理を行う
+		RestaurantsDao RessDao = new RestaurantsDao();
+		List<Posts> shousaiList = RessDao.text_photo(restaurant, photo, text);
 
-	// 検索結果をリクエストスコープに格納する
-			request.setAttribute("shousaiList", shousaiList);
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("shousaiList", shousaiList);
 
-	// 結果ページにフォワードする
-			RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
-			dispatcher2.forward(request, response);
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher2 = request.getRequestDispatcher("/WEB-INF/jsp/restaurant.jsp");
 	}
 }
 
