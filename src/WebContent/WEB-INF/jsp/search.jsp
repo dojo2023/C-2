@@ -12,11 +12,11 @@
 <!-- メニューバーの表示 -->
 
 <ul class="nav">
-  <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
-  <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
-  <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
-  <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
-  <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
+  <li><a href="/buster_moon/Time_lineServlet">タイムライン</a></li>
+  <li><a href="/buster_moon/PostServlet">投稿</a></li>
+  <li><a href="/buster_moon/SerchServlet">検索</a></li>
+  <li><a href="/buster_moon/GatherServlet">一緒にどう？</a></li>
+  <li><a href="/buster_moon/ProfileServlet">プロフィール></a></li>
 </ul>
 
 
