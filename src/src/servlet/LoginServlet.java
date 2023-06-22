@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理を行う
 		UsersDao iDao = new UsersDao();
 
-		if (iDao.isLoginOK(new Users(mail_address, password)).equals("メールアドレスかパスワードが違います。")) {	// ログイン失敗
+		if (iDao.isLoginOK(new Users(mail_address, password)).get(0).getId().equals("メールアドレスかパスワードが違います。")) {	// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			doGet(request, response);
 //			request.setAttribute("result",

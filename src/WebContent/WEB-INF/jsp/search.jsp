@@ -107,7 +107,7 @@
   		<table id="list">
   			<c:forEach var="r" items="${restaurantList}" >
 				<tr>
-	  				<td>店名${r.restaurant}</td>
+	  				<td>店名${r.restaurant}<input type="hidden" name="RESTAURANT" value="${r.restaurant}"></td>
 				</tr>
 				<tr>
 					<td>ジャンル${r.genre}</td>
