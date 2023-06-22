@@ -18,7 +18,6 @@
   <li><a href="/buster_moon/ProfileServlet">プロフィール></a></li>
 </ul>
 
-
 <h1>ランキング</h1>
 <c:forEach var="p" items="${profilesList}">
 <div class="ranks">
@@ -63,11 +62,17 @@
 	<p>日付:${c.date}</p>
 	<input type="text" name="POSTS_ID" value="${c.posts_id}">
 	<input type="text" name="ID" value="${c.id}">
+	<input type="text" name="USERS_ID" value="${c.users_id}">
+	"${id}"
+	<c:if test="${id.equals(c.users_id) }">
 	<input type="submit" name="SUBMIT" value="削除" >
+	</c:if>
 </c:forEach>
+<c:if test="${commentsList!=null}">
 <h2>コメント入力欄</h2>
 	<input type="text" name="TEXT" value="コメント入力">
 	<input type="submit" name="SUBMIT" value="送信" >
+</c:if>
 </form>
 </body>
 </html>
