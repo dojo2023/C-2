@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDao;
-import model.LoginUser;
 import model.Users;
 
 /**
@@ -36,24 +35,26 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("ID");
-		String password = request.getParameter("PW");
+		String mail_address= request.getParameter("MAIL_ADDRESS");
+		String password = request.getParameter("PASSWORD");
 
 		// ログイン処理を行う
 		UsersDao iDao = new UsersDao();
-		if (iDao.isLoginOK(new Users(id, password))) {	// ログイン成功
+
+		if (iDao.isLoginOK(new Users(mail_address, password)).equals("メールアドレスかパスワードが違います。")) {	// ログイン失敗
+			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+			doGet(request, response);
+//			request.setAttribute("result",
+//			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/buster_moon/LoginServlet"));
+		}
+		else {									// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
+			session.setAttribute("id", iDao.isLoginOK(new Users(mail_address, password)));
 
 			// タイムラインサーブレットにリダイレクトする
 			response.sendRedirect("/buster_moon/Time_lineServlet");
-		}
-//		else {									// ログイン失敗
-//			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-//			request.setAttribute("result",
-//			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/buster_moon/LoginServlet"));
-//		}
+			}
 	}
 
 }

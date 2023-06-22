@@ -5,14 +5,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Users;
 
 public class UsersDao {
 		// ログインできるならtrueを返す
-		public boolean isLoginOK(Users users) {
+		public List<Users> isLoginOK(Users users) {
 			Connection conn = null;
-			boolean loginResult = false;
+			List<Users> isLoginOK = new ArrayList<Users>();
 
 			try {
 				// JDBCドライバを読み込む
@@ -33,18 +35,31 @@ public class UsersDao {
 				// メールアドレスとパスワードが一致するユーザーがいたかどうかをチェックする
 				rs.next();
 				if (rs.getInt("count(*)") == 1) {
-					loginResult = true;
+					//リストにIDを追加
+					Users session_id = new Users(rs.getString("ID"));
+					isLoginOK.add(session_id);
+				}
+				else
+				{
+					//リストに"ログイン出来ないよ"を格納
+//					String noLogin = "メールアドレスかパスワードが違います。";
+					Users session_id = new Users("メールアドレスかパスワードが違います。");
+					isLoginOK.add(session_id);
 				}
 
 
 			}
 			catch (SQLException e) {
 				e.printStackTrace();
-				loginResult = false;
+				String noLogin = "メールアドレスかパスワードが違います。";
+				Users session_id = new Users(noLogin);
+				isLoginOK.add(session_id);
 			}
 			catch (ClassNotFoundException e) {
 				e.printStackTrace();
-				loginResult = false;
+				String noLogin = "メールアドレスかパスワードが違います。";
+				Users session_id = new Users(noLogin);
+				isLoginOK.add(session_id);
 			}
 			finally {
 				// データベースを切断
@@ -54,14 +69,73 @@ public class UsersDao {
 					}
 					catch (SQLException e) {
 						e.printStackTrace();
-						loginResult = false;
+						String noLogin = "メールアドレスかパスワードが違います。";
+						Users session_id = new Users(noLogin);
+						isLoginOK.add(session_id);
 					}
 				}
 			}
 
 			// 結果を返す
-			return loginResult;
+			return isLoginOK;
 		}
+//		 public List<Users> session_id(String id) {
+//				Connection conn = null;
+//				List<Users> session_idList = new ArrayList<Users>();
+//
+//				try {
+//					// JDBCドライバを読み込む
+//					Class.forName("org.h2.Driver");
+//
+//					// データベースに接続する
+//					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
+//
+//					// SQL文を準備する
+//					String sql = "select id from users where mail_address = ? and password = ?";
+//					PreparedStatement pStmt = conn.prepareStatement(sql);
+//
+//					// SQL文を完成させる
+//					pStmt.setString(1, mail_address);
+//					pStmt.setString(2, password);
+//
+//
+//
+//					// SQL文を実行し、結果表を取得する
+//					ResultSet rs = pStmt.executeQuery();
+//
+//					// 結果表をコレクションにコピーする
+//					while (rs.next()) {
+//						Users session_id= new Users(
+//						rs.getString("ID")
+//						);
+//						session_idList.add(session_id);
+//					}
+//				}
+//				catch (SQLException e) {
+//					e.printStackTrace();
+//					session_idList = null;
+//				}
+//				catch (ClassNotFoundException e) {
+//					e.printStackTrace();
+//					session_idList = null;
+//				}
+//				finally {
+//					// データベースを切断
+//					if (conn != null) {
+//						try {
+//							conn.close();
+//						}
+//						catch (SQLException e) {
+//							e.printStackTrace();
+//							session_idList = null;
+//						}
+//					}
+//				}
+//
+//				// 結果を返す
+//				return session_idList;
+//			}
+
 
 		//引数usersで指定されたレコードを登録し、成功したらtrueを返す
 		public boolean insert(Users users) {
