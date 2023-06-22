@@ -21,30 +21,31 @@
 
 
 
-<form method="GET" action="/buster_moon/RestaurantServlet">
-	<h1>${restaurantList.RESTAURANT}</h1>
+<form method="POST" action="/buster_moon/RestaurantServlet">
+<c:forEach var="r" items="${restaurantList}" >
+	<h1>${r.RESTAURANT}</h1>
 		<img src="${shousaiList.PHOTO}" alt="">
 
 
 	<table class="restaurantTable">
 		<tr>
-		<th>ジャンル</th><td>${restaurantList.GENRE}</td>
+		<th>ジャンル</th><td>${r.GENRE}</td>
 
 		</tr>
 		<tr>
-		<th>徒歩時間</th><td>約${restaurantList.WALK}分</td>
+		<th>徒歩時間</th><td>約${r.WALK}分</td>
 		</tr>
 		<tr>
-		<th>提供時間</th><td>約${restaurantList.SERVE}分</td>
+		<th>提供時間</th><td>約${r.SERVE}分</td>
 		</tr>
 		<tr>
-		<th>価格</th><td>約${restaurantList.PRICE}円</td>
+		<th>価格</th><td>約${r.PRICE}円</td>
 		</tr>
 	</table>
 
 	<h2>レビュー</h2>
 	<p>・${shousaiList.TEXT}</p>
-
+</c:forEach>
 </form>
 </body>
 </html>
