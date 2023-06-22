@@ -54,11 +54,11 @@ public class Posts implements Serializable {//JavaBeans Posts=クラス名
 	}
 
 
-	public Posts(String restaurant, String text, String photo ) { //コンストラクタ
+	public Posts(String restaurant, String photo, String text ) { //コンストラクタ
 		super();
 		this.restaurant = restaurant;
-		this.text = text;
 		this.photo = photo;
+		this.text = text;
 	}
 
 	public Posts() { //引数なしのコンストラクタ
