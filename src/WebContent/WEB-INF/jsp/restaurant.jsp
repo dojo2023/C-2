@@ -30,8 +30,7 @@
 		<c:forEach var="s" items="${shousaiList}">
 			<table class="restaurantTable">
 				<tr>
-					<th>PHOTO</th>
-					<td><img src="${s.photo}" alt=""></td>
+					<td>${s.photo}</td>
 		</c:forEach>
 				</tr>
 				<tr>
