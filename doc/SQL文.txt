@@ -137,3 +137,23 @@ INSERT INTO reactions (ID, USERS_ID, GATHERS_ID) VALUES (2, 0002, 2);
 INSERT INTO reactions (ID, USERS_ID, GATHERS_ID) VALUES (3, 0003, 3);
 INSERT INTO reactions (ID, USERS_ID, GATHERS_ID) VALUES (4, 0004, 4);
 INSERT INTO reactions (ID, USERS_ID, GATHERS_ID) VALUES (5, 0005, 5);
+
+
+profilestestテーブルを作成するSQL文】
+CREATE TABLE profiles (
+  ID INT PRIMARY KEY AUTO_INCREMENT,
+  USERS_ID INT UNIQUE NOT NULL,
+  NAME VARCHAR(30),
+  ICON VARCHAR(30),
+  INTRODUCTION VARCHAR(140),
+  t_point INT,
+  g_point INT,
+  c_point INT
+);
+
+【profilestestテーブルにサンプルデータを登録するSQL文】
+INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(1, 0001, '名前1','プロフィールアイコン1','自己紹介1',0,0,0);
+INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(2, 0002, '名前2','プロフィールアイコン2','自己紹介2',0,0,0);
+INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(3, 0003, '名前3','プロフィールアイコン3','自己紹介3',0,0,0);
+INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(4, 0004, '名前4','プロフィールアイコン4','自己紹介4',0,0,0);
+INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(5, 0005, '名前5','プロフィールアイコン5','自己紹介5',0,0,0);
