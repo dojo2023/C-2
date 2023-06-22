@@ -32,6 +32,8 @@ public class Time_lineServlet extends HttpServlet {
 
 
 				request.setCharacterEncoding("UTF-8");
+				HttpSession session = request.getSession();
+				String users_id=session.getAttribute("id");
 
 				// ランキング（並び替え後の）select処理を行う
 				RankDao rankDao = new RankDao();
@@ -62,10 +64,8 @@ public class Time_lineServlet extends HttpServlet {
 
 		// TODOAuto-generated method stub
 
-
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		session.getAttribute("id");
+
 
 		CommentsDao cDao=new CommentsDao();
 		if(request.getParameter("SUBMIT").equals("コメント表示"))
@@ -81,6 +81,7 @@ public class Time_lineServlet extends HttpServlet {
 			String users_id="2";
 			String posts_id=request.getParameter("POSTS_ID");
 			String text=request.getParameter("TEXT");
+
 			cDao.insert(new Comments(users_id,posts_id,text));
 			doGet(request,response);
 		}
