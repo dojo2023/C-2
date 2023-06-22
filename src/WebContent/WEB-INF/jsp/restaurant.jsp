@@ -23,28 +23,43 @@
 
 <form method="POST" action="/buster_moon/RestaurantServlet">
 <c:forEach var="r" items="${restaurantList}" >
-	<h1>${r.RESTAURANT}</h1>
-		<img src="${shousaiList.PHOTO}" alt="">
+			<h1>${r.restaurant}</h1>
 
 
-	<table class="restaurantTable">
-		<tr>
-		<th>ジャンル</th><td>${r.GENRE}</td>
 
-		</tr>
-		<tr>
-		<th>徒歩時間</th><td>約${r.WALK}分</td>
-		</tr>
-		<tr>
-		<th>提供時間</th><td>約${r.SERVE}分</td>
-		</tr>
-		<tr>
-		<th>価格</th><td>約${r.PRICE}円</td>
-		</tr>
-	</table>
+		<c:forEach var="s" items="${shousaiList}">
+			<table class="restaurantTable">
+				<tr>
+					<th>PHOTO</th>
+					<td><img src="${s.photo}" alt=""></td>
+		</c:forEach>
+				</tr>
+				<tr>
+					<th>ジャンル</th>
+					<td>${r.genre}</td>
 
-	<h2>レビュー</h2>
-	<p>・${shousaiList.TEXT}</p>
+				</tr>
+				<tr>
+					<th>徒歩時間</th>
+					<td>約${r.walk}分</td>
+				</tr>
+				<tr>
+					<th>提供時間</th>
+					<td>約${r.serve}分</td>
+				</tr>
+				<tr>
+					<th>価格</th>
+					<td>約${r.price}円</td>
+				</tr>
+				<c:forEach var="s" items="${shousaiList}">
+				<tr>
+					<th>レビュー</th>
+					<td>${s.text}</td>
+				</tr>
+				</c:forEach>
+			</table>
+
+
 </c:forEach>
 </form>
 </body>

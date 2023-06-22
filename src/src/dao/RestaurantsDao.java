@@ -129,7 +129,7 @@ public class RestaurantsDao {
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 
 					// SQL文を完成させる
-					pStmt.setString(1, "%" + restaurant + "%");
+					pStmt.setString(1, restaurant );
 
 
 
