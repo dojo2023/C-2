@@ -41,11 +41,13 @@ public class LoginServlet extends HttpServlet {
 		// ログイン処理を行う
 		UsersDao iDao = new UsersDao();
 
-		if (iDao.isLoginOK(new Users(mail_address, password)).get(0).getId().equals("メールアドレスかパスワードが違います。")) {	// ログイン失敗
+//		Users users = iDao.isLoginOK();
+//		if (users == null) {}
+		if (iDao == null) {	// ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			doGet(request, response);
-//			request.setAttribute("result",
-//			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/buster_moon/LoginServlet"));
+			request.setAttribute("result",
+			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/buster_moon/LoginServlet"));
 		}
 		else {									// ログイン成功
 			// セッションスコープにIDを格納する
