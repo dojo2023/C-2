@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Gathers;
@@ -26,13 +27,21 @@ public class GathersDao {
 			// SQL文を準備する
 			String sql = "insert into GATHERS(ID,USERS_ID,DATE,POINT,RESTAURANT_NAME,TIME,PLACE) values (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+				Calendar calendar=Calendar.getInstance();
+				int year=calendar.get(Calendar.YEAR);
+				int month=calendar.get(Calendar.MONTH)+1;
+				int date =calendar.get(Calendar.DATE);
+				String monthS = String.format("%02d",month);
+				String yearS = String.valueOf(year);
+				String dateS=String.format("%02d", date);
+				
 
 			// SQL文を完成させる
 				pStmt.setString(1, gather.getId());
 			
 				pStmt.setString(2, gather.getUsers_id());
-			
-				pStmt.setString(3, "2002-1-11");
+				
+				pStmt.setString(3, yearS+"-"+monthS+"-"+dateS);
 				
 				pStmt.setString(4, "100");
 			
@@ -42,26 +51,10 @@ public class GathersDao {
 		
 				pStmt.setInt(7, gather.getPlace());
 			
-			
-			// SQL文を実行し、結果表を取得する
-//			ResultSet rs = pStmt.executeQuery();
-
-			// 結果表をコレクションにコピーする
-//			while (rs.next()) {
-//			Gathers gathers = new Gathers(
-//				rs.getString("ID"),
-//				rs.getString("USER_ID"),
-//				rs.getString("DATE"),
-//				rs.getString("POINT"),
-//				rs.getString("RESTAURANT_NAME"),
-//				rs.getInt("TIME"),
-//				rs.getInt("PLACE")
-//				);
-//				gatherList.add(gathers);
-			// SQL文を実行する
-						if (pStmt.executeUpdate() == 1) {
-							result = true;
-						}
+						
+				if (pStmt.executeUpdate() == 1) {
+							result = true;	
+				}
 			
  		}
 					catch (SQLException e) {
