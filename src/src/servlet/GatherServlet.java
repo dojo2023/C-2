@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.GathersDao;
 import model.Gathers;
+import model.Users;
 /**
  * Servlet implementation class GatherServlet
  */
@@ -52,11 +53,15 @@ public class GatherServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
+		HttpSession session = request.getSession();
+
+		
 	    //リクエストパラメータを取得する。
 		request.setCharacterEncoding("UTF-8");
 			String id = request.getParameter("ID");
 			System.out.println(id);
-			String users_id = request.getParameter("USERS_ID");
+			String users_id = ((Users)session.getAttribute("id")).getId();
 		    System.out.println(users_id);
 			String date = request.getParameter("DATE");
 			System.out.println(date);
@@ -112,3 +117,4 @@ public class GatherServlet extends HttpServlet {
 	
 	}
 }
+

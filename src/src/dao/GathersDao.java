@@ -30,7 +30,7 @@ public class GathersDao {
 			// SQL文を完成させる
 				pStmt.setString(1, gather.getId());
 			
-				pStmt.setString(2, "0001");
+				pStmt.setString(2, gather.getUsers_id());
 			
 				pStmt.setString(3, "2002-1-11");
 				
