@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/buster_moon/css/time_line.css">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -53,9 +54,8 @@
 </div>
 <hr>
 </c:forEach >
-
 <h2>コメント返信表示欄</h2>
-<form method="POST" action="/buster_moon/Time_lineServlet">
+<form method="POST" action="/buster_moon/Time_lineServlet" >
 <c:forEach var="c" items="${commentsList}">
 	<p>アイコン:${c.icon}</p>
 	<p>名前:${c.name}</p>
