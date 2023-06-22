@@ -24,7 +24,7 @@ public class UsersDao {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 				// SELECT文を準備する
-				String sql = "select id, count(*) from USERS where mail_address = ? and password = ?";
+				String sql = "select count(*) from USERS where id = (select id from users where mail_address = ? and password = ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 				pStmt.setString(1, users.getMail_address());
 				pStmt.setString(2, users.getPassword());
@@ -34,15 +34,20 @@ public class UsersDao {
 
 				// メールアドレスとパスワードが一致するユーザーがいたかどうかをチェックする
 				rs.next();
-				if (rs.getInt("count(*)") == 1) {
-					//リストにIDを追加
-					Users session_id = new Users(rs.getString("ID"));
-					result = session_id;
+				if (rs.getInt("count(*)") != 1) {
+					return null;
 				}
-				else
-				{
 
-				}
+				String sql2 = "select id from USERS where mail_address = ? and password = ?";
+				PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+				pStmt2.setString(1, users.getMail_address());
+				pStmt2.setString(2, users.getPassword());
+				ResultSet rs2 = pStmt2.executeQuery();
+
+				//リストにIDを追加
+				rs2.next();
+				Users session_id = new Users(rs2.getString("ID"));
+				result = session_id;
 
 
 			}
@@ -67,61 +72,6 @@ public class UsersDao {
 			// 結果を返す
 			return result;
 		}
-//		 public List<Users> session_id(String id) {
-//				Connection conn = null;
-//				List<Users> session_idList = new ArrayList<Users>();
-//
-//				try {
-//					// JDBCドライバを読み込む
-//					Class.forName("org.h2.Driver");
-//
-//					// データベースに接続する
-//					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
-//
-//					// SQL文を準備する
-//					String sql = "select id from users where mail_address = ? and password = ?";
-//					PreparedStatement pStmt = conn.prepareStatement(sql);
-//
-//					// SQL文を完成させる
-//					pStmt.setString(1, mail_address);
-//					pStmt.setString(2, password);
-//
-//
-//
-//					// SQL文を実行し、結果表を取得する
-//					ResultSet rs = pStmt.executeQuery();
-//
-//					// 結果表をコレクションにコピーする
-//					while (rs.next()) {
-//						Users session_id= new Users(
-//						rs.getString("ID")
-//						);
-//						session_idList.add(session_id);
-//					}
-//				}
-//				catch (SQLException e) {
-//					e.printStackTrace();
-//					session_idList = null;
-//				}
-//				catch (ClassNotFoundException e) {
-//					e.printStackTrace();
-//					session_idList = null;
-//				}
-//				finally {
-//					// データベースを切断
-//					if (conn != null) {
-//						try {
-//							conn.close();
-//						}
-//						catch (SQLException e) {
-//							e.printStackTrace();
-//							session_idList = null;
-//						}
-//					}
-//				}
-//
-//				// 結果を返す
-//				return session_idList;
 //			}
 
 

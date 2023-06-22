@@ -23,14 +23,14 @@
       <tr>
         <td>
           <label>ID<br>
-          <input type="text" name="ID" id="ID" placeholder="ID(メールアドレス)">
+          <input type="text" name="MAIL_ADDRESS" id="MAIL_ADDRESS" placeholder="メールアドレス">
           </label>
         </td>
       </tr>
       <tr>
         <td>
           <label>パスワード<br>
-          <input type="password" name="PW" id="PW" placeholder="パスワード">
+          <input type="password" name="PASSWORD" id="PASSWORD" placeholder="パスワード">
           </label>
         </td>
       </tr>
