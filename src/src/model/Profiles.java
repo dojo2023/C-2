@@ -35,6 +35,14 @@ public class Profiles implements Serializable {
 		this.c_point=c_point;
 	}
 
+	// プロフィール編集用のBeans
+	public Profiles(String users_id, String name, String icon , String introduction) { //コンストラクタ
+		super();
+		this.users_id = users_id;
+		this.name = name;
+		this.icon = icon;
+		this.introduction = introduction;
+	}
 
 	public Profiles() { //引数なしのコンストラクタ
 		super();

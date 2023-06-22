@@ -79,7 +79,7 @@ public class ProfilesDao {
 	}
 
 	//編集
-	public boolean update(Profiles profiles) {
+	public boolean update(String name, String icon, String introduction, String users_id) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -95,28 +95,10 @@ public class ProfilesDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (profiles.getName() != null && !profiles.getName().equals("")) {
-				pStmt.setString(1, profiles.getName());
-			}
-			else {
-				pStmt.setString(1, null);
-			}
-
-			if (profiles.getIcon() != null && !profiles.getIcon().equals("")) {
-				pStmt.setString(2, profiles.getIcon());
-			}
-			else {
-				pStmt.setString(2, null);
-			}
-
-			if (profiles.getIntroduction() != null && !profiles.getIntroduction().equals("")) {
-				pStmt.setString(3, profiles.getIntroduction());
-			}
-			else {
-				pStmt.setString(3, null);
-			}
-
-			pStmt.setString(4, profiles.getUsers_id());
+			pStmt.setString(1, name);
+			pStmt.setString(2, icon);
+			pStmt.setString(3, introduction);
+			pStmt.setString(4, users_id); // セッションスコープから持ってきたUsers_idを入れる
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -147,7 +129,7 @@ public class ProfilesDao {
 
 	//投稿削除
 	// 引数numberで指定されたレコードを削除し、成功したらtrueを返す
-	public boolean delete(String number) {
+	public boolean delete(String id) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -163,7 +145,7 @@ public class ProfilesDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, number);
+			pStmt.setString(1, id);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
