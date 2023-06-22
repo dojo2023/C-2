@@ -33,6 +33,7 @@
 <!-- ｌここから一緒にどう？送信 -->
 
 <!-- 募集を呼びかける掲示板画面のためのdiv -->
+
 <form method="POST" action="/buster_moon/GatherServlet">
 	<div class="gather_board">
 	<div class="dropdown">
@@ -68,6 +69,19 @@
 	</div>
 </form>
 <!-- 募集を呼びかける掲示板画面のための/div -->
+</div>
+<div id="table">
+  	<table id="list">
+  		<c:forEach var="b" items="${gathersList}" >
+			<table>
+			<tr>
+			    <td>店名:${b.restaurant_name}</td>
+				<td>時間:${b.time}</td>
+				<td>場所:${b.place}</td>
+			</tr>
+			</table>
+ 		</c:forEach>
+  	</table>
 </div>
 
 <!-- 一緒にどう？送信ここまで -->

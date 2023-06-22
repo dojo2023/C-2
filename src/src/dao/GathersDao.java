@@ -86,7 +86,7 @@ public class GathersDao {
 	return result;
  	}
  	//募集項目の表示
- 	  public List<Gathers> select(String restaurant_name,int time,int place) {
+ 	  public List<Gathers> select1() {
  			Connection conn = null;
  			List<Gathers> gathersList = new ArrayList<Gathers>();
 
@@ -117,7 +117,7 @@ public class GathersDao {
 				rs.getInt("TIME"),
 				rs.getInt("PLACE") 
 			);
-
+				gathersList.add(gathers);
 			}
 		}
 		catch (SQLException e) {
