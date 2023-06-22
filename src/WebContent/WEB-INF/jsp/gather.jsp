@@ -18,11 +18,11 @@
 <!-- ここからメニューバー -->
 <nav>
     <ul id="nav">
-      <li><a href="/buster_moon/Time_lineServlet">タイムライン</a></li>
-      <li><a href="/buster_moon/SearchServlet">検索</a></li>
-      <li><a href="/buster_moon/PostServlet">登録</a></li>
-      <li><a href="/buster_moon/GatherServlet">一緒にどう？</a></li>
-      <li><a href="/buster_moon/My_profileServlet">プロフィール</a></li>
+		<li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
+  		<li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
+  		<li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
+  		<li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
+  		<li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
     </ul>
 </nav>
  <!-- メニューバーここまで -->

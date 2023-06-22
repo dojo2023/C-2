@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -53,14 +52,14 @@ public class GatherServlet extends HttpServlet {
 	
 	    //リクエストパラメータを取得する。
 		request.setCharacterEncoding("UTF-8");
-//			String id = request.getParameter("ID");
-//			System.out.println(id);
-//			String user_id = request.getParameter("USER_ID");
-//		    System.out.println(user_id);
-//			String date = request.getParameter("DATE");
-//			System.out.println(date);
-//			String point = request.getParameter("POINT");
-//			System.out.println(point);
+			String id = request.getParameter("ID");
+			System.out.println(id);
+			String users_id = request.getParameter("USERS_ID");
+		    System.out.println(users_id);
+			String date = request.getParameter("DATE");
+			System.out.println(date);
+		    String point = request.getParameter("POINT");
+			System.out.println(point);
 			String restaurant_name = request.getParameter("RESTAURANT_NAME");
 			System.out.println(restaurant_name);
 			String timeString = request.getParameter("TIME");
@@ -72,10 +71,11 @@ public class GatherServlet extends HttpServlet {
 			//登録処理を行う
 			GathersDao gatherDao = new GathersDao();
 				if (request.getParameter("SUBMIT").equals("送信")) {
-					Gathers gather = new Gathers(restaurant_name,time,place);
+					Gathers gather = new Gathers(id,users_id,date,point,restaurant_name,time,place);
 					boolean result = gatherDao.insert(gather);
-					ArrayList<Gathers> gathersList = new ArrayList<Gathers>();
-					gathersList.add(gather);
+//					ArrayList<Gathers> gathersList = new ArrayList<Gathers>();
+//					gathersList.add(gather);
+					List<Gathers> gathersList = gatherDao.select1();	
 					//検索結果をリクエストスコープに格納する
 					request.setAttribute("gathersList", gathersList);
 				

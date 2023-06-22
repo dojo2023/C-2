@@ -4,28 +4,28 @@ import java.io.Serializable;
 
 public class Gathers implements Serializable {
 
-//	private String id;
-//	private String users_id;
-//	private String date;
-//	private String point;
+	private String id;
+	private String users_id;
+	private String date;
+	private String point;
 	private String restaurant_name;
 	private int time;
 	private int place;
 
-    public Gathers(//String id, String users_id, String date,String point,
+    public Gathers(String id, String users_id, String date,String point,
     		String restaurant_name,int time,int place) {
       super();
-//      this.id = id;
-//      this.users_id= users_id;
-//      this.date = date;
- //     this.point= point;
+      this.id = id;
+      this.users_id= users_id;
+      this.date = date;
+      this.point= point;
       this.restaurant_name= restaurant_name;
       this.time= time;
       this.place= place;
     }
 
 
-/*	public String getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -63,7 +63,7 @@ public class Gathers implements Serializable {
 	public void setPoint(String point) {
 		this.point = point;
 	}
-*/
+
 	public String getRestaurant_name() {
 		return restaurant_name;
 	}
