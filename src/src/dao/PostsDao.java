@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import model.Posts;
@@ -32,67 +33,62 @@ public class PostsDao{
 
 			  pStmt.setString(1, posts.getId());
 
+			  Calendar calendar=Calendar.getInstance();
+			  int year=calendar.get(Calendar.YEAR);
+	          int month=calendar.get(Calendar.MONTH)+1;
+	          int date =calendar.get(Calendar.DATE);
+	          String monthS = String.format("%02d",month);
+	          String yearS = String.valueOf(year);
+	          String dateS=String.format("%02d", date);
 
-		  if (posts.getUsers_id() != null || !posts.getUsers_id().equals("")) {
+		   if (posts.getUsers_id() != null && !posts.getUsers_id().equals("")) {
 			  pStmt.setString(2, posts.getUsers_id());
-		  }
-		  else {
-			  pStmt.setString(2, null);
-		  }
-		  if (posts.getDate() != null || !posts.getDate().equals("")) {
-			  pStmt.setString(3, posts.getDate());
-		  }
-		  else {
-			  pStmt.setString(3, null);
-		  }
-		  if (posts.getPhoto() != null || !posts.getPhoto().equals("")) {
+		   }
+		   else {
+				  pStmt.setString(2, null);
+		   }
+
+			  pStmt.setString(3, yearS+"-"+monthS+"-"+dateS);
+
+		  if (posts.getPhoto() != null && !posts.getPhoto().equals("")) {
 			  pStmt.setString(4, posts.getPhoto());
 		  }
 		  else {
 			  pStmt.setString(4, null);
 		  }
-		  if (posts.getRestaurant() != null || !posts.getRestaurant().equals("")) {
+
 			  pStmt.setString(5, posts.getRestaurant());
-		  }
-		  else {
-			  pStmt.setString(5, null);
-		  }
-		  if (posts.getWalk() != null || !posts.getWalk().equals("")) {
+
+		  if (posts.getWalk() != null && !posts.getWalk().equals("")) {
 			  pStmt.setString(6, posts.getWalk());
 		  }
 		  else {
 			  pStmt.setString(6, null);
 		  }
-		  if (posts.getServe() != null || !posts.getServe().equals("")) {
+		  if (posts.getServe() != null && !posts.getServe().equals("")) {
 			  pStmt.setString(7, posts.getServe());
 		  }
 		  else {
 			  pStmt.setString(7, null);
 		  }
-		  if (posts.getPrice() != null || !posts.getPrice().equals("")) {
+		  if (posts.getPrice() != null && !posts.getPrice().equals("")) {
 			  pStmt.setString(8, posts.getPrice());
 		  }
 		  else {
 			  pStmt.setString(8, null);
 		  }
-		  if (posts.getGenre() != null || !posts.getGenre().equals("")) {
+
 			  pStmt.setString(9, posts.getGenre());
-		  }
-		  else {
-			  pStmt.setString(9, null);
-		  }
-		  if (posts.getText() != null || !posts.getText().equals("")) {
+
+		  if (posts.getText() != null && !posts.getText().equals("")) {
 			  pStmt.setString(10, posts.getText());
 		  }
 		  else {
 			  pStmt.setString(10, null);
 		  }
-		  if (posts.getPoint() != null || !posts.getPoint().equals("")) {
+
 			  pStmt.setString(11, posts.getPoint());
-		  }
-		  else {
-			  pStmt.setString(11, null);
-		  }
+
 
 		  //SQL文を実行する
 		  if (pStmt.executeUpdate() == 1) {
@@ -257,7 +253,7 @@ public class PostsDao{
 
 //投稿する際ジャンルで店舗名を絞り込み
 		// 引数paramで検索項目を指定し、検索結果のリストを返す
-			public List<Restaurants> selectGenre(String genre) {
+	public List<Restaurants> selectGenre(int posts_genre) {
 				Connection conn = null;
 				List<Restaurants> shiborikomiList = new ArrayList<Restaurants>();
 
@@ -274,7 +270,7 @@ public class PostsDao{
 
 					// SQL文を完成させる
 
-						pStmt.setString(1, genre);
+						pStmt.setInt(1, posts_genre);
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
@@ -286,7 +282,7 @@ public class PostsDao{
 								rs.getInt("WALK"),
 								rs.getInt("SERVE"),
 								rs.getInt("PRICE"),
-								rs.getInt("posts_GENRE")
+								rs.getInt("POSTS_GENRE")
 								);
 						shiborikomiList.add(restaurant);
 					}
