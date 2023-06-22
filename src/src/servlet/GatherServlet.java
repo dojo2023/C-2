@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.GathersDao;
 import model.Gathers;
@@ -34,16 +35,17 @@ public class GatherServlet extends HttpServlet {
 		
 		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				/*HttpSession session = request.getSession();
+				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
 					response.sendRedirect("/buster_moon/LoginServlet");
 					return;
-				}*/
+				}
 
 		// 募集JSPにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
 				dispatcher.forward(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
