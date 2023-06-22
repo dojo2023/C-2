@@ -4,62 +4,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>店舗詳細</title>
-<link rel="icon" href="img/favicon.ico">
- <link rel="stylesheet" href="/buster_moon/css/restaurant.css">
+	<meta charset="UTF-8">
+	<title>店舗詳細</title>
+		<link rel="icon" href="img/favicon.ico">
+<link rel="stylesheet" href="/buster_moon/css/restaurant.css">
 </head>
 <body>
-<ul class="nav">
-  <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
-  <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
-  <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
-  <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
-  <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
-  </ul>
-  <hr>
+<div class="wrapper">
+	<nav class="nav">
+	<ul>
+  		<li><a href="/buster_moon/Time_lineServlet">タイムライン</a></li>
+ 		<li><a href="/buster_moon/PostServlet">投稿</a></li>
+ 		<li><a href="/buster_moon/SerchServlet">検索</a></li>
+  		<li><a href="/buster_moon/GatherServlet">一緒にどう？</a></li>
+		<li><a href="/buster_moon/ProfileServlet">プロフィール></a></li>
+  	</ul>
+  	</nav>
 
 
 
-<form method="POST" action="/buster_moon/RestaurantServlet">
-<c:forEach var="r" items="${restaurantList}" >
-			<h1>${r.restaurant}</h1>
+	<form method="POST" action="/buster_moon/RestaurantServlet">
+		<c:forEach var="r" items="${restaurantList}" >
+				<h1>${r.restaurant}</h1>
+			<c:forEach var="s" items="${shousaiList}">
+				<p class="photo">${s.photo}</p>
+			</c:forEach>
 
 
+				<table>
+					<tr>
+						<th>ジャンル</th>
+						<td>${r.genre}</td>
 
-		<c:forEach var="s" items="${shousaiList}">
-			<table class="restaurantTable">
-				<tr>
-					<td>${s.photo}</td>
-		</c:forEach>
-				</tr>
-				<tr>
-					<th>ジャンル</th>
-					<td>${r.genre}</td>
+					</tr>
+					<tr>
+						<th>徒歩時間</th>
+						<td>約${r.walk}分</td>
+					</tr>
+					<tr>
+						<th>提供時間</th>
+						<td>約${r.serve}分</td>
+					</tr>
+					<tr>
+						<th>価格</th>
+						<td>約${r.price}円</td>
+					</tr>
 
-				</tr>
-				<tr>
-					<th>徒歩時間</th>
-					<td>約${r.walk}分</td>
-				</tr>
-				<tr>
-					<th>提供時間</th>
-					<td>約${r.serve}分</td>
-				</tr>
-				<tr>
-					<th>価格</th>
-					<td>約${r.price}円</td>
-				</tr>
+				</table>
 				<c:forEach var="s" items="${shousaiList}">
-				<tr>
-					<th>レビュー</th>
-					<td>${s.text}</td>
-				</tr>
+					<p class="text">${s.text}</p>
 				</c:forEach>
-			</table>
 
-
-</c:forEach>
-</form>
+		</c:forEach>
+	</form>
+</div>
 </body>
 </html>

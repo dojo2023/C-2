@@ -1,1 +1,32 @@
 @charset "UTF-8";
+
+body {
+	margin: 0 0 0 0;
+}
+.wrapper {
+	margin: 0 auto 0 auto;
+	max-width: 1000px;
+}
+.nav li {
+	display:flex;
+	flex-flow: column;
+	justify-content:flex-end;
+	list-style-type: none;
+	padding-right: 30px;
+}
+
+
+table {
+    border-collapse:  collapse; /* セルの線を重ねる */
+}
+
+tr:nth-child(odd) {
+    background-color:  #ddd;    /* 背景色指定 */
+}
+
+th,td {
+    padding: 5px 10px;          /* 余白指定 */
+}
+photo {
+	 table-layout:fixed;
+}
