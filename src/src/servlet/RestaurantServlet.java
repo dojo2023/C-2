@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.RestaurantsDao;
 import model.Posts;
+import model.Restaurants;
 
 
 /**
@@ -73,6 +74,13 @@ public class RestaurantServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String restaurant = request.getParameter("RESTAURANT");
+
+		// 検索処理を行う
+		RestaurantsDao ResDao = new RestaurantsDao();
+		List<Restaurants> restaurantList = ResDao.select(restaurant, 0, 0, 0, 0);
+
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("restaurantList", restaurantList);
 
 		// 検索処理を行う
 		RestaurantsDao RessDao = new RestaurantsDao();
