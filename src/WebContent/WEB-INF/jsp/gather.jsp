@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
       <li><a href="/buster_moon/GatherServlet">一緒にどう？</a></li>
       <li><a href="/buster_moon/My_profileServlet">プロフィール</a></li>
     </ul>
- </nav>
+</nav>
  <!-- メニューバーここまで -->
 
 <!-- ここから募集を表示 -->
@@ -33,40 +34,39 @@
 
 <!-- 募集を呼びかける掲示板画面のためのdiv -->
 <form method="POST" action="/buster_moon/GatherServlet">
-<div class="gather_board">
-
-<div class="dropdown">
+	<div class="gather_board">
+	<div class="dropdown">
 
         <input type="button" name="gather" class="dropdown__btn" id="dropdown__btn" value="一緒にどう？">
         <div class="dropdown__body">
           <ul class="dropdown__list">
             <li class="dropdown__item">
-                お店：<input type="text" name="TEXT"><br>
+                お店：<input type="text" name="RESTAURANT_NAME"><br>
             </li>
             <li class="dropdown__item">
-                時間：<select name="time">
-                      <option>12:00</option>
-                      <option>12:05</option>
-                      <option>12:10</option>
+                時間：<select name="TIME">
+                      <option value=1>12:00</option>
+                      <option value=2>12:05</option>
+                      <option value=3>12:10</option>
                       </select><br>
             </li>
             <li class="dropdown__item">
                 場所：<!-- 集合場所プルダウン -->
-				<select name="place">
-				<option>エレベーター前</option>
-				<option>玄関前</option>
+				<select name="PLACE">
+				<option value=1>エレベーター前</option>
+				<option value=2>玄関前</option>
 				</select>
             </li>
             <li>
                
-               <input type="submit"  name="submit" value="送信"  class="button1">
+               <input type="submit"  name="SUBMIT" value="送信"  class="button1">
                
             </li>
           </ul>
         </div>
-      </div>
-      </div>
-      </form>
+    </div>
+	</div>
+</form>
 <!-- 募集を呼びかける掲示板画面のための/div -->
 </div>
 

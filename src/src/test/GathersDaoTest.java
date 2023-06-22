@@ -1,5 +1,7 @@
 package test;
 
+import java.util.List;
+
 import dao.GathersDao;
 import model.Gathers;
 
@@ -22,20 +24,37 @@ public class GathersDaoTest {
 
 
 
-	//insert()のテスト
+	
 	public static void main(String[] args) {
-	GathersDao dao = new GathersDao();
-
+		GathersDao dao = new GathersDao();
+		//select()のテスト
+		System.out.println("---------- select()のテスト ----------");
+		List<Gathers> gathersList = dao.select("店名3",1 ,1 );
+		for (Gathers card : gathersList) {
+			System.out.println("RESTAURANT_NAME：" + card.getRestaurant_name());
+			System.out.println("TIME：" + card.getTime());
+			System.out.println("PLACE：" + card.getPlace());
+		}
+	
+		
+		//insert()のテスト
 	System.out.println("---------- insert()のテスト ----------");
-	Gathers insRec = new Gathers(null , "7" , "2023-06-16" , "7");
+	Gathers insRec = new Gathers("店名３" , 2 , 2  );
 	if (dao.insert(insRec)) {
 		System.out.println("登録成功！");
+		List<Gathers> gatherList =dao.select();
+		for (Gathers card : gathersList) {
+			System.out.println("RESTAURANT_NAME：" + card.getRestaurant_name());
+			System.out.println("TIME：" + card.getTime());
+			System.out.println("PLACE：" + card.getPlace());
+			
 		}
+	}
 
 	else {
 		System.out.println("登録失敗！");
 	}
-
+	//select()のテスト
 	}
 
 }
