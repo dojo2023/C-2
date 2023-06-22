@@ -8,8 +8,8 @@
 </head>
 <body>
   <!-- ここからアイコン・名前・自己紹介・パスワードの編集 -->
+  <form id="edit_form" method="POST" action="/buster_moon/Profile_editServlet">
   <c:forEach var="profile" items="${profilesList}">
-    <form id="edit_form" method="POST" action="/buster_moon/Profile_editServlet">
     <table>
       <tr>
         <td>
@@ -33,7 +33,6 @@
         <td><input type="text" name="new_password" value="新しいパスワード（再入力）"></td>
       </tr>
     </table>
-    </form>
   </c:forEach>
   <!-- アイコン・名前・自己紹介・パスワードの編集ここまで -->
 
@@ -59,18 +58,15 @@
       </tr>
       <tr>
         <td>
-        <form id="edit_form" method="POST" action="/buster_moon/Profile_editServlet">
-         <input type="submit" name="completion" value="変更を完了する" onclick="return confirm('変更内容を保存しますか？')">
-        </form>
+          <input type="submit" name="completion" value="変更を完了する" onclick="return confirm('変更内容を保存しますか？')">
         </td>
         <td>
-        <form action="My_profileServlet" method="GET">
          <input type="submit" value="キャンセル">
-        </form>
         </td>
       </tr>
     </table>
   </c:forEach>
+  </form>
   <!-- 自分の投稿削除・変更完了・キャンセルここまで -->
 
 </body>
