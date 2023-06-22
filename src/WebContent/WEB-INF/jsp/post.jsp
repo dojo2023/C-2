@@ -28,17 +28,17 @@
              <option value=""<c:if test="${genre == ''}"> selected</c:if>>選択してください</option>
              <option value=1<c:if test="${genre == '1'}"> selected</c:if>>中華</option>
              <option value=2<c:if test="${genre == '2'}"> selected</c:if>>ラーメン屋</option>
-             <option value=3><c:if test="${genre == '3'}"> selected</c:if>イタリアン</option>
-             <option value=4><c:if test="${genre == '4'}"> selected</c:if>和食・定食</option>
-             <option value=5><c:if test="${genre == '5'}"> selected</c:if>カフェ</option>
-             <option value=6><c:if test="${genre == '6'}"> selected</c:if>そば・うどん</option>
-             <option value=7><c:if test="${genre == '7'}"> selected</c:if>ハンバーガー</option>
-             <option value=8><c:if test="${genre == '8'}"> selected</c:if>スペイン料理</option>
-             <option value=9><c:if test="${genre == '9'}"> selected</c:if>フレンチ</option>
-             <option value=10><c:if test="${genre == '10'}"> selected</c:if>カレー</option>
-             <option value=11><c:if test="${genre == '11'}"> selected</c:if>韓国料理</option>
-             <option value=12><c:if test="${genre == '12'}"> selected</c:if>東南アジア料理</option>
-             <option value=13><c:if test="${genre == '13'}"> selected</c:if>沖縄料理</option>
+             <option value=3<c:if test="${genre == '3'}"> selected</c:if>>イタリアン</option>
+             <option value=4<c:if test="${genre == '4'}"> selected</c:if>>和食・定食</option>
+             <option value=5<c:if test="${genre == '5'}"> selected</c:if>>カフェ</option>
+             <option value=6<c:if test="${genre == '6'}"> selected</c:if>>そば・うどん</option>
+             <option value=7<c:if test="${genre == '7'}"> selected</c:if>>ハンバーガー</option>
+             <option value=8<c:if test="${genre == '8'}"> selected</c:if>>スペイン料理</option>
+             <option value=9<c:if test="${genre == '9'}"> selected</c:if>>フレンチ</option>
+             <option value=10<c:if test="${genre == '10'}"> selected</c:if>>カレー</option>
+             <option value=11<c:if test="${genre == '11'}"> selected</c:if>>韓国料理</option>
+             <option value=12<c:if test="${genre == '12'}"> selected</c:if>>東南アジア料理</option>
+             <option value=13<c:if test="${genre == '13'}"> selected</c:if>>沖縄料理</option>
           </select>
           <input type="submit" name="button" value="店舗検索"><br>
           店名

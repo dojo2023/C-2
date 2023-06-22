@@ -130,7 +130,7 @@ public class PostsDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select * from posts join profiles on posts.users_id=profiles.users_id order by date asc";
+			String sql = "select * from posts join profiles on posts.users_id=profiles.users_id order by date desc, id desc";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を実行し、結果表を取得する
