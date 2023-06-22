@@ -40,44 +40,63 @@ public class GatherServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	
 	    //リクエストパラメータを取得する。
 		request.setCharacterEncoding("UTF-8");
-			String id = request.getParameter("ID");
-			System.out.println(id);
-			String user_id = request.getParameter("USER_ID");
-			System.out.println(user_id);
-			String date = request.getParameter("DATE");
-			System.out.println(date);
-			String point = request.getParameter("POINT");
-			System.out.println(point);
-		//登録処理を行う
-		GathersDao gatherDao = new GathersDao();
-			if (request.getParameter("SUBMIT").equals("送信")) {
-				if (gatherDao.insert(new Gathers(id, user_id, date, point ))) {	// 登録成功
-					request.setAttribute("result",
-					new Result("登録成功！", "レコードを登録しました。", "/buster_moon/GatherServlet"));
-			}
-		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/buster_moon/GatherServlet"));
-		}
+//			String id = request.getParameter("ID");
+//			System.out.println(id);
+//			String user_id = request.getParameter("USER_ID");
+//		    System.out.println(user_id);
+//			String date = request.getParameter("DATE");
+//			System.out.println(date);
+//			String point = request.getParameter("POINT");
+//			System.out.println(point);
+			String restaurant_name = request.getParameter("RESTAURANT_NAME");
+			System.out.println(restaurant_name);
+			String timeString = request.getParameter("TIME");
+			int time = Integer.parseInt(timeString);
+			System.out.println(time);
+			String placeString = request.getParameter("PLACE");
+			int place = Integer.parseInt(placeString);
+			System.out.println(place);
+			//登録処理を行う
+			GathersDao gatherDao = new GathersDao();
+				if (request.getParameter("SUBMIT").equals("送信")) {
+					if (gatherDao.insert(new Gathers(restaurant_name, time, place))) {
+						request.setAttribute("result",
+								new Result("投稿成功！", "レコードを登録しました。", "/buster_moon/GatherServlet"));
+					}
+				}
+
+
+			//結果をリクエストスコープに格納する
+			request.setAttribute("gathersList", gatherDao);
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
+			dispatcher.forward(request, response);
+			
+			
+					//登録処理を行う
+//		GathersDao gatherDao = new GathersDao();
+//			if (request.getParameter("SUBMIT").equals("送信")) {
+//				List<Gathers>gathersList=gatherDao.select(restaurant_name,time,place);
+//			    }
+			
+			
 		//削除処理を行う
-			GathersDao gatheDao = new GathersDao();
+/*		GathersDao gatheDao = new GathersDao();
 			if (request.getParameter("SUBMIT").equals("削除")) {
 				if (gatheDao.insert(new Gathers(id, user_id, date, point ))) {	// 登録成功
 					request.setAttribute("result",
 					new Result("削除成功！", "レコードを登録しました。", "/buster_moon/GatherServlet"));
+				}
 			}
-		}
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/buster_moon/GatherServlet"));
-		}
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
-		dispatcher.forward(request, response);
+			else {												// 登録失敗
+				request.setAttribute("result",
+				new Result("登録失敗！", "レコードを登録できませんでした。", "/buster_moon/GatherServlet"));
+			}
+			*/
+	
 	}
-	}
+}
