@@ -24,23 +24,23 @@ public class GathersDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			// SQL文を準備する
-			String sql = "insert into GATHERS(RESTAURANT_NAME,TIME,PLACE) values (?, ?, ?)";
+			String sql = "insert into GATHERS(ID,USERS_ID,DATE,POINT,RESTAURANT_NAME,TIME,PLACE) values (?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-//				pStmt.setString(1, gather.getId());
+				pStmt.setString(1, gather.getId());
 			
-//				pStmt.setString(2, gather.getUsers_id());
+				pStmt.setString(2, "0001");
 			
-//				pStmt.setString(3, gather.getDate());
+				pStmt.setString(3, "2002-1-11");
 				
-//				pStmt.setString(4, gather.getPoint());
+				pStmt.setString(4, "100");
 			
-				pStmt.setString(1, gather.getRestaurant_name());
+				pStmt.setString(5, gather.getRestaurant_name());
 			
-				pStmt.setInt(2, gather.getTime());
+				pStmt.setInt(6, gather.getTime());
 		
-				pStmt.setInt(3, gather.getPlace());
+				pStmt.setInt(7, gather.getPlace());
 			
 			
 			// SQL文を実行し、結果表を取得する
@@ -98,7 +98,7 @@ public class GathersDao {
  				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
  				// SQL文を準備する
- 				String sql = "select (restaurant_name,time,place) from gathers";
+ 				String sql = "select*from gathers";
  				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				 
@@ -109,10 +109,10 @@ public class GathersDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Gathers gathers= new Gathers(
-//				rs.getString("ID"),
-//				rs.getString("USERS_ID"),
-//				rs.getString("DATE"),
-//				rs.getString("POINT"),
+				rs.getString("ID"),
+				rs.getString("USERS_ID"),
+				rs.getString("DATE"),
+				rs.getString("POINT"),
 				rs.getString("RESTAURANT_NAME"),
 				rs.getInt("TIME"),
 				rs.getInt("PLACE") 
