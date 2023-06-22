@@ -30,7 +30,7 @@ public class RankDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/buster_moon", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
 			//profilesテーブルのリストの数を調べるための作業
 			String sql3 ="select p.users_id,name,icon,t_point,g_point,c_point "
