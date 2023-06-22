@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.PostsDao;
 import model.Posts;
 import model.Restaurants;
 import model.Result;
+import model.Users;
 
 
 /**
@@ -52,7 +54,8 @@ public class PostServlet extends HttpServlet {
 		String id= request.getParameter("id");
 			System.out.println(id);
 			//session
-		String users_id= request.getParameter("users_id");
+			HttpSession session = request.getSession();
+			String users_id=((Users)session.getAttribute("id")).getId();
 			System.out.println(users_id);
 			//本日の日付
 //
