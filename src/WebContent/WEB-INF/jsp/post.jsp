@@ -14,38 +14,40 @@
     <body>
       <!-- メニューバーの表示 -->
       <ul class="nav">
-        <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
-        <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
-        <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
-        <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
-        <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
+        <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
+        <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
+        <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
+        <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
+        <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
       </ul>
 
       <form method="POST" id="posts_form" action="/buster_moon/PostServlet">
-        <c:forEach var="e" items="${restaurantList}">
+
           ジャンル
-          <select id="genre">
-             <option value="" selected>選択してください</option>
-             <option value=1>中華</option>
-             <option value=2>ラーメン屋</option>
-             <option value=3>イタリアン</option>
-             <option value=4>和食・定食</option>
-             <option value=5>カフェ</option>
-             <option value=6>そば・うどん</option>
-             <option value=7>ハンバーガー</option>
-             <option value=8>スペイン料理</option>
-             <option value=9>フレンチ</option>
-             <option value=10>カレー</option>
-             <option value=11>韓国料理</option>
-             <option value=12>東南アジア料理</option>
-             <option value=13>沖縄料理</option>
-          </select><br>
+          <select id="genre" name="genre">
+             <option value=""<c:if test="${genre == ''}"> selected</c:if>>選択してください</option>
+             <option value=1<c:if test="${genre == '1'}"> selected</c:if>>中華</option>
+             <option value=2<c:if test="${genre == '2'}"> selected</c:if>>ラーメン屋</option>
+             <option value=3><c:if test="${genre == '3'}"> selected</c:if>イタリアン</option>
+             <option value=4><c:if test="${genre == '4'}"> selected</c:if>和食・定食</option>
+             <option value=5><c:if test="${genre == '5'}"> selected</c:if>カフェ</option>
+             <option value=6><c:if test="${genre == '6'}"> selected</c:if>そば・うどん</option>
+             <option value=7><c:if test="${genre == '7'}"> selected</c:if>ハンバーガー</option>
+             <option value=8><c:if test="${genre == '8'}"> selected</c:if>スペイン料理</option>
+             <option value=9><c:if test="${genre == '9'}"> selected</c:if>フレンチ</option>
+             <option value=10><c:if test="${genre == '10'}"> selected</c:if>カレー</option>
+             <option value=11><c:if test="${genre == '11'}"> selected</c:if>韓国料理</option>
+             <option value=12><c:if test="${genre == '12'}"> selected</c:if>東南アジア料理</option>
+             <option value=13><c:if test="${genre == '13'}"> selected</c:if>沖縄料理</option>
+          </select>
+          <input type="submit" name="button" value="店舗検索"><br>
           店名
-          <select id="restaurant_name">
+          <select name="restaurant" id="restaurant_name">
             <option value="" selected>選択してください</option>
-            <option value="${e.posts_restaurant}"></option>
+            <c:forEach var="e" items="${shiborikomiList}">
+            <option  value="${e.restaurant}">${e.restaurant}</option>
+            </c:forEach>
           </select><br>
-        </c:forEach>
           写真
           <input type="file" name="photo" accept="image/*">
           <br>
@@ -83,7 +85,7 @@
         テキスト（140字以内)<br>
          <textarea name="text" onChange="check()"></textarea><br>
 
-       <input type="submit" name="post_button" value="投稿">
+       <input type="submit" name="button" value="投稿">
       </form>
     </body>
   </html>

@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.PostsDao;
 import dao.ProfilesDao;
+import dao.UsersDao;
 import model.Posts;
 import model.Profiles;
 import model.Result;
+import model.Users;
 
 /**
  * Servlet implementation class Profile_editServlet
@@ -27,12 +29,18 @@ public class Profile_editServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    // 検索処理を行う
+
+		request.setCharacterEncoding("UTF-8");
+
+		// 検索処理を行う
 	    ProfilesDao profilesDao = new ProfilesDao();
 	    List<Profiles> profilesList = profilesDao.select(new Profiles("", "", "", "", "", 0, 0, 0));
 
 	    PostsDao postsDao = new PostsDao();
 	    List<Posts> postspList = postsDao.select(new Posts("", "", "", "", "", "", "", "", "", "", ""));
+
+	    UsersDao usersDao = new UsersDao();
+	    List<Users> usersList = usersDao.select(new Users("", "", ""));
 
 	    // 検索結果をリクエストスコープに格納する
 	    request.setAttribute("profilesList", profilesList);
@@ -50,6 +58,8 @@ public class Profile_editServlet extends HttpServlet {
 //			response.sendRedirect("/buster_moon/LoginServlet");
 //			return;
 //		}
+
+		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータを取得する
 		String name = request.getParameter("name");
