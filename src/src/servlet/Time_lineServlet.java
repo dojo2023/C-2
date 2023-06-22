@@ -33,8 +33,12 @@ public class Time_lineServlet extends HttpServlet {
 
 
 				request.setCharacterEncoding("UTF-8");
-
-
+				HttpSession session = request.getSession();
+				String users_id = "";
+				if(session.getAttribute("id") != null) {
+					users_id=((Users)session.getAttribute("id")).getId();
+				}
+				request.setAttribute("id", users_id);
 				// ランキング（並び替え後の）select処理を行う
 				RankDao rankDao = new RankDao();
 				List<Profiles> profilesList = rankDao.select();
@@ -78,8 +82,10 @@ public class Time_lineServlet extends HttpServlet {
 
 		if(request.getParameter("SUBMIT").equals("送信"))
 		{
+			//セッションスコープ↓
 			HttpSession session = request.getSession();
 			String users_id=((Users)session.getAttribute("id")).getId();
+			//セッションスコープ↑
 			String posts_id=request.getParameter("POSTS_ID");
 			String text=request.getParameter("TEXT");
 

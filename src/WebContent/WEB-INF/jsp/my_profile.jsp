@@ -20,9 +20,7 @@
   </ul>
 <!-- ヘッダー？ここまで -->
 
-<!-- アイコン・名前・編集 -->
-
-<!-- アイコン・名前・編集 -->
+<!-- ここからアイコン・名前・編集・ポイント -->
 <c:forEach var="profile" items="${profilesList}">
 <table>
   <tr>
@@ -40,9 +38,9 @@
   </tr>
 </table>
 </c:forEach>
-<!-- ポイント合計 -->
+<!-- アイコン・名前・編集・ポイントここまで -->
 
-<!-- 投稿一覧 -->
+<!--ここから 投稿一覧 -->
 <c:forEach var="profile" items="${profilesList}">
   <img src="${profile.icon}" alt="アイコン">
 </c:forEach>
@@ -67,6 +65,7 @@
       </tr>
     </table>
   </c:forEach>
+<!-- 投稿一覧ここまで -->
 
 
 <!-- アイコン・名前・編集 -->
