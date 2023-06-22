@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.GathersDao;
 import model.Gathers;
-import model.Result;
 /**
  * Servlet implementation class GatherServlet
  */
@@ -24,6 +25,15 @@ public class GatherServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		// select処理を行う
+		GathersDao gatherDao = new GathersDao();
+		List<Gathers> gathersList = gatherDao.select1();	
+		//リクエストスコープに格納する
+		request.setAttribute("gathersList", gathersList);
+		
+		
+		
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				/*HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
@@ -62,16 +72,16 @@ public class GatherServlet extends HttpServlet {
 			//登録処理を行う
 			GathersDao gatherDao = new GathersDao();
 				if (request.getParameter("SUBMIT").equals("送信")) {
-					if (gatherDao.insert(new Gathers(restaurant_name, time, place))) {
-						request.setAttribute("result",
-								new Result("投稿成功！", "レコードを登録しました。", "/buster_moon/GatherServlet"));
-					}
+					Gathers gather = new Gathers(restaurant_name,time,place);
+					boolean result = gatherDao.insert(gather);
+					ArrayList<Gathers> gathersList = new ArrayList<Gathers>();
+					gathersList.add(gather);
+					//検索結果をリクエストスコープに格納する
+					request.setAttribute("gathersList", gathersList);
+				
 				}
 
-
-			//結果をリクエストスコープに格納する
-			request.setAttribute("gathersList", gatherDao);
-
+			
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
 			dispatcher.forward(request, response);
