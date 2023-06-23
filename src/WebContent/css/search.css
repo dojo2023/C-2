@@ -6,11 +6,24 @@
 	padding-right: 10px;
 	padding-left: 10px;
 	padding-top: 10px;
-	border-radius:50%; 
+	border-radius:50%;
     object-fit: cover;
     border: 3px solid #0ed145;
     width: 60px;
     height: 60px;
     margin-top: 20px;
     background-color:#0ed145;
+}
+#list{
+    border-collapse:  collapse; /* セルの線を重ねる */
+    text-align: center;
+}
+
+#list tr:nth-child(odd) {
+    background-color:  #FFA500;    /* 背景色指定 */
+}
+
+#list th,td {
+    padding: 10px 20px;          /* 余白指定 */
+    width: 155px;
 }
