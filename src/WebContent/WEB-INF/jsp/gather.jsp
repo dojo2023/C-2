@@ -21,8 +21,8 @@
 		<li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
   		<li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
   		<li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
-  		<li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
-  		<li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
+  		<li><a href="/buster_moon/SearchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
+  		<li><a href="/buster_moon/My_profileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
     </ul>
 </nav>
  <!-- メニューバーここまで -->
@@ -67,7 +67,7 @@
         </div>
     </div>
 	</div>
-</form>
+
 <!-- 募集を呼びかける掲示板画面のための/div -->
 </div>
 <div id="table">
@@ -78,12 +78,20 @@
 			    <td>店名:${b.restaurant_name}</td>
 				<td>時間:${b.time}</td>
 				<td>場所:${b.place}</td>
+				<td><input type="text" name="USERS_ID" value="${b.users_id}"></td>
+				
+				<!--  "${id}"-->
+				<c:if test="${id.equals(b.users_id) }">
+				<td><input type="submit" name="SUBMIT" value="削除" >
+				</c:if>
+			
+				
 			</tr>
 			</table>
  		</c:forEach>
   	</table>
 </div>
-
+</form>
 <!-- 一緒にどう？送信ここまで -->
 <!-- メインここまで -->
 
