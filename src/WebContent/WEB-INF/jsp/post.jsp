@@ -13,19 +13,24 @@
 
     <body>
       <!-- メニューバーの表示 -->
-      <ul class="nav">
+       <ul class="nav">
         <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
         <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
         <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
         <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
         <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
-      </ul>
+       </ul>
 
-      <form method="POST" id="posts_form" action="/buster_moon/PostServlet">
+      <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data">
 
-          ジャンル
+          <select name="restaurant" id="restaurant_name">
+            <option value="" selected>店名</option>
+            <c:forEach var="e" items="${shiborikomiList}">
+            <option  value="${e.restaurant}">${e.restaurant}</option>
+            </c:forEach>
+          </select>
           <select id="genre" name="genre">
-             <option value=""<c:if test="${genre == ''}"> selected</c:if>>選択してください</option>
+             <option value=""<c:if test="${genre == ''}"> selected</c:if>>ジャンル</option>
              <option value=1<c:if test="${genre == '1'}"> selected</c:if>>中華</option>
              <option value=2<c:if test="${genre == '2'}"> selected</c:if>>ラーメン屋</option>
              <option value=3<c:if test="${genre == '3'}"> selected</c:if>>イタリアン</option>
@@ -40,31 +45,27 @@
              <option value=12<c:if test="${genre == '12'}"> selected</c:if>>東南アジア料理</option>
              <option value=13<c:if test="${genre == '13'}"> selected</c:if>>沖縄料理</option>
           </select>
-          <input type="submit" name="button" value="店舗検索"><br>
-          店名
-          <select name="restaurant" id="restaurant_name">
-            <option value="" selected>選択してください</option>
-            <c:forEach var="e" items="${shiborikomiList}">
-            <option  value="${e.restaurant}">${e.restaurant}</option>
-            </c:forEach>
-          </select><br>
+          <input type="submit" name="button" value="店舗検索">
+          <input type="submit" name="button" value="投稿" id="post_button">
+
+          <br>
           写真
           <input type="file" name="photo" accept="image/*">
           <br>
 
-          価格帯
+        <div class= "pull_down">
           <select name="price">
-           <option value="" selected>一番近いものを選択してください</option>
+           <option value="" selected>価格</option>
            <option value="500">500円</option>
            <option value="700">700円</option>
            <option value="1000">1000円</option>
            <option value="1500">1500円</option>
            <option value="2000">2000円</option>
-         </select><br>
+         </select>
+         <br>
 
-         片道時間
         <select name="walk">
-          <option value="" selected>一番近いものを選択してください</option>
+          <option value="" selected>片道時間</option>
           <option value="3">3分</option>
           <option value="5">5分</option>
           <option value="10">10分</option>
@@ -72,20 +73,19 @@
           <option value="20">20分</option>
         </select><br>
 
-        提供時間
         <select name="serve">
-         <option value="" selected>一番近いものを選択してください</option>
+         <option value="" selected>提供時間</option>
          <option value="3">3分</option>
          <option value="5">5分</option>
          <option value="10">10分</option>
          <option value="15">15分</option>
          <option value="20">20分</option>
-        </select><br>
+        </select>
+        </div>
+        <br>
         <p></p>
-        テキスト（140字以内)<br>
-         <textarea name="text" onChange="check()"></textarea><br>
-
-       <input type="submit" name="button" value="投稿">
+        <br>
+         <textarea name="text" onChange="check()" placeholder="テキスト"></textarea><br>
       </form>
     </body>
   </html>
@@ -101,10 +101,7 @@
     }
   }
 
-
-  var formObj = document.getElementById('posts_form').onsubmit = function() {
-	console.log('クリックされました');
-  };
+  if(window)
 
 
 </script>

@@ -1,1 +1,22 @@
 @charset "UTF-8";
+
+html {
+    font-family: sans-serif;
+}
+
+select#restaurant_name {
+	margin-right: 20px;
+}
+
+input#post_button {
+	margin-left: 260px;
+}
+
+.pull_down {
+	padding-left: 500px;
+}
+
+textarea {
+    height: 100px;
+    width: 500px;
+}

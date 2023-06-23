@@ -5,22 +5,22 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import dao.PostsDao;
-import model.Posts;
 import model.Restaurants;
-import model.Result;
-import model.Users;
 
 
 /**
  * Servlet implementation class PostServlet
  */
+@MultipartConfig(location = "C:\\dojo6\\src\\WebContent\\img") // アップロードファイルの一時的な保存先
 @WebServlet("/PostServlet")
 public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,8 +31,8 @@ public class PostServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 投稿画面にフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/post.jsp");
-				dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/post.jsp");
+		dispatcher.forward(request, response);
 	}
 
 
@@ -49,36 +49,41 @@ public class PostServlet extends HttpServlet {
 //			return;
 //		}
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
+
+
+
 		String id= request.getParameter("id");
-			System.out.println(id);
-			//session
-			HttpSession session = request.getSession();
-			String users_id=((Users)session.getAttribute("id")).getId();
-			System.out.println(users_id);
-			//本日の日付
+		System.out.println(id);
+		//session
+		HttpSession session = request.getSession();
+//			String users_id=((Users)session.getAttribute("id")).getId();
+		String users_id="2";
+		System.out.println(users_id);
+		//本日の日付
 //
 
 		String date= request.getParameter("date");
-			System.out.println(date);
-		String photo=request.getParameter("photo");
-			System.out.println(photo);
+		System.out.println(date);
+//		String photo=request.getParameter("photo");
+//		System.out.println(photo);
 		String restaurant= request.getParameter("restaurant");
-			System.out.println(restaurant);
+		System.out.println(restaurant);
 //		String genre= request.getParameter("genre");
 //		System.out.println(genre);
 		String point= request.getParameter("point");
 		System.out.println(point);
 
 		String walk= request.getParameter("walk");
-			System.out.println(walk);
+		System.out.println(walk);
+
 		String serve= request.getParameter("serve");
-			System.out.println(serve);
+		System.out.println(serve);
+
 		String price= request.getParameter("price");
-			System.out.println(price);
+		System.out.println(price);
+
 		String text= request.getParameter("text");
-			System.out.println(text);
+		System.out.println(text);
 
 	    // リクエストパラメータを取得する
 	    request.setCharacterEncoding("UTF-8");
@@ -109,24 +114,49 @@ public class PostServlet extends HttpServlet {
 //		dispatcher.forward(request, response);
 
 
-		if(request.getParameter("button").equals("投稿"))
-		{
-			// 投稿処理を行う
-			PostsDao PosDao = new PostsDao();
-			if (PosDao.insert(new Posts(id, users_id, date, photo,
-					restaurant, walk, serve, price, genre,  text, point))) {	// 投稿成功
-
-				request.setAttribute("result", new Result("投稿成功！", "投稿が完了しました。", "/buster_moon/Time_lineServlet"));
-			}
-			else {												// 投稿失敗
-				request.setAttribute("result", new Result("投稿失敗！", "投稿することが出来ませんでした。",  "/buster_moon/Time_lineServlet"));
-			}
-
-
-			// タイムラインページにリダイレクトする
-			response.sendRedirect("/buster_moon/Time_lineServlet");
-		}
+//		if(request.getParameter("button").equals("投稿"))
+//		{
+//
+//			// リクエストパラメータを取得する
+//			request.setCharacterEncoding("UTF-8");
+//			Part part = request.getPart("photo"); // getPartで取得
+//
+//			String photo = this.getFileName(part);
+//			request.setAttribute("photo", photo);
+//			// サーバの指定のファイルパスへファイルを保存
+//	        //場所はクラス名↑の上に指定してある
+//			part.write(photo);
+//
+//			// 投稿処理を行う
+//			PostsDao PosDao = new PostsDao();
+//			if (PosDao.insert(new Posts(id, users_id, date, photo,
+//					restaurant, walk, serve, price, genre,  text, point))) {	// 投稿成功
+//
+//				request.setAttribute("result", new Result("投稿成功！", "投稿が完了しました。", "/buster_moon/Time_lineServlet"));
+//			}
+//			else {												// 投稿失敗
+//				request.setAttribute("result", new Result("投稿失敗！", "投稿することが出来ませんでした。",  "/buster_moon/Time_lineServlet"));
+//			}
+//
+//
+//			// タイムラインページにリダイレクトする
+//			response.sendRedirect("/buster_moon/Time_lineServlet");
+//		}
 	}
+
+	//ファイルの名前を取得してくる
+		private String getFileName(Part part) {
+	        String name = null;
+	        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+	            if (dispotion.trim().startsWith("filename")) {
+	                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+	                name = name.substring(name.lastIndexOf("\\") + 1);
+	                break;
+	            }
+	        }		// TODO 自動生成されたメソッド・スタブ
+			return name;
+		}
+
 }
 
 
