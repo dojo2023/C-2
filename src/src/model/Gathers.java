@@ -12,7 +12,7 @@ public class Gathers implements Serializable {
 	private int time;
 	private int place;
 
-    public Gathers(String id, String users_id, String date,String point,
+    public Gathers(String id,String users_id, String date,String point,
     		String restaurant_name,int time,int place) {
       super();
       this.id = id;
@@ -24,7 +24,17 @@ public class Gathers implements Serializable {
       this.place= place;
     }
 
-
+    public Gathers(String users_id, String date,String point,
+    		String restaurant_name,int time,int place) {
+      super();
+      //this.id = id;
+      this.users_id= users_id;
+      this.date = date;
+      this.point= point;
+      this.restaurant_name= restaurant_name;
+      this.time= time;
+      this.place= place;
+    }
 	public String getId() {
 		return id;
 	}

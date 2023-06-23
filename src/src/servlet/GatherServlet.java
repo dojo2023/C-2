@@ -41,7 +41,9 @@ public class GatherServlet extends HttpServlet {
 					response.sendRedirect("/buster_moon/LoginServlet");
 					return;
 				}
-
+				String users_id = ((Users)session.getAttribute("id")).getId();
+				request.setAttribute("id", users_id); 
+				
 		// 募集JSPにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
 				dispatcher.forward(request, response);
@@ -55,41 +57,49 @@ public class GatherServlet extends HttpServlet {
 	
 		
 		HttpSession session = request.getSession();
-
+		String users_id = ((Users)session.getAttribute("id")).getId();
+		request.setAttribute("id", users_id); 
 		
 	    //リクエストパラメータを取得する。
 		request.setCharacterEncoding("UTF-8");
-			String id = request.getParameter("ID");
-//			System.out.println(id);
-			String users_id = ((Users)session.getAttribute("id")).getId();
-//		    System.out.println(users_id);
-			String date = request.getParameter("DATE");
-//			System.out.println(date);
-		    String point = request.getParameter("POINT");
-//			System.out.println(point);
-			String restaurant_name = request.getParameter("RESTAURANT_NAME");
-//			System.out.println(restaurant_name);
-			String timeString = request.getParameter("TIME");
-			int time = Integer.parseInt(timeString);
-//			System.out.println(time);
-			String placeString = request.getParameter("PLACE");
-			int place = Integer.parseInt(placeString);
-//			System.out.println(place);
+//		System.out.println(id);
 			//登録処理を行う
 			GathersDao gatherDao = new GathersDao();
 				if (request.getParameter("SUBMIT").equals("送信")) {
-					Gathers gather = new Gathers(id,users_id,date,point,restaurant_name,time,place);
-					boolean result = gatherDao.insert(gather);
+					//String id = request.getParameter("ID");
+					//String users_id = ((Users)session.getAttribute("id")).getId();
+//				    System.out.println(users_id);
+					String date = request.getParameter("DATE");
+//					System.out.println(date);
+				    String point = request.getParameter("POINT");
+//					System.out.println(point);
+					String restaurant_name = request.getParameter("RESTAURANT_NAME");
+//					System.out.println(restaurant_name);
+					String timeString = request.getParameter("TIME");
+					int time = Integer.parseInt(timeString);
+		 //		    System.out.println(time);
+					String placeString = request.getParameter("PLACE");
+					int place = Integer.parseInt(placeString);
+//					System.out.println(place);
+					Gathers gather = new Gathers(users_id,date,point,restaurant_name,time,place);
+					gatherDao.insert(gather);
 //					ArrayList<Gathers> gathersList = new ArrayList<Gathers>();
 //					gathersList.add(gather);
 					List<Gathers> gathersList = gatherDao.select1();	
 					//検索結果をリクエストスコープに格納する
 					request.setAttribute("gathersList", gathersList);
-				
+			
 				}
-
 				if (request.getParameter("SUBMIT").equals("削除")) {
+					String id = request.getParameter("ID");
+					//System.out.println(id);
 					gatherDao.delete(id);
+					List<Gathers> gathersList = gatherDao.select1();
+					request.setAttribute("gathersList", gathersList);
+					
+					
+					
+					
 				}
 				
 				

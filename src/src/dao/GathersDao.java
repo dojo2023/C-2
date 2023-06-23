@@ -50,7 +50,6 @@ public class GathersDao {
 				pStmt.setInt(6, gather.getTime());
 		
 				pStmt.setInt(7, gather.getPlace());
-			
 						
 				if (pStmt.executeUpdate() == 1) {
 							result = true;	
