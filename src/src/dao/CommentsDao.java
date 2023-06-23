@@ -54,7 +54,7 @@ public class CommentsDao{
 
 		  pStmt.setString(4, yearS+"-"+monthS+"-"+dateS);
 
-		  pStmt.setString(5, "200");
+		  pStmt.setString(5, "7");
 
 		  if (comments.getText() != null || !comments.getText().equals("")) {
 			  pStmt.setString(6, comments.getText());

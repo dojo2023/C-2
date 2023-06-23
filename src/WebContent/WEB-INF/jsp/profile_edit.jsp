@@ -24,19 +24,29 @@
         <td><input type="text" name="introduction" value="${profile.introduction}"></td>
       </tr>
       <tr>
-        <td><input type="text" name="password" value="現在のパスワードを入力"></td>
+        <td>現在のパスワードを入力してください<br><input type="password" name="password"></td>
       </tr>
       <tr>
-        <td><input type="text" name="new_password" value="新しいパスワードを入力"></td>
+        <td>新しいパスワードを入力してください<br><input type="password" name="newPassword"></td>
       </tr>
       <tr>
-        <td><input type="text" name="new_password" value="新しいパスワード（再入力）"></td>
+        <td>確認のためもう一度、新しいパスワードを入力してください<br><input type="password" name="newPassword"></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" name="completion" value="変更を完了する" onclick="return confirm('変更内容を保存しますか？')">
+        </td>
+        <td>
+         <input type="submit" value="キャンセル">
+        </td>
       </tr>
     </table>
   </c:forEach>
+  </form>
   <!-- アイコン・名前・自己紹介・パスワードの編集ここまで -->
 
   <!-- ここから自分の投稿の削除・変更完了・キャンセル -->
+  <form id="dalete_post" method="POST" action="/buster_moon/Profile_editServlet">
   <c:forEach var="post" items="${postsList}">
     <table>
       <tr>
@@ -55,14 +65,8 @@
         <td><input type="text" name="price" value="${post.price}"></td>
         <td><input type="text" name="text" value="${post.text}"></td>
         <td><img src="${post.photo}" alt="料理の写真"></td>
-      </tr>
-      <tr>
-        <td>
-          <input type="submit" name="completion" value="変更を完了する" onclick="return confirm('変更内容を保存しますか？')">
-        </td>
-        <td>
-         <input type="submit" value="キャンセル">
-        </td>
+        <td><input type="hidden" name="id" value="${post.id}"></td>
+        <td><input type="submit" name="post_delete" value="削除" onclick="return confirm('削除してもよろしいですか？')"></td>
       </tr>
     </table>
   </c:forEach>

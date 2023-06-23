@@ -30,11 +30,12 @@
 		</table>
 </div>
 </c:forEach>
+<label>
 <c:forEach var="e" items="${postsList}">
 <hr>
 <div class="posts">
-	<div><img>(投稿者アイコン)${e.icon}</div>
-	<div><img>(投稿者名)${e.name}</div>
+	<div><img src="${'/buster_moon/img/'+=e.icon}"></div>
+	<div>(投稿者名)${e.name}</div>
 	<div>店名：${e.restaurant}</div>
 		<div id="post_inf">
 		<table>
@@ -44,35 +45,54 @@
 			<tr><td>価格:</td><td>${e.price}</td></tr>
 		</table>
 		<div>${e.text}</div>
-		<div><img >${e.photo}</div>
+		<div><img src="${'/buster_moon/img/'+=e.photo}"></div>
 	</div>
 	<form method="POST" action="/buster_moon/Time_lineServlet">
-	<input type="text" name="ID" value="${e.id}">
+	<input type="text" name="ID" value="${e.id} ">
 	<input type="submit" name="SUBMIT" value="コメント表示" >
 	</form>
 </div>
 <hr>
 </c:forEach >
-<h2>コメント返信表示欄</h2>
-<form method="POST" action="/buster_moon/Time_lineServlet" >
-<c:forEach var="c" items="${commentsList}">
-	<p>アイコン:${c.icon}</p>
-	<p>名前:${c.name}</p>
-	<p>テキスト:${c.text}</p>
-	<p>日付:${c.date}</p>
-	<input type="text" name="POSTS_ID" value="${c.posts_id}">
-	<input type="text" name="ID" value="${c.id}">
-	<input type="text" name="USERS_ID" value="${c.users_id}">
-	"${id}"
-	<c:if test="${id.equals(c.users_id) }">
-	<input type="submit" name="SUBMIT" value="削除" >
-	</c:if>
-</c:forEach>
-<c:if test="${commentsList!=null}">
-<h2>コメント入力欄</h2>
-	<input type="text" name="TEXT" value="コメント入力">
-	<input type="submit" name="SUBMIT" value="送信" >
-</c:if>
-</form>
+</label>
+
+<div id="popup">
+	<h2>コメント返信表示欄</h2>
+	<c:forEach var="c" items="${commentsList}">
+		<form method="POST" action="/buster_moon/Time_lineServlet" >
+			<hr>
+			<p>アイコン:<img src="${'/buster_moon/img/'+=c.icon}"></p>
+			<p>名前:${c.name}</p>
+			<p>テキスト:${c.text}</p>
+			<p>日付:${c.date}</p>
+			<input type="text" name="ID" value="${c.id}">
+			<input type="text" name="POSTS_ID" value="${c.posts_id}">
+			<input type="text" name="USERS_ID" value="${c.users_id}" >
+			<c:if test="${users_id.equals(c.users_id) }">
+				t type="submit" name="SUBMIT" value="削除" >
+			</c:if>
+		</form>
+	</c:forEach>
+	<form method="POST" action="/buster_moon/Time_lineServlet" >
+		<c:if test="${commentsList!=null}">
+				<hr>
+				<h2>コメント入力欄</h2>
+				<input type="text" name="POSTS_ID" value="${posts_id}">
+				<input type="text" name="TEXT" value="コメント入力">
+				<input type="submit" name="SUBMIT" value="送信" >
+		</c:if>
+	</form>
+</div>
 </body>
+<style>
+#popup {
+  background: #fff;
+  display: inline;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+}
+</style>
 </html>
