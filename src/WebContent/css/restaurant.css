@@ -2,30 +2,101 @@
 
 body {
 	margin: 0 0 0 0;
+	padding-top: 50px;
 }
 .wrapper {
 	margin: 0 auto 0 auto;
 	max-width: 1000px;
 }
-.nav li {
-	display:flex;
-	flex-flow: column;
-	justify-content:flex-end;
-	list-style-type: none;
-	padding-right: 30px;
+photo {
+	display: flex;
+}
+/* メニューバー */
+nav {
+	position: fixed; /* 画面に固定して追従させます */
+	height: 100%;
+	top: 150px;
+	right:0; /* 固定位置は右側 */
+	z-index:1; /*他の要素より前に出します*/
+	background-color: white;
+}
+
+ul li {
+	list-style-type:none;
+}
+.menu1{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/timeLine.ico) no-repeat;
+}
+.menu1 a{
+	display: block;
+	height: 100%;
+}
+
+.menu2{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/post.ico) no-repeat;
+}
+.menu2 a{
+	display: block;
+	height: 100%;
+}
+.menu3{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/search.ico) no-repeat;
+}
+.menu3 a{
+	display: block;
+	height: 100%;
+}
+.menu4{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/gather.ico) no-repeat;
+}
+.menu4 a{
+	display: block;
+	height: 100%;
+}
+.menu5{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/profile.ico) no-repeat;
+}
+.menu5 a{
+	display: block;
+	height: 100%;
 }
 
 
+/* Layout */
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+main, aside {
+	width: 50%;
+	height: 100px;
+}
 table {
     border-collapse:  collapse; /* セルの線を重ねる */
 }
 
 tr:nth-child(odd) {
-    background-color:  #ddd;    /* 背景色指定 */
+    background-color:  #FFA500;    /* 背景色指定 */
 }
 
 th,td {
-    padding: 5px 10px;          /* 余白指定 */
+    padding: 10px 20px;          /* 余白指定 */
+    width: 155px;
+}
+.review {
+ 	border-bottom: solid 3px #CBFFD3;
+	background-image: linear-gradient(transparent 70%, #E6FFE9 70%);
+	padding-bottom: .25rem;
 }
 photo {
 	 table-layout:fixed;

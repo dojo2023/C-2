@@ -25,7 +25,7 @@
 <input type="text" style="width: 300px; height: 25px;" name="KEYWORD" placeholder="キーワードを入力してください">
 <input type="submit" name="SEARCH" value="検索" class="button1">
 <div class="table">
-  <table id="list">
+  <table id="kensaku">
     <tr>
       <td>
       <select name="GENRE">
@@ -104,25 +104,32 @@
 </form>
 	<form method="POST" action="/buster_moon/RestaurantServlet">
 		<div id="table">
-  		<table id="list">
-  			<c:forEach var="r" items="${restaurantList}" >
+		<c:forEach var="r" items="${restaurantList}" >
+  			<table id="list">
 				<tr>
 	  				<td>店名${r.restaurant}<input type="hidden" name="RESTAURANT" value="${r.restaurant}"></td>
 				</tr>
 				<tr>
-					<td>ジャンル${r.genre}</td>
+					<td id="genremei">ジャンル${r.genre}</td>
 					<td>価格${r.price}</td>
 					<td>徒歩${r.walk}</td>
 					<td>提供${r.serve}</td>
 				</tr>
- 			 </c:forEach>
-  		</table>
-		<input type="submit" name="SUBMIT" value="店舗詳細表示" >
+				<tr>
+					<input type="submit" name="SUBMIT" value="店舗詳細表示" >
+				</tr>
+  			</table>
+  		 </c:forEach>
+
 		</div>
 	</form>
 
 
+<script>
+'use strict';
+document.getElementByID('genremei').textContent = '';
 
+</script>
 </body>
 </html>
 
