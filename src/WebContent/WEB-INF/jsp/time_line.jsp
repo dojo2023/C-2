@@ -18,18 +18,18 @@
   <li><a href="/buster_moon/ProfileServlet">プロフィール></a></li>
 </ul>
 
-<h1>ランキング</h1>
+<div id="ranks">
+<h2>ランキング</h2>
 <c:forEach var="p" items="${profilesList}">
-<div class="ranks">
 		<table>
 			<tr>
 			    <td>${p.name}</td>
-				<td>${p.icon}</td>
+				<td><img src="${'/buster_moon/img/'+=p.icon}"></td>
 				<td>${p.t_point+p.g_point+p.c_point}</td>
 			</tr>
 		</table>
-</div>
 </c:forEach>
+</div>
 <label>
 <c:forEach var="e" items="${postsList}">
 <hr>
@@ -57,27 +57,39 @@
 </label>
 
 <div id="popup">
-	<h2>コメント返信表示欄</h2>
+	<h2>この投稿にされたコメント</h2>
 	<c:forEach var="c" items="${commentsList}">
 		<form method="POST" action="/buster_moon/Time_lineServlet" >
 			<hr>
-			<p>アイコン:<img src="${'/buster_moon/img/'+=c.icon}"></p>
-			<p>名前:${c.name}</p>
-			<p>テキスト:${c.text}</p>
-			<p>日付:${c.date}</p>
-			<input type="text" name="ID" value="${c.id}">
-			<input type="text" name="POSTS_ID" value="${c.posts_id}">
-			<input type="text" name="USERS_ID" value="${c.users_id}" >
-			<c:if test="${users_id.equals(c.users_id) }">
-				t type="submit" name="SUBMIT" value="削除" >
-			</c:if>
+			<table>
+			<tr>
+				<td>
+				<img src="${'/buster_moon/img/'+=c.icon}">
+				${c.name}
+				${c.date}
+				</td>
+			</tr>
+			<input type="hidden" name="ID" value="${c.id}">
+			<input type="hidden" name="POSTS_ID" value="${c.posts_id}">
+			<input type="hidden" name="USERS_ID" value="${c.users_id}" >
+			<tr>
+				<td>${c.text}</td>
+				<td>
+					<c:if test="${users_id.equals(c.users_id) }">
+					<input type="submit" name="SUBMIT" value="削除" >
+					</c:if>
+				</td>
+			</tr>
+
+
+			</table>
 		</form>
 	</c:forEach>
 	<form method="POST" action="/buster_moon/Time_lineServlet" >
 		<c:if test="${commentsList!=null}">
 				<hr>
 				<h2>コメント入力欄</h2>
-				<input type="text" name="POSTS_ID" value="${posts_id}">
+				<input type="hidden" name="POSTS_ID" value="${posts_id}">
 				<input type="text" name="TEXT" value="コメント入力">
 				<input type="submit" name="SUBMIT" value="送信" >
 		</c:if>
@@ -91,6 +103,15 @@
   bottom: 0;
   left: 0;
   padding: 20px;
+  position: fixed;
+  width: 100%;
+}
+#ranks {
+  background: #fff;
+  display: block;
+  top: 0;
+  left: 0;
+  padding: 5px;
   position: fixed;
   width: 100%;
 }
