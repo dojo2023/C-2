@@ -38,7 +38,7 @@ public class Time_lineServlet extends HttpServlet {
 				if(session.getAttribute("id") != null) {
 					users_id=((Users)session.getAttribute("id")).getId();
 				}
-				request.setAttribute("id", users_id);
+				request.setAttribute("users_id", users_id);
 				// ランキング（並び替え後の）select処理を行う
 				RankDao rankDao = new RankDao();
 				List<Profiles> profilesList = rankDao.select();
@@ -59,6 +59,7 @@ public class Time_lineServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/time_line.jsp");
 				dispatcher.forward(request, response);
 
+
 	}
 
 	/**
@@ -77,6 +78,15 @@ public class Time_lineServlet extends HttpServlet {
 			String posts_id = request.getParameter("ID");
 			List<Comments> commentsList = cDao.select(posts_id);
 			request.setAttribute("commentsList", commentsList);
+			request.setAttribute("posts_id",posts_id);
+
+			doGet(request,response);
+		}
+
+		if(request.getParameter("SUBMIT").equals("削除"))
+		{
+			String id = request.getParameter("ID");
+			cDao.delete(id);
 			doGet(request,response);
 		}
 
@@ -90,14 +100,6 @@ public class Time_lineServlet extends HttpServlet {
 			String text=request.getParameter("TEXT");
 
 			cDao.insert(new Comments(users_id,posts_id,text));
-			doGet(request,response);
-		}
-
-		if(request.getParameter("SUBMIT").equals("削除"))
-		{
-
-			String id=request.getParameter("ID");
-			cDao.delete(id);
 			doGet(request,response);
 		}
 
