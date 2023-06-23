@@ -37,7 +37,7 @@
       <tr>
         <td colspan="2">
           <input type="submit" name="LOGIN" value="ログイン">
-          <input type="submit" name="NEW_MEMBER" value="新規登録">
+          <a href="/buster_moon/New_memberServlet">新規登録</a>
           <span id="error_message"></span>
         </td>
       </tr>
