@@ -21,23 +21,23 @@
       <tr class="ID-PASS">
         <td>
           <label><b>MAIL ADDRESS</b>
-            <input type="text" name="MAIL ADDRESS"><br>
+            <input type="text" name="MAIL_ADDRESS"><br>
           </label>
         </td>
       </tr>
-      <!-- メールアドレス確認のフォーム未完成 -->
+<!--       メールアドレス確認のフォーム未完成
       <tr class="ID-PASS">
         <td>
           <label><b>MAIL ADDRESS</b>
-            <input type="text" name="MAIL ADDRESS"><br>
+            <input type="text" name="MAIL_ADDRESS"><br>
           </label>
         </td>
       </tr>
-      <!-- メールアドレス確認の未完成フォームここまで -->
-      <tr class="ID-PASS">
+      メールアドレス確認の未完成フォームここまで
+ -->      <tr class="ID-PASS">
         <td>
           <label><b>PASSWORD</b>
-            <input type="password" name="PW"><br>
+            <input type="password" name="PASSWORD"><br>
           </label>
         </td>
       </tr>

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UsersDao;
+import model.Users;
+
 /**
  * Servlet implementation class New_memberServlet
  */
@@ -29,8 +32,23 @@ public class New_memberServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("ID");
+		String mail_address= request.getParameter("MAIL_ADDRESS");
+		String password = request.getParameter("PASSWORD");
 
+		// 新規登録処理を行う
+		UsersDao sDao = new UsersDao();
+
+		if (sDao.insert(new Users(id, mail_address, password))) {
+			// 登録できていればログインサーブレットにリダイレクトする
+			request.setAttribute("result", sDao);
+			response.sendRedirect("/buster_moon/LoginServlet");
+		}
+		else {
+			System.out.println("不正処理");
+		}
+	}
 }
+
