@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;import dao.GathersDao;
+import javax.servlet.http.HttpSession;
+
+import dao.GathersDao;
 import model.Gathers;
 import model.Users;
 /**
@@ -58,21 +60,21 @@ public class GatherServlet extends HttpServlet {
 	    //リクエストパラメータを取得する。
 		request.setCharacterEncoding("UTF-8");
 			String id = request.getParameter("ID");
-			System.out.println(id);
+//			System.out.println(id);
 			String users_id = ((Users)session.getAttribute("id")).getId();
-		    System.out.println(users_id);
+//		    System.out.println(users_id);
 			String date = request.getParameter("DATE");
-			System.out.println(date);
+//			System.out.println(date);
 		    String point = request.getParameter("POINT");
-			System.out.println(point);
+//			System.out.println(point);
 			String restaurant_name = request.getParameter("RESTAURANT_NAME");
-			System.out.println(restaurant_name);
+//			System.out.println(restaurant_name);
 			String timeString = request.getParameter("TIME");
 			int time = Integer.parseInt(timeString);
-			System.out.println(time);
+//			System.out.println(time);
 			String placeString = request.getParameter("PLACE");
 			int place = Integer.parseInt(placeString);
-			System.out.println(place);
+//			System.out.println(place);
 			//登録処理を行う
 			GathersDao gatherDao = new GathersDao();
 				if (request.getParameter("SUBMIT").equals("送信")) {
@@ -86,17 +88,21 @@ public class GatherServlet extends HttpServlet {
 				
 				}
 
-			
+				if (request.getParameter("SUBMIT").equals("削除")) {
+					gatherDao.delete(id);
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/gather.jsp");
 			dispatcher.forward(request, response);
-			
-			
-					//登録処理を行う
-//		GathersDao gatherDao = new GathersDao();
-//			if (request.getParameter("SUBMIT").equals("送信")) {
-//				List<Gathers>gathersList=gatherDao.select(restaurant_name,time,place);
-//			    }
 			
 			
 		//削除処理を行う
