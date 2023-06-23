@@ -46,9 +46,6 @@ public class New_memberServlet extends HttpServlet {
 			request.setAttribute("result", sDao);
 			response.sendRedirect("/buster_moon/LoginServlet");
 		}
-		else {
-			System.out.println("不正処理");
-		}
 	}
 }
 

@@ -16,34 +16,35 @@
 <!-- ヘッダー？ここまで -->
 
 <!-- 会員登録のときの入力フォーム -->
-<form method="POST" action="/buster_moon/New_memberServlet">
+<form method="POST" action="/buster_moon/New_memberServlet" onsubmit="return cancelsubmit()">
   <table id="NEW_MEMBER">
       <tr class="ID-PASS">
         <td>
           <label><b>MAIL ADDRESS</b>
-            <input type="text" name="MAIL_ADDRESS"><br>
+            <input type="text" name="MAIL_ADDRESS" id="MD"><br>
           </label>
         </td>
       </tr>
-<!--       メールアドレス確認のフォーム未完成
-      <tr class="ID-PASS">
-        <td>
-          <label><b>MAIL ADDRESS</b>
-            <input type="text" name="MAIL_ADDRESS"><br>
-          </label>
-        </td>
-      </tr>
-      メールアドレス確認の未完成フォームここまで
- -->      <tr class="ID-PASS">
+
+     <tr class="ID-PASS">
         <td>
           <label><b>PASSWORD</b>
-            <input type="password" name="PASSWORD"><br>
+            <input type="password" name="PASSWORD" id="PW"><br>
           </label>
         </td>
       </tr>
+
+      <tr class="ID-PASS">
+        <td>
+          <label><b>PASSWORD確認</b>
+            <input type="text" id="PWC"><br>
+          </label>
+        </td>
+      </tr>
+
       <tr>
         <td colspan="2">
-          <input type="submit" name="REGIST" value="登録">
+          <input type="submit" name="REGIST" value="登録" >
         </td>
       </tr>
     </table>
@@ -57,5 +58,6 @@
 </div>
 <!-- フッターここまで -->
 
+<script src="/buster_moon/js/new_member.js"></script>
 </body>
 </html>
