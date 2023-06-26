@@ -10,13 +10,15 @@
 <body>
 
 <!-- メニューバーの表示 -->
-<ul class="nav">
-  <li><a href="/buster_moon/Time_lineServlet">タイムライン</a></li>
-  <li><a href="/buster_moon/PostServlet">投稿</a></li>
-  <li><a href="/buster_moon/SerchServlet">検索</a></li>
-  <li><a href="/buster_moon/GatherServlet">一緒にどう？</a></li>
-  <li><a href="/buster_moon/ProfileServlet">プロフィール></a></li>
-</ul>
+<nav>
+			<ul>
+  				<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+ 				<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+ 				<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+  				<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+				<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
+  			</ul>
+</nav>
 
 <div id="ranks">
 <h2>ランキング</h2>
@@ -39,13 +41,56 @@
 	<div>店名：${e.restaurant}</div>
 		<div id="post_inf">
 		<table>
-			<tr><td>ジャンル:</td><td>${e.genre}</td></tr>
-			<tr><td>徒歩時間:</td><td>${e.walk}</td></tr>
-			<tr><td>提供時間:</td><td>${e.serve}</td></tr>
-			<tr><td>価格:</td><td>${e.price}</td></tr>
+			<tr>
+			<td>ジャンル:</td>
+				<td>
+					<c:if test="${e.genre==1}">
+					中華
+					</c:if>
+					<c:if test="${e.genre==2}">
+					ラーメン屋
+					</c:if>
+					<c:if test="${e.genre==3}">
+					イタリアン
+					</c:if>
+					<c:if test="${e.genre==4}">
+					和食・定食
+					</c:if>
+					<c:if test="${e.genre==5}">
+					カフェ
+					</c:if>
+					<c:if test="${e.genre==6}">
+					そば・うどん
+					</c:if>
+					<c:if test="${e.genre==7}">
+					ハンバーガー
+					</c:if>
+					<c:if test="${e.genre==8}">
+					スペイン料理
+					</c:if>
+					<c:if test="${e.genre==9}">
+					フレンチ
+					</c:if>
+					<c:if test="${e.genre==10}">
+					カレー
+					</c:if>
+					<c:if test="${e.genre==11}">
+					韓国料理
+					</c:if>
+					<c:if test="${e.genre==12}">
+					東南アジア料理
+					</c:if>
+					<c:if test="${e.genre==13}">
+					沖縄料理
+					</c:if>
+				</td>
+			</tr>
+			<tr><td>徒歩時間:</td><td>${e.walk}分</td></tr>
+			<tr><td>提供時間:</td><td>${e.serve}分</td></tr>
+			<tr><td>価格:</td><td>${e.price}円</td></tr>
 		</table>
 		<div>${e.text}</div>
-		<div><img src="${'/buster_moon/img/'+=e.photo}"></div>
+		<div><img src=""+="${e.photo}"></div>
 	</div>
 	<form method="POST" action="/buster_moon/Time_lineServlet">
 	<input type="text" name="ID" value="${e.id} ">
@@ -57,7 +102,13 @@
 </label>
 
 <div id="popup">
-	<h2>この投稿にされたコメント</h2>
+	<c:if test="${commentsList!=null}">
+	<h2>${date}の${name}による投稿に対するコメント</h2>
+
+		<form method="POST" action="/buster_moon/Time_lineServlet" >
+			<input type="submit" name="SUBMIT" value="コメント欄を閉じる" >
+		</form>
+	</c:if>
 	<c:forEach var="c" items="${commentsList}">
 		<form method="POST" action="/buster_moon/Time_lineServlet" >
 			<hr>
