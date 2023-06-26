@@ -110,7 +110,7 @@
 	  				<td>店名${r.restaurant}<input type="hidden" name="RESTAURANT" value="${r.restaurant}"></td>
 				</tr>
 				<tr>
-					<td id="genremei">ジャンル${r.genre}</td>
+					<td><div id="result">${r.genre}</div></td>
 					<td>価格${r.price}</td>
 					<td>徒歩${r.walk}</td>
 					<td>提供${r.serve}</td>
@@ -127,7 +127,48 @@
 
 <script>
 'use strict';
-document.getElementByID('genremei').textContent = '';
+
+var value = ${genre}; // EL式からの値をJavaScriptの変数に代入
+if (value === 1) {
+  document.getElementById("result").innerHTML = "中華";
+}
+else if (value === 2) {
+	  result = "ラーメン屋";
+}
+else if (value === 3) {
+	  result = "イタリアン";
+}
+else if (value === 4) {
+	  result = "和食・定食";
+}
+else if (value === 5) {
+	  result = "カフェ";
+}
+else if (value === 6) {
+	  result = "そば・うどん";
+}
+else if (value === 7) {
+	  result = "ハンバーガー";
+}
+else if (value === 8) {
+	  result = "スペイン料理";
+}
+else if (value === 9) {
+	  result = "フレンチ";
+}
+else if (value === 10) {
+	  result = "カレー";
+}
+else if (value === 11) {
+	  result = "韓国料理";
+}
+else if (value === 12) {
+	  result = "東南アジア料理";
+}
+else if (value === 13) {
+	  result = "沖縄料理";
+}
+document.getElementById("result").innerHTML = result;
 
 </script>
 </body>
