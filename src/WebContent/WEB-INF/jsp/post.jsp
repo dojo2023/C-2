@@ -23,8 +23,14 @@
   			</ul>
   	</nav>
 
-      <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data">
+      <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data" id="postForm">
 
+      	  	  <input type="submit" name="button" value="x">
+	      	  <input type="text" id="bonus" name="bonus" value="${bonus}">
+	      	  <input type="text" id="bonus2" name="bonus2" value="${bonus2}">
+			  <div><img src="${bonus}"><audio controls><source src="${bonus2}"></audio></div>
+
+		  <input type="submit" name="button" value="店舗検索">
           <select name="restaurant" id="restaurant_name">
             <option value="" selected>店名</option>
             <c:forEach var="e" items="${shiborikomiList}">
@@ -49,14 +55,13 @@
           </select>
           <input type="submit" name="button" value="店舗検索">
           <input type="submit" name="button" value="投稿" id="post_button">
-
           <br>
           写真
-          <input type="file" name="photo" accept="image/*">
+          <input type="file" name="photo" accept="image/*" id=photo>
           <br>
 
         <div class= "pull_down">
-          <select name="price">
+          <select name="price" id="price">
            <option value="" selected>価格</option>
            <option value="500">500円</option>
            <option value="700">700円</option>
@@ -66,7 +71,7 @@
          </select>
          <br>
 
-        <select name="walk">
+        <select name="walk" id="walk">
           <option value="" selected>片道時間</option>
           <option value="3">3分</option>
           <option value="5">5分</option>
@@ -75,7 +80,7 @@
           <option value="20">20分</option>
         </select><br>
 
-        <select name="serve">
+        <select name="serve" id="serve">
          <option value="" selected>提供時間</option>
          <option value="3">3分</option>
          <option value="5">5分</option>
@@ -87,7 +92,7 @@
         <br>
         <p></p>
         <br>
-         <textarea name="text" onChange="check()" placeholder="テキスト"></textarea><br>
+         <textarea name="text" onChange="check()" placeholder="テキスト" id="textBox"></textarea><br>
       </form>
     </body>
   </html>
@@ -95,6 +100,66 @@
 <script>
   'use strict';
 
+  document.getElementById("post_button").onclick=function check() {
+	  if(window.confirm('この内容でよろしいですか？')) {
+
+		  //記入項目数毎の確率変更のための準備
+		  let k=1;
+
+		  if(document.getElementById("price").value&&document.getElementById("walk").value&&document.getElementById("serve").value){
+			  k+=1;
+			  document.getElementById("bonus").value="あるよ";
+		  }
+
+		  if(document.getElementById("photo").value){
+			  k+=1;
+		  }
+
+		  if(document.getElementById("textBox").value){
+			  k+=1;
+		  }
+
+		  //講師毎の確率の画像音声表示
+		  let r=Math.floor(Math.random()*3600)+1;
+
+		  //寺井
+		  if(r<a){
+			  document.getElementById("bonus").value="/buster_moon/img/terai.jpg";
+			  document.getElementById("bonus2").value="/buster_moon/img/terai.mp3";
+		  }
+
+		  //大石
+		  else if(r>=a&&r<b){
+			  document.getElementById("bonus").value="/buster_moon/img/ooisi.jpg";
+			  document.getElementById("bonus2").value="/buster_moon/img/ooisi.mp3";
+		  }
+
+		  //末永
+		  else if(r>=b&&r<c){
+			  document.getElementById("bonus").value="/buster_moon/img/suenaga.jpg";
+			  document.getElementById("bonus2").value="/buster_moon/img/suenaga.mp3";
+		  }
+
+		  //富原
+		  else if(r>=c&&r<d){
+			  document.getElementById("bonus").value="/buster_moon/img/tomihara.jpg";
+			  document.getElementById("bonus2").value="/buster_moon/img/tomihara.mp3";
+		  }
+
+		  //矢沢
+		  else{
+			  document.getElementById("bonus").value="/buster_moon/img/yazawa.jpg";
+			  document.getElementById("bonus2").value="/buster_moon/img/yazawa.mp3";
+		  }
+
+		  return true;
+	  } else {
+	      window.alert('キャンセルしました。')
+	      return false;
+	  }
+	};
+
+</script>
   <%--
     function check(){
 	txt = document.posts_form.text.value;
@@ -104,10 +169,6 @@
     }
   }
 --%>
-
-
-</script>
-
 
 <%--
 <script>

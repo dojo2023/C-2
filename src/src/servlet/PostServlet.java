@@ -75,16 +75,48 @@ public class PostServlet extends HttpServlet {
 //		String genre= request.getParameter("genre");
 //		System.out.println(genre);
 
-		String point= request.getParameter("point");
+		String point;
+		if(request.getParameter("point")!=null)
+		{
+			point= request.getParameter("point");
+		}
+		else
+		{
+			point=null;
+		}
 		System.out.println(point);
 
-		String walk= request.getParameter("walk");
+		String walk;
+		if(request.getParameter("walk")!=null)
+		{
+			walk= request.getParameter("walk");
+		}
+		else
+		{
+			walk=null;
+		}
 		System.out.println(walk);
 
-		String serve= request.getParameter("serve");
+		String serve;
+		if(request.getParameter("serve")!=null)
+		{
+			serve= request.getParameter("serve");
+		}
+		else
+		{
+			serve=null;
+		}
 		System.out.println(serve);
 
-		String price= request.getParameter("price");
+		String price;
+		if(request.getParameter("price")!=null)
+		{
+			price= request.getParameter("price");
+		}
+		else
+		{
+			price=null;
+		}
 		System.out.println(price);
 
 //		String text= request.getParameter("text");
@@ -92,10 +124,23 @@ public class PostServlet extends HttpServlet {
 
 	    // リクエストパラメータを取得する
 	    request.setCharacterEncoding("UTF-8");
-//		String posts_restaurant = request.getParameter("POSTS_RESTAURANT");
-		String genre = request.getParameter("genre");
+		String genre;
+		if(request.getParameter("genre")!=null)
+		{
+			genre= request.getParameter("genre");
+		}
+		else
+		{
+			genre=null;
+		}
+
+//		String posts_restaurant = request.getParameter("POSTS_RESTAURANT");;
 		request.setAttribute("genre", genre);
-		int genreVal = Integer.parseInt(genre);
+		int genreVal=0;
+		if(genre!=null)
+		{
+			genreVal = Integer.parseInt(genre);
+		}
 		// 検索処理を行う
 		PostsDao PDao = new PostsDao();
 		//List<Restaurants> restaurantList = ResDao.select(restaurant, 0, 0, 0, 0);
@@ -150,6 +195,17 @@ public class PostServlet extends HttpServlet {
 			part.write(photo);
 			System.out.println(photo);
 
+			//得点画像保持
+			String str_tmp_bonus = request.getParameter("bonus");	//リクエストパラメータから取得
+			byte[] bytes_bonus = str_tmp_bonus.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+			String bonus = new String(bytes_bonus, "UTF-8");//UTF-8の文字コードで、String型のインスタンスを生成
+			request.setAttribute("bonus",bonus);
+			//得点音声保持
+			String str_tmp_bonus2 = request.getParameter("bonus2");	//リクエストパラメータから取得
+			byte[] bytes_bonus2 = str_tmp_bonus2.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+			String bonus2 = new String(bytes_bonus2, "UTF-8");//UTF-8の文字コードで、String型のインスタンスを生成
+			request.setAttribute("bonus2",bonus2);
+
 			// 投稿処理を行う
 			PostsDao PosDao = new PostsDao();
 
@@ -163,6 +219,12 @@ public class PostServlet extends HttpServlet {
 			}
 
 
+			// タイムラインページにリダイレクトする
+			doGet(request, response);
+		}
+
+		if(button.equals("x"))
+		{
 			// タイムラインページにリダイレクトする
 			response.sendRedirect("/buster_moon/Time_lineServlet");
 		}
