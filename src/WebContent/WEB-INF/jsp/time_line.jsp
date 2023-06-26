@@ -11,13 +11,13 @@
 
 <!-- メニューバーの表示 -->
 <nav>
-			<ul>
-  				<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
- 				<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
- 				<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
-  				<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
-				<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
-  			</ul>
+		<ul>
+  			<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+ 			<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+ 			<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+  	 		<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+			<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
+  		</ul>
 </nav>
 
 <div id="ranks">
@@ -90,7 +90,7 @@
 			<tr><td>価格:</td><td>${e.price}円</td></tr>
 		</table>
 		<div>${e.text}</div>
-		<div><img src=""+="${e.photo}"></div>
+		<div><img src="${'/buster_moon/img/'+=e.photo}"></div>
 	</div>
 	<form method="POST" action="/buster_moon/Time_lineServlet">
 	<input type="text" name="ID" value="${e.id} ">
@@ -157,14 +157,6 @@
   position: fixed;
   width: 100%;
 }
-#ranks {
-  background: #fff;
-  display: block;
-  top: 0;
-  left: 0;
-  padding: 5px;
-  position: fixed;
-  width: 100%;
-}
+
 </style>
 </html>
