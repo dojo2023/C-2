@@ -121,10 +121,6 @@ public class PostServlet extends HttpServlet {
 		String text = new String(bytes_text, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
 		System.out.println(text);
 
-//		String str_tmp_photo = request.getParameter("photo");	//リクエストパラメータから取得
-//		byte[] bytes_photo = str_tmp_photo.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
-//		String photo = new String(bytes_photo, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
-//		System.out.println(photo);
 
 
 		if(button.equals("店舗検索"))
