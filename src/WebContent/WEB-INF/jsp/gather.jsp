@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>一緒にどう？</title>
 <link rel="stylesheet" href="/buster_moon/css/gather.css">
 </head>
 <body>
@@ -16,15 +16,15 @@
 <h2>ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h2>
 
 <!-- ここからメニューバー -->
-<nav>
-    <ul id="nav">
-		<li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
-  		<li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
-  		<li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
-  		<li><a href="/buster_moon/SearchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
-  		<li><a href="/buster_moon/My_profileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
-    </ul>
-</nav>
+	<nav class="menubar">
+		<ul>
+			<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+			<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+			<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+			<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+			<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
+		</ul>
+	</nav>
  <!-- メニューバーここまで -->
 
 <!-- ここから募集を表示 -->
@@ -85,10 +85,27 @@
 			    <td>店名:${b.restaurant_name}</td>
 			</tr>
 			<tr>
-				<td>時間:${b.time}</td>
+				<td>集合時間：
+				<c:if test="${b.time==1}">
+				12:00
+				</c:if>
+				<c:if test="${b.time==2}">
+				12:05
+				</c:if>
+				<c:if test="${b.time==3}">
+				12:10
+				</c:if>
+				</td>
 			</tr>
 			<tr>
-				<td>場所:${b.place}</td>
+				<td>集合場所：
+				<c:if test="${b.place==1}">
+				エレベーター前
+				</c:if>
+				<c:if test="${b.place==2}">
+				玄関前
+				</c:if>
+				</td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="ID" value=${b.users_id}></td>
@@ -99,9 +116,9 @@
 			<tr>
 				<td><input type="hidden" name="ID" value=${id}></td>
 			</tr>
-			<tr>
+			<!--  <tr>
 				<td><input type="submit" name="SUBMIT" value="👍" ></td>
-			</tr>
+			</tr>-->
 			<tr>
 			<c:if test="${id.equals(b.users_id) }">
 			<td><input type="submit" name="SUBMIT" value="削除" ></td>
