@@ -11,10 +11,10 @@ function cancelsubmit() {
 	var pw = document.getElementById("PW").value;
 	var pwc = document.getElementById("PWC").value;
 
-	if (document.getElementById("MD").value == null){
+	if (document.getElementById("MD").value == ""){
 		alert("メールアドレスが空欄です。");
 		return false;
-	} else if (pw !== null) {
+	} else if (pw == "") {
 		alert("パスワードが空欄です。");
 		return false;
 	} else if(pw != pwc) {
