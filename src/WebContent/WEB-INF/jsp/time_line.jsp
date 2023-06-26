@@ -15,7 +15,7 @@
 <div id="ranks">
 <h2>ランキング</h2>
 <c:forEach var="p" items="${profilesList}">
-		<table>
+		<table id = junni>
 			<tr>
 			    <td>${p.name}</td>
 				<td><img src="${'/buster_moon/img/'+=p.icon}"></td>
@@ -43,7 +43,7 @@
 	<div>店名：${e.restaurant}</div>
 		<div id="post_inf">
 		<table>
-			<tr>
+			<tr class="con">
 			<td>ジャンル:</td>
 				<td>
 					<c:if test="${e.genre==1}">
@@ -87,9 +87,9 @@
 					</c:if>
 				</td>
 			</tr>
-			<tr><td>徒歩時間:</td><td>${e.walk}分</td></tr>
-			<tr><td>提供時間:</td><td>${e.serve}分</td></tr>
-			<tr><td>価格:</td><td>${e.price}円</td></tr>
+			<tr class="con"><td>徒歩時間:</td><td>${e.walk}分</td></tr>
+			<tr class="con"><td>提供時間:</td><td>${e.serve}分</td></tr>
+			<tr class="con"><td>価格:</td><td>${e.price}円</td></tr>
 		</table>
 		<div>${e.text}</div>
 		<div><img src="${'/buster_moon/img/'+=e.photo}"></div>
@@ -107,10 +107,6 @@
 	<c:if test="${commentsList!=null}">
 	<h2>${date}の${name}による投稿に対するコメント</h2>
 
-		<form method="POST" action="/buster_moon/Time_lineServlet" >
-			<input type="submit" name="SUBMIT" value="コメント欄を閉じる" >
-		</form>
-	</c:if>
 	<c:forEach var="c" items="${commentsList}">
 		<form method="POST" action="/buster_moon/Time_lineServlet" >
 			<hr>
@@ -143,10 +139,15 @@
 				<hr>
 				<h2>コメント入力欄</h2>
 				<input type="hidden" name="POSTS_ID" value="${posts_id}">
-				<input type="text" name="TEXT" value="コメント入力">
+				<input type="text" name="TEXT" placeholder="コメント入力">
 				<input type="submit" name="SUBMIT" value="送信" >
 		</c:if>
 	</form>
+			<form method="POST" action="/buster_moon/Time_lineServlet" id = "close">
+			<input type="submit" name="SUBMIT" value="コメント欄を閉じる" >
+		</form>
+	</c:if>
+
 </div>
 </body>
 </html>

@@ -20,7 +20,7 @@
  <!-- ヘッダー（ここまで） -->
  <!-- メイン（ここから） -->
   <form id="login_form" method="POST" action="/buster_moon/LoginServlet">
-    <table>
+    <table id = "LOGIN">
       <tr>
         <td>
           <label>
@@ -45,6 +45,14 @@
     </table>
    </form>
    <!-- メイン（ここまで） -->
-   </div>
+   <!-- フッター -->
+<footer>
+<div id="footer">
+    <p>Copyright 2023 &copy; buster moon</p>
+</div>
+</footer>
+<!-- フッターここまで -->
+
+</div>
 </body>
 </html>

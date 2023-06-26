@@ -77,13 +77,29 @@ ul li {
 	display: block;
 	height: 100%;
 }
+#rank {
+	display: flex;
+}
+#junni {
+	display: inline-block;
+}
+.con {
+	display: flex;
+	display: inline-block;
+	margin: 5px
+}
+
+
 
 #popup {
-  background: #fff;
+  background: #f5f5dc;
   display: inline;
   bottom: 0;
   left: 0;
   padding: 20px;
   position: fixed;
-  width: 100%;
+  width: 78%;
+}
+#close{
+	text-align: right;
 }

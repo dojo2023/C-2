@@ -6,8 +6,10 @@
 <title>新規会員登録｜物知りプラス</title>
 <link rel="logo" href="img/logo.png">
 <link rel="stylesheet" href="/buster_moon/css/common.css">
+<link rel="stylesheet" href="/buster_moon/css/login.css">
 </head>
 <body>
+<div class = "wrapper">
 
 <!-- ヘッダー？ -->
 <h1 id="logo">
@@ -55,11 +57,14 @@
 
 
 <!-- フッター -->
+<footer>
 <div id="footer">
     <p>Copyright 2023 &copy; buster moon</p>
 </div>
+</footer>
 <!-- フッターここまで -->
 
 <script src="/buster_moon/js/new_member.js"></script>
+</div>
 </body>
 </html>
