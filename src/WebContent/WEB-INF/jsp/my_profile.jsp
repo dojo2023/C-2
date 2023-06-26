@@ -4,23 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/buster_moon/css/my_profile.css">
 <title>MYプロフィール｜物知りプラス</title>
 </head>
 <body>
 
 <!-- ヘッダー？ -->
 <!-- メニューバーの表示 -->
-
-<ul class="nav">
-  <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/タイムライン.ico" alt=""></a></li>
-  <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/投稿.ico" alt=""></a></li>
-  <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/募集.ico" alt=""></a></li>
-  <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/検索.ico" alt=""></a></li>
-  <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/プロフィール.ico" alt=""></a></li>
+<div class="wrapper">
+<nav>
+  <ul>
+  	<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+ 	<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+ 	<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+  	<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+	<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
   </ul>
+</nav>
 <!-- ヘッダー？ここまで -->
 
 <!-- ここからアイコン・名前・編集・ポイント -->
+<div class="centered">
+<div class="table-wrapper">
 <c:forEach var="profile" items="${profilesList}">
 <table>
   <tr>
@@ -42,11 +47,10 @@
 
 <!--ここから 投稿一覧 -->
 <c:forEach var="profile" items="${profilesList}">
-  <img src="${profile.icon}" alt="アイコン">
-</c:forEach>
-  <c:forEach var="post" items="${postsList}">
     <table>
       <tr>
+        <td><img src="${profile.icon}" alt="アイコン"></td>
+          <c:forEach var="post" items="${postsList}">
         <td><input type="text" name="restaurant" value="${post.restaurant}"></td>
       </tr>
       <tr>
@@ -63,12 +67,15 @@
         <td><input type="text" name="text" value="${post.text}"></td>
         <td><img src="${post.photo}" alt="料理の写真"></td>
       </tr>
+    </c:forEach>
     </table>
   </c:forEach>
+  </div>
+  </div>
 <!-- 投稿一覧ここまで -->
 
 
 <!-- アイコン・名前・編集 -->
-
+</div>
 </body>
 </html>

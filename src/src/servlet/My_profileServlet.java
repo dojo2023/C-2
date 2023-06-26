@@ -48,7 +48,6 @@ public class My_profileServlet extends HttpServlet {
 	    request.setAttribute("profilesList", profilesList);
 	    request.setAttribute("postsList", postspList);
 	    request.setAttribute("users_id", users_id);
-	    System.out.println(users_id);
 
 	    // 自分のプロフィール画面にフォワードする。
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/my_profile.jsp");

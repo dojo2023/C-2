@@ -74,33 +74,17 @@ public class Profile_editServlet extends HttpServlet {
 		String introduction = request.getParameter("introduction");
 		HttpSession session = request.getSession();
 		String users_id=((Users)session.getAttribute("id")).getId(); //セッションスコープから
-		System.out.println(users_id);
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		System.out.println(password);
 		String newPassword = request.getParameter("newPassword");
-		System.out.println(newPassword);
-		Part part = request.getPart("photo"); // getPartで取得
+		Part photoPart = request.getPart("photo"); // getPartで取得
 
-		String photo = this.getFileName(part);
-		request.setAttribute("photo", photo);
-		// サーバの指定のファイルパスへファイルを保存
-        //場所はクラス名↑の上に指定してある
-		part.write(photo);
-		System.out.println(photo);
-
-		// ファイルの名前を取得してくる
-		private String getFileName(Part part) {
-		    String photoname = null;
-		    for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
-		        if (dispotion.trim().startsWith("filename")) {
-		            photoname = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
-		            photoname = photoname.substring(photoname.lastIndexOf("\\") + 1);
-		            break;
-		        }
-		    }
-		    return photoname;
-		}
+					String photo = this.getFileName(photoPart);
+					request.setAttribute("photo", photo);
+					// サーバの指定のファイルパスへファイルを保存
+			        //場所はクラス名↑の上に指定してある
+					photoPart.write(photo);
+					System.out.println(photo);
 
 
 		ProfilesDao bDao = new ProfilesDao();

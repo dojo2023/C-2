@@ -1,1 +1,93 @@
 @charset "UTF-8";
+
+* {
+	border: 1px solid red;
+}
+
+body {
+	margin: 0 0 0 0;
+	padding-top: 50px;
+}
+
+.wrapper {
+	margin: 0 auto 0 auto;
+	max-width: 1000px;
+}
+
+.container {
+  display: flex; /* フレックスコンテナとして要素を横並びに配置 */
+  align-items: center; /* 要素を垂直方向に中央揃え */
+}
+
+nav {
+	position: fixed; /* 画面に固定して追従させます */
+	height: 100%;
+	top: 150px;
+	right:0; /* 固定位置は右側 */
+	z-index:1; /*他の要素より前に出します*/
+	background-color: white;
+}
+
+ul li {
+	list-style-type:none;
+}
+li {
+	padding:16px;
+	margin:8px
+}
+.menu1{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/timeLine.ico) no-repeat;
+	padding:16px;
+	margin:8px;
+}
+.menu1 a{
+	display: block;
+	height: 100%;
+}
+
+.menu2{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/post.ico) no-repeat;
+	padding:16px;
+	margin:8px;
+}
+.menu2 a{
+	display: block;
+	height: 100%;
+}
+.menu3{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/search.ico) no-repeat;
+	padding:16px;
+	margin:8px;
+}
+.menu3 a{
+	display: block;
+	height: 100%;
+}
+.menu4{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/gather.ico) no-repeat;
+	padding:16px;
+	margin:8px;
+}
+.menu4 a{
+	display: block;
+	height: 100%;
+}
+.menu5{
+	width:152px;
+	height:44px;
+	background: url(/buster_moon/img/profile.ico) no-repeat;
+	padding:16px;
+	margin:8px;
+}
+.menu5 a{
+	display: block;
+	height: 100%;
+}
