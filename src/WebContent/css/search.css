@@ -78,15 +78,18 @@ ul li {
 	height: 100%;
 }
 #list{
-    border-collapse:  collapse; /* セルの線を重ねる */
-    text-align: center;
+	border-collapse: separate;
+	border-spacing: 0;
+	border: 1px solid #333;
+	border-radius: 10px;
+	overflow: hidden;
 }
 
-#list tr:nth-child(odd) {
+.tenmei{
     background-color:  #FFA500;    /* 背景色指定 */
 }
 
-#list th,td {
+#list tr,td {
     padding: 10px 20px;          /* 余白指定 */
     width: 155px;
 }

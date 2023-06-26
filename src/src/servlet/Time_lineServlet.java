@@ -79,6 +79,8 @@ public class Time_lineServlet extends HttpServlet {
 			List<Comments> commentsList = cDao.select(posts_id);
 			request.setAttribute("commentsList", commentsList);
 			request.setAttribute("posts_id",posts_id);
+			request.setAttribute("name", commentsList.get(0).getName());
+			request.setAttribute("date", commentsList.get(0).getDate());
 
 			doGet(request,response);
 		}
@@ -100,6 +102,13 @@ public class Time_lineServlet extends HttpServlet {
 			String text=request.getParameter("TEXT");
 
 			cDao.insert(new Comments(users_id,posts_id,text));
+			doGet(request,response);
+		}
+
+		if(request.getParameter("SUBMIT").equals("コメント欄を閉じる"))
+		{
+			List<Comments> commentsList = null;
+			request.setAttribute("commentsList", commentsList);
 			doGet(request,response);
 		}
 
