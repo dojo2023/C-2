@@ -8,14 +8,15 @@ body {
 	margin: 0 auto 0 auto;
 	max-width: 1000px;
 }
-photo {
-	display: flex;
+.photo {
+	float: left; /* 写真を左にフロートさせる */
+	margin-right: 10px; /* 写真の右側に余白を設定（必要に応じて調整） */
 }
 /* メニューバー */
 nav {
 	position: fixed; /* 画面に固定して追従させます */
 	height: 100%;
-	top: 150px;
+	top: 100px;
 	right:0; /* 固定位置は右側 */
 	z-index:1; /*他の要素より前に出します*/
 	background-color: white;
@@ -87,14 +88,26 @@ li {
 
 
 /* Layout */
-.container {
+/* 上部の画像のコンテナ */
+.image-container {
 	display: flex;
-	justify-content: space-between;
 }
-main, aside {
-	width: 50%;
-	height: 100px;
+
+/* 上部の画像 */
+.image {
+	flex: 1;
 }
+/* 下部のカラムのコンテナ */
+.column-container {
+	display: flex;
+}
+/* カラム */
+.column {
+	flex: 1;
+	margin-right: 10px;
+}
+
+
 table {
     border-collapse:  collapse; /* セルの線を重ねる */
 }
@@ -110,7 +123,4 @@ th,td {
 .review {
 	border-bottom: solid 3px #CBFFD3;
     background-image: linear-gradient(transparent 70%, #E6FFE9 70%);
-}
-photo {
-	 table-layout:fixed;
 }

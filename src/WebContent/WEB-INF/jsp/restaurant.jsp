@@ -24,12 +24,17 @@
 
 
 		<form method="POST" action="/buster_moon/RestaurantServlet">
-			<c:forEach var="r" items="${restaurantList}" >
-					<h1>${r.restaurant}</h1>
-				<c:forEach var="s" items="${shousaiList}">
-					<div class="photo"><img src="${'/buster_moon/img/'+=s.photo}"></div>
-				</c:forEach>
-				<div class="container">
+				<c:forEach var="r" items="${restaurantList}" >
+						<h1>${r.restaurant}</h1>
+			<div class="image-container">
+					<c:forEach var="s" items="${shousaiList}">
+						<div>
+							<img class="photo" src="${'/buster_moon/img/'+=s.photo}">
+						</div>
+					</c:forEach>
+			</div>
+			<div class="column-container">
+				<div class="column">
 					<main>
 					<table>
 						<tr>
@@ -52,15 +57,16 @@
 
 					</table>
 					</main>
-			</c:forEach>
+				</c:forEach>
 		</form>
-					<aside>
+				</div>
+					<div class="column">
 						<p class="review">レビュー</p>
 						<c:forEach var="s" items="${shousaiList}">
 							<p class="text">${s.text}</p>
 						</c:forEach>
-					</aside>
-				</div>
+					</div>
+			</div>
 </div>
 </body>
 </html>
