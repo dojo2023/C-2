@@ -10,7 +10,9 @@
 <body>
 
 <!-- ヘッダー？ -->
-<h1>物知りプラス</h1><br>
+<h1 id="logo">
+  <img src="/buster_moon/img/logo.png" width="100" height="100" alt="物知りプラス">物知りプラス
+</h1>
 <h2>新規会員登録</h2>
 <hr>
 <!-- ヘッダー？ここまで -->
@@ -20,24 +22,24 @@
   <table id="NEW_MEMBER">
       <tr class="ID-PASS">
         <td>
-          <label><b>MAIL ADDRESS</b>
-            <input type="text" name="MAIL_ADDRESS" id="MD"><br>
+          <label>
+            <input type="text" name="MAIL_ADDRESS" id="MD" placeholder="メールアドレス"><br>
           </label>
         </td>
       </tr>
 
      <tr class="ID-PASS">
         <td>
-          <label><b>PASSWORD</b>
-            <input type="password" name="PASSWORD" id="PW"><br>
+          <label>
+            <input type="password" name="PASSWORD" id="PW" placeholder="パスワード"><br>
           </label>
         </td>
       </tr>
 
       <tr class="ID-PASS">
         <td>
-          <label><b>PASSWORD確認</b>
-            <input type="text" id="PWC"><br>
+          <label>
+            <input type="text" id="PWC" placeholder="パスワード確認"><br>
           </label>
         </td>
       </tr>

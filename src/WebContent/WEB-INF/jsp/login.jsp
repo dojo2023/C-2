@@ -15,21 +15,22 @@
   <h1 id="logo">
     <img src="/buster_moon/img/logo.png" width="100" height="100" alt="物知りプラス">物知りプラス
   </h1>
+ <h2>ログイン</h2>
+ <hr>
  <!-- ヘッダー（ここまで） -->
  <!-- メイン（ここから） -->
- <h2>ログイン</h2>
   <form id="login_form" method="POST" action="/buster_moon/LoginServlet">
     <table>
       <tr>
         <td>
-          <label>ID<br>
+          <label>
           <input type="text" name="MAIL_ADDRESS" id="MAIL_ADDRESS" placeholder="メールアドレス">
           </label>
         </td>
       </tr>
       <tr>
         <td>
-          <label>パスワード<br>
+          <label>
           <input type="password" name="PASSWORD" id="PASSWORD" placeholder="パスワード">
           </label>
         </td>
