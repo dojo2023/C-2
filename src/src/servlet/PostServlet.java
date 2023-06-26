@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import dao.PostsDao;
+import model.Posts;
 import model.Restaurants;
+import model.Result;
 
 
 /**
@@ -41,7 +43,7 @@ public class PostServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	throws ServletException, IOException {
 //		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 //		HttpSession session = request.getSession();
 //		if (session.getAttribute("id") == null) {
@@ -57,19 +59,22 @@ public class PostServlet extends HttpServlet {
 		//session
 		HttpSession session = request.getSession();
 //			String users_id=((Users)session.getAttribute("id")).getId();
+
 		String users_id="2";
 		System.out.println(users_id);
-		//本日の日付
-//
 
 		String date= request.getParameter("date");
 		System.out.println(date);
+
 //		String photo=request.getParameter("photo");
 //		System.out.println(photo);
-		String restaurant= request.getParameter("restaurant");
-		System.out.println(restaurant);
+
+//		String restaurant= request.getParameter("restaurant");
+//		System.out.println(restaurant);
+
 //		String genre= request.getParameter("genre");
 //		System.out.println(genre);
+
 		String point= request.getParameter("point");
 		System.out.println(point);
 
@@ -82,8 +87,8 @@ public class PostServlet extends HttpServlet {
 		String price= request.getParameter("price");
 		System.out.println(price);
 
-		String text= request.getParameter("text");
-		System.out.println(text);
+//		String text= request.getParameter("text");
+//		System.out.println(text);
 
 	    // リクエストパラメータを取得する
 	    request.setCharacterEncoding("UTF-8");
@@ -101,7 +106,28 @@ public class PostServlet extends HttpServlet {
 
 		//doGet(request, response);
 
-		if(request.getParameter("button").equals("店舗検索"))
+		String str_tmp = request.getParameter("button");	//リクエストパラメータから取得
+		byte[] bytes = str_tmp.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+		String button = new String(bytes, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
+		System.out.println(button);
+
+		String str_tmp_restaurant = request.getParameter("restaurant");	//リクエストパラメータから取得
+		byte[] bytes_restaurant = str_tmp_restaurant.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+		String restaurant = new String(bytes_restaurant, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
+		System.out.println(restaurant);
+
+		String str_tmp_text = request.getParameter("text");	//リクエストパラメータから取得
+		byte[] bytes_text = str_tmp_text.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+		String text = new String(bytes_text, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
+		System.out.println(text);
+
+//		String str_tmp_photo = request.getParameter("photo");	//リクエストパラメータから取得
+//		byte[] bytes_photo = str_tmp_photo.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+//		String photo = new String(bytes_photo, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
+//		System.out.println(photo);
+
+
+		if(button.equals("店舗検索"))
 		{
 			List<Restaurants> shiborikomiList = PDao.selectGenre(genreVal);
 			request.setAttribute("shiborikomiList", shiborikomiList);
@@ -114,48 +140,60 @@ public class PostServlet extends HttpServlet {
 //		dispatcher.forward(request, response);
 
 
-//		if(request.getParameter("button").equals("投稿"))
-//		{
-//
-//			// リクエストパラメータを取得する
-//			request.setCharacterEncoding("UTF-8");
-//			Part part = request.getPart("photo"); // getPartで取得
-//
-//			String photo = this.getFileName(part);
-//			request.setAttribute("photo", photo);
-//			// サーバの指定のファイルパスへファイルを保存
-//	        //場所はクラス名↑の上に指定してある
-//			part.write(photo);
-//
-//			// 投稿処理を行う
-//			PostsDao PosDao = new PostsDao();
-//			if (PosDao.insert(new Posts(id, users_id, date, photo,
-//					restaurant, walk, serve, price, genre,  text, point))) {	// 投稿成功
-//
-//				request.setAttribute("result", new Result("投稿成功！", "投稿が完了しました。", "/buster_moon/Time_lineServlet"));
-//			}
-//			else {												// 投稿失敗
-//				request.setAttribute("result", new Result("投稿失敗！", "投稿することが出来ませんでした。",  "/buster_moon/Time_lineServlet"));
-//			}
-//
-//
-//			// タイムラインページにリダイレクトする
-//			response.sendRedirect("/buster_moon/Time_lineServlet");
-//		}
+		if(button.equals("投稿"))
+		{
+
+			// リクエストパラメータを取得する
+			request.setCharacterEncoding("UTF-8");
+			Part part = request.getPart("photo"); // getPartで取得
+
+			String photo = this.getFileName(part);
+			request.setAttribute("photo", photo);
+			// サーバの指定のファイルパスへファイルを保存
+	        //場所はクラス名↑の上に指定してある
+			part.write(photo);
+			System.out.println(photo);
+
+			// 投稿処理を行う
+			PostsDao PosDao = new PostsDao();
+
+			if (PosDao.insert(new Posts(id, users_id, date, photo,
+					restaurant, walk, serve, price, genre,  text, point))) {	// 投稿成功
+
+				request.setAttribute("result", new Result("投稿成功！", "投稿が完了しました。", "/buster_moon/Time_lineServlet"));
+			}
+			else {												// 投稿失敗
+				request.setAttribute("result", new Result("投稿失敗！", "投稿することが出来ませんでした。",  "/buster_moon/Time_lineServlet"));
+			}
+
+
+			// タイムラインページにリダイレクトする
+			response.sendRedirect("/buster_moon/Time_lineServlet");
+		}
 	}
 
+	//メソッドの作成
+//	private String changeParameter(String tmp) {
+//		//文字化けしたデータをbyte型に変換
+//
+//		//UTF-8の文字コードで、String型のインスタンスを生成
+//
+//		//変換した結果を返す
+//		return "";
+//	}
+
 	//ファイルの名前を取得してくる
-		private String getFileName(Part part) {
-	        String name = null;
-	        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
-	            if (dispotion.trim().startsWith("filename")) {
-	                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
-	                name = name.substring(name.lastIndexOf("\\") + 1);
-	                break;
-	            }
-	        }		// TODO 自動生成されたメソッド・スタブ
-			return name;
-		}
+	private String getFileName(Part part) {
+        String name = null;
+        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+            if (dispotion.trim().startsWith("filename")) {
+                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+                name = name.substring(name.lastIndexOf("\\") + 1);
+                break;
+            }
+        }		// TODO 自動生成されたメソッド・スタブ
+		return name;
+	}
 
 }
 
