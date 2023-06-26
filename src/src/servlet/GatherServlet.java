@@ -81,7 +81,9 @@ public class GatherServlet extends HttpServlet {
 					String placeString = request.getParameter("PLACE");
 					int place = Integer.parseInt(placeString);
 //					System.out.println(place);
-					Gathers gather = new Gathers(users_id,date,point,restaurant_name,time,place);
+					String name = request.getParameter("NAME");
+					String icon = request.getParameter("ICON");
+					Gathers gather = new Gathers(users_id,date,point,restaurant_name,time,place,name,icon);
 					gatherDao.insert(gather);
 //					ArrayList<Gathers> gathersList = new ArrayList<Gathers>();
 //					gathersList.add(gather);
@@ -95,15 +97,11 @@ public class GatherServlet extends HttpServlet {
 					//System.out.println(id);
 					gatherDao.delete(id);
 					List<Gathers> gathersList = gatherDao.select1();
-					request.setAttribute("gathersList", gathersList);
-					
-					
-					
-					
+					request.setAttribute("gathersList", gathersList);	
 				}
+				if (request.getParameter("SUBMIT").equals("👍")) {
 				
-				
-				
+				}
 				
 				
 				

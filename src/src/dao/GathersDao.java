@@ -90,7 +90,8 @@ public class GathersDao {
  				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
  				// SQL文を準備する
- 				String sql = "select*from gathers";
+ 				String sql = "select*from gathers as g "
+ 						   + "join profiles as p on g.users_id=p.users_id";
  				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				 
@@ -107,7 +108,9 @@ public class GathersDao {
 				rs.getString("POINT"),
 				rs.getString("RESTAURANT_NAME"),
 				rs.getInt("TIME"),
-				rs.getInt("PLACE") 
+				rs.getInt("PLACE"),
+				rs.getString("NAME"),
+				rs.getString("ICON")
 			);
 				gathersList.add(gathers);
 			}
