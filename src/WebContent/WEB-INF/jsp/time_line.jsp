@@ -2,23 +2,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/buster_moon/css/time_line.css">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>タイムライン</title>
+<link rel="icon" href="img/favicon.ico">
+<link rel="stylesheet" href="/buster_moon/css/time_line.css">
 </head>
 <body>
 
-<!-- メニューバーの表示 -->
-<nav>
-		<ul>
-  			<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
- 			<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
- 			<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
-  	 		<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
-			<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
-  		</ul>
-</nav>
+
 
 <div id="ranks">
 <h2>ランキング</h2>
@@ -32,6 +24,16 @@
 		</table>
 </c:forEach>
 </div>
+<!-- メニューバーの表示 -->
+	<nav class="menubar">
+		<ul>
+			<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+			<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+			<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+			<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+			<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
+		</ul>
+	</nav>
 <label>
 <c:forEach var="e" items="${postsList}">
 <hr>
@@ -147,16 +149,4 @@
 	</form>
 </div>
 </body>
-<style>
-#popup {
-  background: #fff;
-  display: inline;
-  bottom: 0;
-  left: 0;
-  padding: 20px;
-  position: fixed;
-  width: 100%;
-}
-
-</style>
 </html>
