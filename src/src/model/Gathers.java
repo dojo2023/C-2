@@ -11,9 +11,11 @@ public class Gathers implements Serializable {
 	private String restaurant_name;
 	private int time;
 	private int place;
+	private String name;
+	private String icon;
 
     public Gathers(String id,String users_id, String date,String point,
-    		String restaurant_name,int time,int place) {
+    		String restaurant_name,int time,int place, String name, String icon) {
       super();
       this.id = id;
       this.users_id= users_id;
@@ -22,10 +24,12 @@ public class Gathers implements Serializable {
       this.restaurant_name= restaurant_name;
       this.time= time;
       this.place= place;
+      this.name= name;
+      this.icon= icon;
     }
 
     public Gathers(String users_id, String date,String point,
-    		String restaurant_name,int time,int place) {
+    		String restaurant_name,int time,int place,String name, String icon) {
       super();
       //this.id = id;
       this.users_id= users_id;
@@ -34,6 +38,8 @@ public class Gathers implements Serializable {
       this.restaurant_name= restaurant_name;
       this.time= time;
       this.place= place;
+      this.name= name;
+      this.icon= icon;
     }
 	public String getId() {
 		return id;
@@ -100,5 +106,18 @@ public class Gathers implements Serializable {
 	public void setPlace(int place) {
 		this.place = place;
 	}
-	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
 }

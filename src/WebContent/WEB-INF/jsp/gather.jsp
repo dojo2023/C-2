@@ -76,37 +76,42 @@
   		<c:forEach var="b" items="${gathersList}" >
   		<form method="POST" action="/buster_moon/GatherServlet">
 			<table>
+			  
+			<tr>
+			    <td><img src="${'/buster_moon/img/'+=b.icon}"></td>
+			    <td>${b.name}</td>
+			</tr>
 			<tr>
 			    <td>店名:${b.restaurant_name}</td>
+			</tr>
+			<tr>
 				<td>時間:${b.time}</td>
+			</tr>
+			<tr>
 				<td>場所:${b.place}</td>
-				<td>${b.users_id}</td>
-				<td><input type="text" name="ID" value=${b.id}></td>
-				<td>"${id}"</td>
-				<c:if test="${id.equals(b.users_id) }">
-				<td><input type="submit" name="SUBMIT" value="削除" ></td>
-				</c:if>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="ID" value=${b.users_id}></td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="ID" value=${b.id}></td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="ID" value=${id}></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="SUBMIT" value="👍" ></td>
+			</tr>
+			<tr>
+			<c:if test="${id.equals(b.users_id) }">
+			<td><input type="submit" name="SUBMIT" value="削除" ></td>
+			</c:if>
 			</tr>	
 			</table>
 		</form>	
  		</c:forEach>
   	</table>
 </div>
-<h2>反応者</h2>
-<form method="POST" action="/buster_moon/GatherServlet" >
-<c:forEach var="c" items="${commentsList}">
-	<p>アイコン:${c.icon}</p>
-	<p>名前:${c.name}</p>
-	<p>テキスト:${c.text}</p>
-	<p>日付:${c.date}</p>
-	<input type="text" name="POSTS_ID" value="${c.posts_id}">
-	<input type="text" name="ID" value="${c.id}">
-	<input type="text" name="USERS_ID" value="${c.users_id}">
-	"${id}"
-	<c:if test="${id.equals(c.users_id) }">
-	<input type="submit" name="SUBMIT" value="削除" >
-	</c:if>
-</c:forEach>
 <!-- 一緒にどう？送信ここまで -->
 <!-- メインここまで -->
 
