@@ -99,10 +99,6 @@ public class GatherServlet extends HttpServlet {
 					List<Gathers> gathersList = gatherDao.select1();
 					request.setAttribute("gathersList", gathersList);	
 				}
-				if (request.getParameter("SUBMIT").equals("👍")) {
-				
-				}
-				
 				
 				
 				
