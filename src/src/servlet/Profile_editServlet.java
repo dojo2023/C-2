@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import dao.PostsDao;
 import dao.ProfilesDao;
@@ -21,6 +23,7 @@ import model.Users;
 /**
  * Servlet implementation class Profile_editServlet
  */
+@MultipartConfig(location = "C:\\dojo6\\src\\WebContent\\img") // アップロードファイルの一時的な保存先
 @WebServlet("/Profile_editServlet")
 public class Profile_editServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -77,6 +80,28 @@ public class Profile_editServlet extends HttpServlet {
 		System.out.println(password);
 		String newPassword = request.getParameter("newPassword");
 		System.out.println(newPassword);
+		Part part = request.getPart("photo"); // getPartで取得
+
+		String photo = this.getFileName(part);
+		request.setAttribute("photo", photo);
+		// サーバの指定のファイルパスへファイルを保存
+        //場所はクラス名↑の上に指定してある
+		part.write(photo);
+		System.out.println(photo);
+
+		// ファイルの名前を取得してくる
+		private String getFileName(Part part) {
+		    String photoname = null;
+		    for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+		        if (dispotion.trim().startsWith("filename")) {
+		            photoname = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+		            photoname = photoname.substring(photoname.lastIndexOf("\\") + 1);
+		            break;
+		        }
+		    }
+		    return photoname;
+		}
+
 
 		ProfilesDao bDao = new ProfilesDao();
 		if (request.getParameter("SUBMIT").equals("変更を完了する")) {
@@ -120,6 +145,11 @@ public class Profile_editServlet extends HttpServlet {
 //			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/my_profile.jsp");
 //	        dispatcher.forward(request, response);
 		}
+
+	private String getFileName(Part part) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 	}
 
 

@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", iDao.isLoginOK(new Users(mail_address, password)));
 
 			// タイムラインサーブレットにリダイレクトする
-			response.sendRedirect("/buster_moon/My_profileServlet");
+			response.sendRedirect("/buster_moon/Time_lineServlet");
 			}
 	}
 
