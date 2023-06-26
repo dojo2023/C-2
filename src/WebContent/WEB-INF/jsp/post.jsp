@@ -13,13 +13,15 @@
 
     <body>
       <!-- メニューバーの表示 -->
-       <ul class="nav">
-        <li><a href="/buster_moon/Time_lineServlet"><img src="/buster_moon/img/timeLine.ico" alt=""></a></li>
-        <li><a href="/buster_moon/PostServlet"><img src="/buster_moon/img/post.ico" alt=""></a></li>
-        <li><a href="/buster_moon/GatherServlet"><img src="/buster_moon/img/gather.ico" alt=""></a></li>
-        <li><a href="/buster_moon/SerchServlet"><img src="/buster_moon/img/search.ico" alt=""></a></li>
-        <li><a href="/buster_moon/ProfileServlet"><img src="/buster_moon/img/profile.ico" alt=""></a></li>
-       </ul>
+       <nav>
+			<ul>
+  				<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+ 				<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+ 				<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+  				<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+				<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
+  			</ul>
+  	</nav>
 
       <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data">
 
@@ -93,15 +95,15 @@
 <script>
   'use strict';
 
-  function check(){
+  <%--
+    function check(){
 	txt = document.posts_form.text.value;
     n = txt.length;
     if(n > 140){
     	console.log(window.confirm('テキストは140字以内で入力してください'));
     }
   }
-
-  if(window)
+--%>
 
 
 </script>
