@@ -34,10 +34,10 @@
       </tr>
       <tr>
         <td>
-          <input type="submit" name="completion" value="変更を完了する" onclick="return confirm('変更内容を保存しますか？')">
+          <input type="submit" name="SUBMIT" value="変更を完了する" onclick="return confirm('変更内容を保存しますか？')">
         </td>
         <td>
-         <input type="submit" value="キャンセル">
+         <input type="submit" name="SUBMIT" value="キャンセル">
         </td>
       </tr>
     </table>
@@ -66,7 +66,7 @@
         <td><input type="text" name="text" value="${post.text}"></td>
         <td><img src="${post.photo}" alt="料理の写真"></td>
         <td><input type="hidden" name="id" value="${post.id}"></td>
-        <td><input type="submit" name="post_delete" value="削除" onclick="return confirm('削除してもよろしいですか？')"></td>
+        <td><input type="submit" name="SUBMIT" value="削除" onclick="return confirm('削除してもよろしいですか？')"></td>
       </tr>
     </table>
   </c:forEach>

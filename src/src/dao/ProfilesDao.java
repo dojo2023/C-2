@@ -13,7 +13,7 @@ import model.Profiles;
 public class ProfilesDao {
 	//表示
 	// 引数profilesで検索項目を指定し、検索結果のリストを返す
-	public List<Profiles> select(Profiles param) {
+	public List<Profiles> select(String users_id) {
 		Connection conn = null;
 		List<Profiles> profilesList = new ArrayList<Profiles>();
 
@@ -29,12 +29,14 @@ public class ProfilesDao {
 		    PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getUsers_id() != null) {
-				pStmt.setString(1, "%1%"); //セッションスコープから
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
+		    pStmt.setString(1, users_id);
+
+//			if (param.getUsers_id() != null) {
+//				pStmt.setString(1, "%1%"); //セッションスコープからpStmt.setString(1, "%users_id%");
+//			}
+//			else {
+//				pStmt.setString(1, "%");
+//			}
 
 
 			// SQL文を実行し、結果表を取得する
@@ -175,7 +177,7 @@ public class ProfilesDao {
 	}
 
 	// パスワードの更新
-    public static boolean updatePassword(String users_id, String password, String newPassword) {
+    public boolean updatePassword(String users_id, String password, String newPassword) {
         Connection conn = null;
         boolean result = false;
 
@@ -187,7 +189,7 @@ public class ProfilesDao {
             conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6/data/buster_moon", "sa", "");
 
             // SQL文を準備する
-            String sql = "UPDATE USERS SET password = ? WHERE users_id = ? AND password = ?";
+            String sql = "UPDATE USERS SET password = ? WHERE id = ? AND password = ?";
             PreparedStatement pStmt = conn.prepareStatement(sql);
 
             // SQL文を完成させる

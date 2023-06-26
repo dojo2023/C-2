@@ -182,7 +182,7 @@ public class PostsDao{
 	}
 
   // プロフィール画面に自分の投稿を表示する
-  public List<Posts> select(Posts Posts) {
+  public List<Posts> select(String users_id) {
 		Connection conn = null;
 		List<Posts> postsList = new ArrayList<Posts>();
 
@@ -197,13 +197,15 @@ public class PostsDao{
 			String sql = "select * from posts where users_id like ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を完成させる
-				if (Posts.getUsers_id() != null) {
-					pStmt.setString(1, "%1%");
-				}
-				else {
-					pStmt.setString(1, "%");
-			      }
+			pStmt.setString(1, users_id);
+
+//			// SQL文を完成させる
+//				if (Posts.getUsers_id() != null) {
+//					pStmt.setString(1, users_id);
+//				}
+//				else {
+//					pStmt.setString(1, "%");
+//			      }
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

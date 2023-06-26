@@ -9,12 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.PostsDao;
 import dao.ProfilesDao;
 import model.Posts;
 import model.Profiles;
 import model.Result;
+import model.Users;
 
 /**
  * Servlet implementation class Profile_editServlet
@@ -30,12 +32,19 @@ public class Profile_editServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		String users_id = "";
+		if(session.getAttribute("id") != null) {
+			users_id=((Users)session.getAttribute("id")).getId();
+		}
+
 		// 検索処理を行う
 	    ProfilesDao profilesDao = new ProfilesDao();
-	    List<Profiles> profilesList = profilesDao.select(new Profiles("", "", "", "", "", 0, 0, 0));
+	    List<Profiles> profilesList = profilesDao.select(users_id);
 
 	    PostsDao postsDao = new PostsDao();
-	    List<Posts> postspList = postsDao.select(new Posts("", "", "", "", "", "", "", "", "", "", ""));
+	    List<Posts> postspList = postsDao.select(users_id);
 
 	    // 検索結果をリクエストスコープに格納する
 	    request.setAttribute("profilesList", profilesList);
@@ -60,7 +69,8 @@ public class Profile_editServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String icon = request.getParameter("icon");
 		String introduction = request.getParameter("introduction");
-		String users_id = "1"; //セッションスコープから
+		HttpSession session = request.getSession();
+		String users_id=((Users)session.getAttribute("id")).getId(); //セッションスコープから
 		System.out.println(users_id);
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
@@ -69,8 +79,8 @@ public class Profile_editServlet extends HttpServlet {
 		System.out.println(newPassword);
 
 		ProfilesDao bDao = new ProfilesDao();
-		if (request.getParameter("completion") != null) {
-			if (bDao.update(name, icon, introduction, users_id)) {	// 更新成功
+		if (request.getParameter("SUBMIT").equals("変更を完了する")) {
+			if (bDao.update(name, icon, introduction, users_id)&& bDao.updatePassword(users_id, password, newPassword)) {	// 更新成功
 				request.setAttribute("result",
 				new Result("更新成功！", "レコードを更新しました。", "/buster_moon/My_profileServlet"));
 			}
@@ -80,21 +90,21 @@ public class Profile_editServlet extends HttpServlet {
 			}
 		}
 
-		//パスワードの更新
-		else if (request.getParameter("completion") != null) {
-			if (ProfilesDao.updatePassword(users_id, password, newPassword)) {
-                // パスワード変更成功
-                request.setAttribute("result",
-                        new Result("パスワード変更成功！", "パスワードを変更しました。", "/buster_moon/My_profileServlet"));
-            } else {
-                // パスワード変更失敗
-                request.setAttribute("result",
-                        new Result("パスワード変更失敗！", "パスワードを変更できませんでした。", "/buster_moon/My_profileServlet"));
-            }
-        }
+//		//パスワードの更新
+//		else if (request.getParameter("SUBMIT").equals("")) {
+//			if (ProfilesDao.updatePassword(users_id, password, newPassword)) {
+//                // パスワード変更成功
+//                request.setAttribute("result",
+//                        new Result("パスワード変更成功！", "パスワードを変更しました。", "/buster_moon/My_profileServlet"));
+//            } else {
+//                // パスワード変更失敗
+//                request.setAttribute("result",
+//                        new Result("パスワード変更失敗！", "パスワードを変更できませんでした。", "/buster_moon/My_profileServlet"));
+//            }
+//        }
 
 		//投稿の削除
-		else if (request.getParameter("post_delete") != null){
+		else if (request.getParameter("SUBMIT").equals("削除")){
 			if (bDao.delete(id)) {	// 削除成功
 				request.setAttribute("result",
 				new Result("削除成功！", "レコードを削除しました。", "/buster_moon/My_profileServlet"));
