@@ -16,9 +16,9 @@
 			<ul>
   				<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
  				<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
- 				<li class="menu3"><a href="/buster_moon/SerchServlet"></a></li>
+ 				<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
   				<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
-				<li class="menu5"><a href="/buster_moon/ProfileServlet"></a></li>
+				<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
   			</ul>
   	</nav>
 

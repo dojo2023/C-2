@@ -11,13 +11,15 @@
 <h1>検索</h1>
 <!-- メニューバーの表示 -->
 
-<ul class="nav">
-  <li><a href="/buster_moon/Time_lineServlet">タイムライン</a></li>
-  <li><a href="/buster_moon/PostServlet">投稿</a></li>
-  <li><a href="/buster_moon/SerchServlet">検索</a></li>
-  <li><a href="/buster_moon/GatherServlet">一緒にどう？</a></li>
-  <li><a href="/buster_moon/ProfileServlet">プロフィール></a></li>
-</ul>
+	<nav>
+			<ul>
+  				<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
+ 				<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
+ 				<li class="menu3"><a href="/buster_moon/SearchServlet"></a></li>
+  				<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
+				<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
+  			</ul>
+  	</nav>
 
 
  <!-- 検索の絞り込みの表示 -->
@@ -110,13 +112,53 @@
 	  				<td>店名${r.restaurant}<input type="hidden" name="RESTAURANT" value="${r.restaurant}"></td>
 				</tr>
 				<tr>
-					<td><div id="result">${r.genre}</div></td>
+					<td>
+					<c:if test="${r.genre==1}">
+					中華
+					</c:if>
+					<c:if test="${r.genre==2}">
+					ラーメン屋
+					</c:if>
+					<c:if test="${r.genre==3}">
+					イタリアン
+					</c:if>
+					<c:if test="${r.genre==4}">
+					和食・定食
+					</c:if>
+					<c:if test="${r.genre==5}">
+					カフェ
+					</c:if>
+					<c:if test="${r.genre==6}">
+					そば・うどん
+					</c:if>
+					<c:if test="${r.genre==7}">
+					ハンバーガー
+					</c:if>
+					<c:if test="${r.genre==8}">
+					スペイン料理
+					</c:if>
+					<c:if test="${r.genre==9}">
+					フレンチ
+					</c:if>
+					<c:if test="${r.genre==10}">
+					カレー
+					</c:if>
+					<c:if test="${r.genre==11}">
+					韓国料理
+					</c:if>
+					<c:if test="${r.genre==12}">
+					東南アジア料理
+					</c:if>
+					<c:if test="${r.genre==13}">
+					沖縄料理
+					</c:if>
+					</td>
 					<td>価格${r.price}</td>
 					<td>徒歩${r.walk}</td>
 					<td>提供${r.serve}</td>
 				</tr>
 				<tr>
-					<input type="submit" name="SUBMIT" value="店舗詳細表示" >
+					<td><input type="submit" name="SUBMIT" value="店舗詳細表示" ></td>
 				</tr>
   			</table>
   		 </c:forEach>
@@ -127,6 +169,23 @@
 
 <script>
 'use strict';
+
+</script>
+</body>
+</html>
+
+<!--
+  <c:forEach var="r" items="${resutaurantList}" >
+	<tr>
+	  <td>${r.restaurant}</td>
+	</tr>
+	<tr>
+	  <td><a href="resutaurant.jsp#news">${r.genre}</a></td>
+	  <td>${r.price}</td>
+	  <td>${r.walk}</td>
+	  <td>${r.serve}</td>
+	</tr>
+  </c:forEach>
 
 var value = ${genre}; // EL式からの値をJavaScriptの変数に代入
 if (value === 1) {
@@ -169,22 +228,5 @@ else if (value === 13) {
 	  result = "沖縄料理";
 }
 document.getElementById("result").innerHTML = result;
-
-</script>
-</body>
-</html>
-
-<!--
-  <c:forEach var="r" items="${resutaurantList}" >
-	<tr>
-	  <td>${r.restaurant}</td>
-	</tr>
-	<tr>
-	  <td><a href="resutaurant.jsp#news">${r.genre}</a></td>
-	  <td>${r.price}</td>
-	  <td>${r.walk}</td>
-	  <td>${r.serve}</td>
-	</tr>
-  </c:forEach>
 
  -->
