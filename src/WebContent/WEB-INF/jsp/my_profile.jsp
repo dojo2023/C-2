@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/buster_moon/css/my_profile.css">
+<link rel="icon" href="img/favicon.ico">
 <title>MYプロフィール｜物知りプラス</title>
 </head>
 <body>
@@ -12,6 +13,7 @@
 <!-- ヘッダー？ -->
 <!-- メニューバーの表示 -->
 <div class="wrapper">
+<h1>マイプロフィール</h1>
 <nav>
   <ul>
   	<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
@@ -24,7 +26,6 @@
 <!-- ヘッダー？ここまで -->
 
 <!-- ここからアイコン・名前・編集・ポイント -->
-<div class="centered">
 <div class="profile-box">
 <c:forEach var="profile" items="${profilesList}">
     <img src="${profile.icon}" alt="アイコン">
@@ -43,25 +44,37 @@
 <!--ここから 投稿一覧 -->
 <div class="post-box">
 <c:forEach var="profile" items="${profilesList}">
-        <img src="${profile.icon}" alt="アイコン">
+    <table>
+      <tr>
+        <td><img src="${profile.icon}" alt="アイコン"></td>
           <c:forEach var="post" items="${postsList}">
-        <input type="text" name="restaurant" value="${post.restaurant}" class="post-restaurant">
-        <input type="text" name="genre" value="${post.genre}" class="post-genre">
-        <input type="text" name="walk" value="${post.walk}" class="post-walk">
-        <input type="text" name="serve" value="${post.serve}" class="post-serve">
-        <input type="text" name="price" value="${post.price}" class="post-price">
-        <input type="text" name="text" value="${post.text}" class="post-text">
-        <img src="${post.photo}" alt="料理の写真" class="post-photo">
+        <td><input type="text" name="restaurant" value="${post.restaurant}" class="post-restaurant"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="genre" value="${post.genre}" class="post-genre"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="walk" value="${post.walk}" class="post-walk"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="serve" value="${post.serve}" class="post-serve"></td>
+      </tr>
+      <tr>
+        <td><input type="text" name="price" value="${post.price}" class="post-price"></td>
+        <td><input type="text" name="text" value="${post.text}" class="post-text"></td>
+        <td><img src="${post.photo}" alt="料理の写真" class="post-photo"></td>
+      </tr>
     </c:forEach>
-
+    </table>
   </c:forEach>
   </div>
 
-  </div>
+
+
 <!-- 投稿一覧ここまで -->
 
 
 <!-- アイコン・名前・編集 -->
-</div>
+
 </body>
 </html>

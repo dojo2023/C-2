@@ -53,38 +53,6 @@ body {
 	padding-left: 0;
 }
 
-.post-restaurant {
-	width: 500px;
-	height: 3em;
-}
-
-.post-genre {
-    display: block;
-}
-
-.post-walk {
-    display: block;
-}
-
-.post-serve {
-    display: block;
-    float: left;
-}
-
-.post-price {
-    display: block;
-    float: left;
-}
-
-.post-text {
-	display: inline-block;
-    height: 4em;
-}
-
-.post-photo {
-
-}
-
 nav {
 	position: fixed; /* 画面に固定して追従させます */
 	height: 100%;
