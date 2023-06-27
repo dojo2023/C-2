@@ -24,12 +24,12 @@
   	</nav>
 
       <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data" id="postForm">
-
+		  <c:if test="${bonus!=null}">
       	  	  <input type="submit" name="button" value="x">
-	      	  <input type="text" id="bonus" name="bonus" value="${bonus}">
-	      	  <input type="text" id="bonus2" name="bonus2" value="${bonus2}">
 			  <div><img src="${bonus}"><audio controls><source src="${bonus2}"></audio></div>
-
+		  </c:if>
+		  <input type="hidden" id="bonus" name="bonus" value="${bonus}">
+	      <input type="hidden" id="bonus2" name="bonus2" value="${bonus2}">
 		  <input type="submit" name="button" value="店舗検索">
           <select name="restaurant" id="restaurant_name">
             <option value="" selected>店名</option>
@@ -56,7 +56,7 @@
           <input type="submit" name="button" value="店舗検索">
           <input type="submit" name="button" value="投稿" id="post_button">
           <br>
-          写真
+          写真 ※ファイル名は30文字以下の半角英数字で入力してください。
           <input type="file" name="photo" accept="image/*" id=photo>
           <br>
 
@@ -103,52 +103,41 @@
   document.getElementById("post_button").onclick=function check() {
 	  if(window.confirm('この内容でよろしいですか？')) {
 
-		  //記入項目数毎の確率変更のための準備
-		  let k=1;
-
-		  if(document.getElementById("price").value&&document.getElementById("walk").value&&document.getElementById("serve").value){
-			  k+=1;
-			  document.getElementById("bonus").value="あるよ";
-		  }
-
-		  if(document.getElementById("photo").value){
-			  k+=1;
-		  }
-
-		  if(document.getElementById("textBox").value){
-			  k+=1;
-		  }
+//		  let a=360;
+//		  let b=1152;
+//		  let c=1944:
+//		  let d=2544;
 
 		  //講師毎の確率の画像音声表示
 		  let r=Math.floor(Math.random()*3600)+1;
 
 		  //寺井
-		  if(r<a){
+		  if(r<360){
 			  document.getElementById("bonus").value="/buster_moon/img/terai.jpg";
 			  document.getElementById("bonus2").value="/buster_moon/img/terai.mp3";
 		  }
 
 		  //大石
-		  else if(r>=a&&r<b){
+		  else if(r>=360&&r<1152){
 			  document.getElementById("bonus").value="/buster_moon/img/ooisi.jpg";
 			  document.getElementById("bonus2").value="/buster_moon/img/ooisi.mp3";
 		  }
 
 		  //末永
-		  else if(r>=b&&r<c){
+		  else if(r>=1152&&r<1944){
 			  document.getElementById("bonus").value="/buster_moon/img/suenaga.jpg";
 			  document.getElementById("bonus2").value="/buster_moon/img/suenaga.mp3";
 		  }
 
 		  //富原
-		  else if(r>=c&&r<d){
-			  document.getElementById("bonus").value="/buster_moon/img/tomihara.jpg";
+		  else if(r>=1944&&r<2544){
+			  document.getElementById("bonus").value="/buster_moon/img/tomihara.JPG";
 			  document.getElementById("bonus2").value="/buster_moon/img/tomihara.mp3";
 		  }
 
 		  //矢沢
 		  else{
-			  document.getElementById("bonus").value="/buster_moon/img/yazawa.jpg";
+			  document.getElementById("bonus").value="/buster_moon/img/yazawa.PNG";
 			  document.getElementById("bonus2").value="/buster_moon/img/yazawa.mp3";
 		  }
 
