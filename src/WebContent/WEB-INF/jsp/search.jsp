@@ -106,9 +106,9 @@
 </c:if>
 -->
 	</form>
-	<form method="POST" action="/buster_moon/RestaurantServlet">
 		<div id="table">
 			<c:forEach var="r" items="${restaurantList}" >
+	<form method="POST" action="/buster_moon/RestaurantServlet">
   				<table id="list">
 					<tr>
 	  					<td class="tenmei">${r.restaurant}<input type="hidden" name="RESTAURANT" value="${r.restaurant}"></td>
@@ -165,10 +165,10 @@
 						</td>
 					</tr>
   				</table>
+	</form>
   			</c:forEach>
 
 		</div>
-	</form>
 </div>
 
 <script>
