@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-* {
-	border: 1px solid red;
-}
+
 
 body {
 	margin: 0 0 0 0;
@@ -14,9 +12,77 @@ body {
 	max-width: 1000px;
 }
 
-.container {
-  display: flex; /* フレックスコンテナとして要素を横並びに配置 */
-  align-items: center; /* 要素を垂直方向に中央揃え */
+.profile-box {
+    width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px;
+}
+
+.post-box {
+    width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10px;
+}
+
+.profile-name {
+	flex: 1;
+	width: 500px;
+	height: 3em;
+}
+
+.edit-button {
+	display: inline-block;
+	width: 60px;
+	height: 3em;
+}
+
+.profile-introduction {
+	width: 500px;
+	height: 3em;
+}
+
+.profile-point {
+	width: 150px;
+	height: 3em;
+	padding-left: 0;
+}
+
+.post-restaurant {
+	width: 500px;
+	height: 3em;
+}
+
+.post-genre {
+    display: block;
+}
+
+.post-walk {
+    display: block;
+}
+
+.post-serve {
+    display: block;
+    float: left;
+}
+
+.post-price {
+    display: block;
+    float: left;
+}
+
+.post-text {
+	display: inline-block;
+    height: 4em;
+}
+
+.post-photo {
+
 }
 
 nav {
