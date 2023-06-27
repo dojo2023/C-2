@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import dao.PostsDao;
 import dao.ProfilesDao;
@@ -23,7 +21,6 @@ import model.Users;
 /**
  * Servlet implementation class Profile_editServlet
  */
-@MultipartConfig(location = "C:\\dojo6\\src\\WebContent\\img") // アップロードファイルの一時的な保存先
 @WebServlet("/Profile_editServlet")
 public class Profile_editServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -77,15 +74,6 @@ public class Profile_editServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String newPassword = request.getParameter("newPassword");
-		Part photoPart = request.getPart("photo"); // getPartで取得
-
-					String photo = this.getFileName(photoPart);
-					request.setAttribute("photo", photo);
-					// サーバの指定のファイルパスへファイルを保存
-			        //場所はクラス名↑の上に指定してある
-					photoPart.write(photo);
-					System.out.println(photo);
-
 
 		ProfilesDao bDao = new ProfilesDao();
 		if (request.getParameter("SUBMIT").equals("変更を完了する")) {
@@ -130,10 +118,6 @@ public class Profile_editServlet extends HttpServlet {
 //	        dispatcher.forward(request, response);
 		}
 
-	private String getFileName(Part part) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 	}
 
 
