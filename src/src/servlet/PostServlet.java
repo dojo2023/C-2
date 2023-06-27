@@ -17,6 +17,7 @@ import dao.PostsDao;
 import model.Posts;
 import model.Restaurants;
 import model.Result;
+import model.Users;
 
 
 /**
@@ -58,22 +59,11 @@ public class PostServlet extends HttpServlet {
 		System.out.println(id);
 		//session
 		HttpSession session = request.getSession();
-//			String users_id=((Users)session.getAttribute("id")).getId();
-
-		String users_id= request.getParameter("users_id");
+		String users_id=((Users)session.getAttribute("id")).getId();
 		System.out.println(users_id);
 
 		String date= request.getParameter("date");
 		System.out.println(date);
-
-//		String photo=request.getParameter("photo");
-//		System.out.println(photo);
-
-//		String restaurant= request.getParameter("restaurant");
-//		System.out.println(restaurant);
-
-//		String genre= request.getParameter("genre");
-//		System.out.println(genre);
 
 		String point;
 		if(request.getParameter("point")!=null)
@@ -200,21 +190,15 @@ public class PostServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 
 			String photo;
-			if(request.getParameter("photo")!=null)
-			{
-				Part part = request.getPart("photo"); // getPartで取得
+			Part part = request.getPart("photo"); // getPartで取得
 
-				photo = this.getFileName(part);
-				request.setAttribute("photo", photo);
-				// サーバの指定のファイルパスへファイルを保存
-		        //場所はクラス名↑の上に指定してある
-				part.write(photo);
-				System.out.println(photo);
-			}
-			else
-			{
-				photo=null;
-			}
+			photo = this.getFileName(part);
+			request.setAttribute("photo", photo);
+			// サーバの指定のファイルパスへファイルを保存
+		    //場所はクラス名↑の上に指定してある
+			part.write(photo);
+
+			System.out.println("ここ写真"+photo);
 
 			//得点画像保持
 			String str_tmp_bonus = request.getParameter("bonus");	//リクエストパラメータから取得

@@ -27,7 +27,9 @@
 
       <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data" id="postForm">
 		  <c:if test="${bonus!=null}">
+		  <!--
       	  	  <input type="submit" name="button" value="x">
+      	  	  -->
 			  <div><img src="${bonus}"><audio controls><source src="${bonus2}"></audio></div>
 		  </c:if>
 		  <input type="hidden" id="bonus" name="bonus" value="${bonus}">
