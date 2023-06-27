@@ -124,23 +124,19 @@ public class PostServlet extends HttpServlet {
 
 	    // リクエストパラメータを取得する
 	    request.setCharacterEncoding("UTF-8");
-		String genre;
-		if(request.getParameter("genre")!=null)
+		String genre="0";
+		int genreVal=0;
+		if(request.getParameter("genre")!=""||request.getParameter("genre")!=null)
 		{
 			genre= request.getParameter("genre");
-		}
-		else
-		{
-			genre=null;
+			request.setAttribute("genre", genre);
+			genreVal = Integer.parseInt(genre);
 		}
 
 //		String posts_restaurant = request.getParameter("POSTS_RESTAURANT");;
-		request.setAttribute("genre", genre);
-		int genreVal=0;
-		if(genre!=null)
-		{
-			genreVal = Integer.parseInt(genre);
-		}
+
+		;
+
 		// 検索処理を行う
 		PostsDao PDao = new PostsDao();
 		//List<Restaurants> restaurantList = ResDao.select(restaurant, 0, 0, 0, 0);
@@ -156,15 +152,31 @@ public class PostServlet extends HttpServlet {
 		String button = new String(bytes, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
 		System.out.println(button);
 
-		String str_tmp_restaurant = request.getParameter("restaurant");	//リクエストパラメータから取得
-		byte[] bytes_restaurant = str_tmp_restaurant.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
-		String restaurant = new String(bytes_restaurant, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
-		System.out.println(restaurant);
+		String restaurant;
+		if(request.getParameter("restaurant")!=null)
+		{
+			String str_tmp_restaurant = request.getParameter("restaurant");	//リクエストパラメータから取得
+			byte[] bytes_restaurant = str_tmp_restaurant.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+			restaurant = new String(bytes_restaurant, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
+			System.out.println(restaurant);
+		}
+		else
+		{
+			restaurant="店名未入力";
+		}
 
-		String str_tmp_text = request.getParameter("text");	//リクエストパラメータから取得
-		byte[] bytes_text = str_tmp_text.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
-		String text = new String(bytes_text, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
-		System.out.println(text);
+		String text;
+		if(request.getParameter("text")!=null)
+		{
+			String str_tmp_text = request.getParameter("text");	//リクエストパラメータから取得
+			byte[] bytes_text = str_tmp_text.getBytes("iso-8859-1");		//文字化けしたデータをbyte型に変換
+			text = new String(bytes_text, "UTF-8");			//UTF-8の文字コードで、String型のインスタンスを生成
+			System.out.println(text);
+		}
+		else
+		{
+			text=null;
+		}
 
 
 
@@ -186,14 +198,23 @@ public class PostServlet extends HttpServlet {
 
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
-			Part part = request.getPart("photo"); // getPartで取得
 
-			String photo = this.getFileName(part);
-			request.setAttribute("photo", photo);
-			// サーバの指定のファイルパスへファイルを保存
-	        //場所はクラス名↑の上に指定してある
-			part.write(photo);
-			System.out.println(photo);
+			String photo;
+			if(request.getParameter("photo")!=null)
+			{
+				Part part = request.getPart("photo"); // getPartで取得
+
+				photo = this.getFileName(part);
+				request.setAttribute("photo", photo);
+				// サーバの指定のファイルパスへファイルを保存
+		        //場所はクラス名↑の上に指定してある
+				part.write(photo);
+				System.out.println(photo);
+			}
+			else
+			{
+				photo=null;
+			}
 
 			//得点画像保持
 			String str_tmp_bonus = request.getParameter("bonus");	//リクエストパラメータから取得

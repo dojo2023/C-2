@@ -32,9 +32,9 @@
 		  </c:if>
 		  <input type="hidden" id="bonus" name="bonus" value="${bonus}">
 	      <input type="hidden" id="bonus2" name="bonus2" value="${bonus2}">
-
+		  <c:if test="${bonus==null}">
 		   <select id="genre" name="genre">
-             <option value=""<c:if test="${genre == ''}"> selected</c:if>>ジャンル</option>
+             <option value=0<c:if test="${genre == '0'}"> selected</c:if>>ジャンル</option>
              <option value=1<c:if test="${genre == '1'}"> selected</c:if>>中華</option>
              <option value=2<c:if test="${genre == '2'}"> selected</c:if>>ラーメン屋</option>
              <option value=3<c:if test="${genre == '3'}"> selected</c:if>>イタリアン</option>
@@ -92,6 +92,7 @@
         </div>
          <textarea name="text" onChange="check()" placeholder="テキスト" id="textBox"></textarea><br>
          <input type="submit" name="button" value="投稿" id="post_button"> <br>
+         </c:if>
       </form>
 	</div>
 </body>

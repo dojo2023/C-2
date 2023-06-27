@@ -105,7 +105,7 @@
 
 <div id="popup">
 	<c:if test="${commentsList!=null}">
-	<h2>${date}の${name}による投稿に対するコメント</h2>
+	<h2>投稿に対するコメント</h2>
 
 	<c:forEach var="c" items="${commentsList}">
 		<form method="POST" action="/buster_moon/Time_lineServlet" >

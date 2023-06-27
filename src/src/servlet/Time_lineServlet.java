@@ -79,9 +79,6 @@ public class Time_lineServlet extends HttpServlet {
 			List<Comments> commentsList = cDao.select(posts_id);
 			request.setAttribute("commentsList", commentsList);
 			request.setAttribute("posts_id",posts_id);
-			request.setAttribute("name", commentsList.get(0).getName());
-			request.setAttribute("date", commentsList.get(0).getDate());
-
 			doGet(request,response);
 		}
 

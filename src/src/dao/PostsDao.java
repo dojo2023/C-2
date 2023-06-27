@@ -87,7 +87,7 @@ public class PostsDao{
 			  pStmt.setString(10, null);
 		  }
 
-			  pStmt.setString(11, posts.getPoint());
+			  pStmt.setString(11, "30");
 
 
 		  //SQL文を実行する
