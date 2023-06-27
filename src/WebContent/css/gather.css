@@ -44,12 +44,12 @@ body {
     position: absolute;
     top: 32px;
     margin-left: 200px;
-    
+
   }
   .dropdown__list {
     width:600px;
-	
-	
+
+
   }
   .dropdown__item {
     display: block;
@@ -66,18 +66,8 @@ body {
   }
 .dropdown__btn {
 	width:600px;
-	
-}
-html * {
-	box-sizing: border-box;
-	
 
 }
-
-/* フォントの指定 */
-
-
-/* 背景色の指定 */
 
 
 /* メニューバー設定 */
@@ -89,17 +79,17 @@ nav {
 	right:0; /* 固定位置は右側 */
 	z-index:1; /*他の要素より前に出します*/
 	background-color:#fff ;
-	
+
 }
 ul li {
 	list-style-type:none;
-	
+
 }
 .menu1{
 	width:152px;
 	height:44px;
 	background: url(/buster_moon/img/timeLine.ico) no-repeat;
-	padding:16px;
+	padding:20px;
 	margin:8px;
 }
 .menu1 a{

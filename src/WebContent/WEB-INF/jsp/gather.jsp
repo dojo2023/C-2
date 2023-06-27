@@ -10,12 +10,12 @@
 </head>
 <body>
 <div class="wrapper">
-<!-- ヘッダーここから -->
-<h1>一緒にどう？</h1>
-<!-- ヘッダーここまで -->
-<!-- メインここから -->
-<h3>ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h3>
-<hr>
+	<!-- ヘッダーここから -->
+	<h1>一緒にどう？</h1>
+	<!-- ヘッダーここまで -->
+	<!-- メインここから -->
+	<h3>ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h3>
+	<hr>
 
 <!-- ここからメニューバー -->
 	<nav class="menubar">
@@ -36,47 +36,47 @@
 
 <!-- 募集を呼びかける掲示板画面のためのdiv -->
 
-<form method="POST" action="/buster_moon/GatherServlet">
-	<div class="gather_board">
-	<div class="dropdown">
+	<form method="POST" action="/buster_moon/GatherServlet">
+		<div class="gather_board">
+			<div class="dropdown">
 
-        <input type="button" name="gather" class="dropdown__btn" id="dropdown__btn" value="一緒にどう？">
-        <div class="dropdown__body">
-          <ul class="dropdown__list">
-            <li class="dropdown__item">
-                お店：<input type="text" name="RESTAURANT_NAME"><br>
-            </li>
-            <li class="dropdown__item">
-                時間：<select name="TIME">
-                      <option value=1>12:00</option>
-                      <option value=2>12:05</option>
-                      <option value=3>12:10</option>
-                      </select><br>
-            </li>
-            <li class="dropdown__item">
-                場所：<!-- 集合場所プルダウン -->
-				<select name="PLACE">
-				<option value=1>エレベーター前</option>
-				<option value=2>玄関前</option>
-				</select>
-            </li>
-            <li>
-               
-               <input type="submit"  name="SUBMIT" value="送信"  class="button1">
-               
-            </li>
-          </ul>
-        </div>
-    </div>
-	</div>
-</form>
+        		<input type="button" name="gather" class="dropdown__btn" id="dropdown__btn" value="一緒にどう？">
+        		<div class="dropdown__body">
+          			<ul class="dropdown__list">
+            			<li class="dropdown__item">
+                			お店：<input type="text" name="RESTAURANT_NAME"><br>
+           				</li>
+            			<li class="dropdown__item">
+               				時間：<select name="TIME">
+                      				<option value=1>12:00</option>
+                      				<option value=2>12:05</option>
+                      				<option value=3>12:10</option>
+                      			  </select><br>
+            			</li>
+            			<li class="dropdown__item">
+                			場所：<!-- 集合場所プルダウン -->
+							<select name="PLACE">
+								<option value=1>エレベーター前</option>
+								<option value=2>玄関前</option>
+							</select>
+            			</li>
+            			<li>
+
+               				<input type="submit"  name="SUBMIT" value="送信"  class="button1">
+
+            			</li>
+          			</ul>
+        		</div>
+    		</div>
+		</div>
+	</form>
 <!-- 募集を呼びかける掲示板画面のための/div -->
-<div id="table">
-  	<table id="list">
-  		<c:forEach var="b" items="${gathersList}" >
-  		<form method="POST" action="/buster_moon/GatherServlet"> 		
+	<div id="table">
+  		<table id="list">
+  			<c:forEach var="b" items="${gathersList}" >
+  		<form method="POST" action="/buster_moon/GatherServlet">
 			<table>
-			  
+
 			<tr>
 			    <td><img src="${'/buster_moon/img/'+=b.icon}">${b.name}</td>
 			</tr>
@@ -107,7 +107,7 @@
 				</td>
 			</tr>
 			<tr>
-			<td>${b.date}</td>
+				<td>${b.date}</td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="ID" value=${b.users_id}></td>
@@ -122,16 +122,16 @@
 				<td><input type="submit" name="SUBMIT" value="👍" ></td>
 			</tr>-->
 			<tr>
-			<c:if test="${id.equals(b.users_id) }">
-			<td><input type="submit" name="SUBMIT" value="削除" ></td>
-			</c:if>
-			</tr>	
+				<c:if test="${id.equals(b.users_id) }">
+				<td><input type="submit" name="SUBMIT" value="削除" ></td>
+				</c:if>
+			</tr>
 			</table>
-		</form>	
+		</form>
  		</c:forEach>
-  	</table>
-</div>
-<hr>
+  		</table>
+	</div>
+	<hr>
 <!-- 一緒にどう？送信ここまで -->
 <!-- メインここまで -->
 </div>
