@@ -95,7 +95,7 @@
 		<div><img src="${'/buster_moon/img/'+=e.photo}"></div>
 	</div>
 	<form method="POST" action="/buster_moon/Time_lineServlet">
-	<input type="text" name="ID" value="${e.id} ">
+	<input type="hidden" name="ID" value="${e.id} ">
 	<input type="submit" name="SUBMIT" value="コメント表示" >
 	</form>
 </div>
