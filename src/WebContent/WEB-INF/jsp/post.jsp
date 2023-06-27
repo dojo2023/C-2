@@ -2,18 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-  <html>
-    <head>
+<html>
+<head>
       <meta charset="UTF-8">
       <title>投稿</title>
-      <link rel="logo" href="img/logo.png">
-      <link rel = "stylesheet" href = /buster_moon/css/common.css>
+      <link rel="icon" href="img/favicon.ico">
+      <!--  <link rel = "stylesheet" href = /buster_moon/css/common.css>-->
       <link rel = "stylesheet" href = /buster_moon/css/post.css>
-    </head>
+</head>
 
-    <body>
-      <!-- メニューバーの表示 -->
-       <nav>
+<body>
+	<div class="wrapper">
+    	<h1>投稿</h1>
+     	 <!-- メニューバーの表示 -->
+		<nav>
 			<ul>
   				<li class="menu1"><a href="/buster_moon/Time_lineServlet"></a></li>
  				<li class="menu2"><a href="/buster_moon/PostServlet"></a></li>
@@ -21,7 +23,7 @@
   				<li class="menu4"><a href="/buster_moon/GatherServlet"></a></li>
 				<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
   			</ul>
-  	</nav>
+		</nav>
 
       <form method="POST" id="posts_form" action="/buster_moon/PostServlet" enctype="multipart/form-data" id="postForm">
 		  <c:if test="${bonus!=null}">
@@ -30,14 +32,8 @@
 		  </c:if>
 		  <input type="hidden" id="bonus" name="bonus" value="${bonus}">
 	      <input type="hidden" id="bonus2" name="bonus2" value="${bonus2}">
-		  <input type="submit" name="button" value="店舗検索">
-          <select name="restaurant" id="restaurant_name">
-            <option value="" selected>店名</option>
-            <c:forEach var="e" items="${shiborikomiList}">
-            <option  value="${e.restaurant}">${e.restaurant}</option>
-            </c:forEach>
-          </select>
-          <select id="genre" name="genre">
+
+		   <select id="genre" name="genre">
              <option value=""<c:if test="${genre == ''}"> selected</c:if>>ジャンル</option>
              <option value=1<c:if test="${genre == '1'}"> selected</c:if>>中華</option>
              <option value=2<c:if test="${genre == '2'}"> selected</c:if>>ラーメン屋</option>
@@ -53,49 +49,53 @@
              <option value=12<c:if test="${genre == '12'}"> selected</c:if>>東南アジア料理</option>
              <option value=13<c:if test="${genre == '13'}"> selected</c:if>>沖縄料理</option>
           </select>
-          <input type="submit" name="button" value="店舗検索">
-          <input type="submit" name="button" value="投稿" id="post_button">
-          <br>
-          写真 ※ファイル名は30文字以下の半角英数字で入力してください。
-          <input type="file" name="photo" accept="image/*" id=photo>
-          <br>
+          <input type="submit" name="button" value="店舗検索" id="tenpo_button"><br>
+
+          <select name="restaurant" id="restaurant_name">
+            <option value="" selected>店名</option>
+            <c:forEach var="e" items="${shiborikomiList}">
+            <option  value="${e.restaurant}">${e.restaurant}</option>
+            </c:forEach>
+          </select><br>
+
+
+          写真 ※ファイル名は30文字以下の半角英数字で入力してください。<br>
+          <input type="file" name="photo" accept="image/*" id="photo"><br>
 
         <div class= "pull_down">
           <select name="price" id="price">
-           <option value="" selected>価格</option>
-           <option value="500">500円</option>
-           <option value="700">700円</option>
-           <option value="1000">1000円</option>
-           <option value="1500">1500円</option>
-           <option value="2000">2000円</option>
-         </select>
-         <br>
+           	<option value="" selected>価格</option>
+           	<option value="500">500円</option>
+           	<option value="700">700円</option>
+           	<option value="1000">1000円</option>
+           	<option value="1500">1500円</option>
+           	<option value="2000">2000円</option>
+		  </select><br>
 
-        <select name="walk" id="walk">
-          <option value="" selected>片道時間</option>
-          <option value="3">3分</option>
-          <option value="5">5分</option>
-          <option value="10">10分</option>
-          <option value="15">15分</option>
-          <option value="20">20分</option>
-        </select><br>
+          <select name="walk" id="walk">
+         	<option value="" selected>片道時間</option>
+          	<option value="3">3分</option>
+         	<option value="5">5分</option>
+          	<option value="10">10分</option>
+          	<option value="15">15分</option>
+          	<option value="20">20分</option>
+          </select><br>
 
-        <select name="serve" id="serve">
-         <option value="" selected>提供時間</option>
-         <option value="3">3分</option>
-         <option value="5">5分</option>
-         <option value="10">10分</option>
-         <option value="15">15分</option>
-         <option value="20">20分</option>
-        </select>
+          <select name="serve" id="serve">
+         	<option value="" selected>提供時間</option>
+         	<option value="3">3分</option>
+         	<option value="5">5分</option>
+         	<option value="10">10分</option>
+         	<option value="15">15分</option>
+         	<option value="20">20分</option>
+          </select>
         </div>
-        <br>
-        <p></p>
-        <br>
          <textarea name="text" onChange="check()" placeholder="テキスト" id="textBox"></textarea><br>
+         <input type="submit" name="button" value="投稿" id="post_button"> <br>
       </form>
-    </body>
-  </html>
+	</div>
+</body>
+</html>
 
 <script>
   'use strict';
