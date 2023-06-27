@@ -135,3 +135,7 @@ INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c
 INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(4, 0004, 'しお','プロフィールアイコン4','よろしく',0,0,0);
 INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(5, 0005, 'うらちゃん','プロフィールアイコン5','ありがとう',0,0,0);
 INSERT INTO PROFILES(ID, USERS_ID, NAME, ICON, INTRODUCTION, t_point, g_point, c_point) VALUES(6, 0006, 'たいき','プロフィールアイコン5','こんばんは',0,0,0)
+
+
+
+16:57最新
