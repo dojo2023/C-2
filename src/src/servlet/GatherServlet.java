@@ -97,7 +97,8 @@ public class GatherServlet extends HttpServlet {
 					//System.out.println(id);
 					gatherDao.delete(id);
 					List<Gathers> gathersList = gatherDao.select1();
-					request.setAttribute("gathersList", gathersList);	
+					request.setAttribute("gathersList", gathersList);
+					doGet(request,response);
 				}
 				
 				
