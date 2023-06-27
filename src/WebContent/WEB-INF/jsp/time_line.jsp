@@ -9,9 +9,7 @@
 <link rel="stylesheet" href="/buster_moon/css/time_line.css">
 </head>
 <body>
-
-
-
+<div class="wrapper">
 <div id="ranks">
 <h2>ランキング</h2>
 <c:forEach var="p" items="${profilesList}">
@@ -104,8 +102,8 @@
 </label>
 
 <div id="popup">
+    <h3>投稿に対するコメント</h3>
 	<c:if test="${commentsList!=null}">
-	<h2>投稿に対するコメント</h2>
 
 	<c:forEach var="c" items="${commentsList}">
 		<form method="POST" action="/buster_moon/Time_lineServlet" >
@@ -137,7 +135,7 @@
 	<form method="POST" action="/buster_moon/Time_lineServlet" >
 		<c:if test="${commentsList!=null}">
 				<hr>
-				<h2>コメント入力欄</h2>
+				<h3>コメント入力欄</h3>
 				<input type="hidden" name="POSTS_ID" value="${posts_id}">
 				<input type="text" name="TEXT" placeholder="コメント入力">
 				<input type="submit" name="SUBMIT" value="送信" >
@@ -147,7 +145,7 @@
 			<input type="submit" name="SUBMIT" value="コメント欄を閉じる" >
 		</form>
 	</c:if>
-
+</div>
 </div>
 </body>
 </html>
