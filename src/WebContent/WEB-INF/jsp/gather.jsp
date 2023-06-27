@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>一緒にどう？</title>
+<link rel="icon" href="img/favicon.ico">
 <link rel="stylesheet" href="/buster_moon/css/gather.css">
 </head>
 <body>
@@ -13,7 +14,8 @@
 <h1>一緒にどう？</h1>
 <!-- ヘッダーここまで -->
 <!-- メインここから -->
-<h2>ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h2>
+<h3>ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h3>
+<hr>
 
 <!-- ここからメニューバー -->
 	<nav class="menubar">
@@ -69,17 +71,14 @@
 	</div>
 </form>
 <!-- 募集を呼びかける掲示板画面のための/div -->
-</div>
-
 <div id="table">
   	<table id="list">
   		<c:forEach var="b" items="${gathersList}" >
-  		<form method="POST" action="/buster_moon/GatherServlet">
+  		<form method="POST" action="/buster_moon/GatherServlet"> 		
 			<table>
 			  
 			<tr>
-			    <td><img src="${'/buster_moon/img/'+=b.icon}"></td>
-			    <td>${b.name}</td>
+			    <td><img src="${'/buster_moon/img/'+=b.icon}">${b.name}</td>
 			</tr>
 			<tr>
 			    <td>店名:${b.restaurant_name}</td>
@@ -108,6 +107,9 @@
 				</td>
 			</tr>
 			<tr>
+			<td>${b.date}</td>
+			</tr>
+			<tr>
 				<td><input type="hidden" name="ID" value=${b.users_id}></td>
 			</tr>
 			<tr>
@@ -129,9 +131,10 @@
  		</c:forEach>
   	</table>
 </div>
+<hr>
 <!-- 一緒にどう？送信ここまで -->
 <!-- メインここまで -->
-
+</div>
 <script src="/buster_moon/js/gather.js"></script>
 </body>
 </html>
