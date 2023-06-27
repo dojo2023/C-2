@@ -5,15 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>物知りプラス | ログイン</title>
-<link rel="logo" href="img/logo.png">
-<link rel="stylesheet" href="/buster_moon/css/common.css">
+<link rel="icon" href="img/favicon.ico">
 <link rel="stylesheet" href="/buster_moon/css/login.css">
 </head>
 <body>
 <div class="wrapper">
 <!-- ヘッダー（ここから） -->
   <h1 id="logo">
-    <img src="/buster_moon/img/logo.png" width="100" height="100" alt="物知りプラス">物知りプラス
+    <img src="/buster_moon/img/ロゴ.jpg" width="100" height="100" alt="物知りプラス">物知りプラス
   </h1>
  <h2>ログイン</h2>
  <hr>
