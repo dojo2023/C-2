@@ -60,7 +60,7 @@ public class PostServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 //			String users_id=((Users)session.getAttribute("id")).getId();
 
-		String users_id="2";
+		String users_id= request.getParameter("users_id");
 		System.out.println(users_id);
 
 		String date= request.getParameter("date");
