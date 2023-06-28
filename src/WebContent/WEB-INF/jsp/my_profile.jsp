@@ -31,7 +31,7 @@
     <input type="text" name="name" value="${profile.name}" class="profile-name">
       <div class="edit-button">
       <form action="Profile_editServlet" method="GET">
-      <input type="submit" value="編集">
+      <input type="submit" value="編集" id="edit">
       </form>
       </div>
       <input type="text" name="introduction" value="${profile.introduction}" class="profile-introduction">
@@ -92,7 +92,7 @@
       <tr>
         <th>徒歩時間</th>
           <td>約${post.walk}分</td>
-          <td rowspan="3" colspan="3"><img src="${post.photo}" alt="料理の写真" class="post-photo"></td>
+          <td rowspan="3" colspan="3"><img src="${'/buster_moon/img/'+=post.photo}"></td>
       </tr>
       <tr>
         <th>提供時間</th>

@@ -20,6 +20,7 @@ body {
     overflow: hidden;
     margin: 10px;
     padding: 10px;
+    border: 2px #808080 solid;
 }
 
 .post-box {
@@ -29,6 +30,7 @@ body {
     overflow: hidden;
     margin: 10px;
     padding: 10px;
+    border: 2px #808080 solid;
 }
 
 .profile-name {
@@ -138,4 +140,16 @@ li {
 th,td {
     padding: 10px 20px;          /* 余白指定 */
     width: 155px;
+}
+
+input[type="submit"] {
+	background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+}
+img {
+	width: 200px;
+	height: 200px;
 }
