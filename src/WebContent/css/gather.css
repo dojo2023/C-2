@@ -2,10 +2,18 @@
 body {
 	margin: 0 0 0 0;
 	padding-top: 50px;
+	background: #fffacd;
 }
 .wrapper {
 	margin: 0 auto 0 auto;
 	max-width: 1000px;
+}
+.h1 {
+	color:#4CAF50;
+}
+
+.h3 {
+	color:#4CAF50;
 }
 .dropdown {
     margin:auto;
@@ -18,6 +26,9 @@ body {
     background: none;
     border: 1;
     margin:auto;
+    font-size:15px;
+    color:#4CAF50;
+    font-weight: 900;
   }
   .dropdown__btn.is-open::after {
     content: "";
@@ -37,17 +48,17 @@ body {
   .dropdown__body {
     display: none;
     width: auto;
-    background: #fff;
     box-shadow: 0 2px 6px 2px rgba(60,64,67,0.149), 0 1px 2px 0 rgba(60,64,67,0.302);
     border-radius: 4px;
     overflow: hidden;
     position: absolute;
     top: 32px;
-    margin-left: 200px;
+    margin-left: 120px;
+    background-color: #fff;
 
   }
   .dropdown__list {
-    width:600px;
+    width:720px;
 
 
   }
@@ -59,13 +70,13 @@ body {
     padding: 1em 1.2em;
     font-size: 0.95em;
     text-decoration: none;
-    color: #444;
+    color: #4CAF50;
   }
   .dropdown__item-link:hover {
-    background: #fbfbfb;
+    background-color: #fff;
   }
 .dropdown__btn {
-	width:600px;
+	width:760px;
 
 }
 
@@ -78,7 +89,7 @@ nav {
 	top: 100px;
 	right:0; /* 固定位置は右側 */
 	z-index:1; /*他の要素より前に出します*/
-	background-color:#fff ;
+	background-color:#fffacd; ;
 
 }
 ul li {
@@ -144,10 +155,26 @@ ul li {
 
 
 div#table {
-  width: 600px;
+  width: 755px;
   margin-right: auto;
   margin-left: auto;
   height:350px;
   overflow-y:scroll;
+  background-color: #f7f7f7;
+  border: solid 3px;
 }
-
+#gather_button {
+      display: center;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+#gather_button:hover {
+}
+.name {
+	font-weight: 900;
+}

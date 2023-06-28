@@ -11,10 +11,10 @@
 <body>
 <div class="wrapper">
 	<!-- ヘッダーここから -->
-	<h1>一緒にどう？</h1>
+	<h1 class="h1">一緒にどう？</h1>
 	<!-- ヘッダーここまで -->
 	<!-- メインここから -->
-	<h3>ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h3>
+	<h3 class="h3">ここにお店・集合時間・場所を設定してお昼を食べる仲間を募集しよう！</h3>
 	<hr>
 
 <!-- ここからメニューバー -->
@@ -62,7 +62,7 @@
             			</li>
             			<li>
 
-               				<input type="submit"  name="SUBMIT" value="送信"  class="button1">
+               				<input type="submit"  name="SUBMIT" value="送信"  id="gather_button">
 
             			</li>
           			</ul>
@@ -78,7 +78,7 @@
 			<table>
 
 			<tr>
-			    <td>${b.name}</td>
+			    <td class="name">${b.name}</td>
 			</tr>
 			<tr>
 			    <td>店名:${b.restaurant_name}</td>
@@ -123,9 +123,10 @@
 			</tr>-->
 			<tr>
 				<c:if test="${id.equals(b.users_id) }">
-				<td><input type="submit" name="SUBMIT" value="削除" ></td>
+				<td><input type="submit" name="SUBMIT" value="削除" id="gather_button"></td>
 				</c:if>
 			</tr>
+			<hr>
 			</table>
 		</form>
  		</c:forEach>
