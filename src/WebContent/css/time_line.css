@@ -2,6 +2,7 @@
 body {
 	margin: 0 0 0 0;
 	padding-top: 50px;
+	background-color: #fffacd;
 }
 .wrapper {
 	margin: 0 auto 0 auto;
@@ -14,7 +15,7 @@ body {
 	top: 100px;
 	right:0; /* 固定位置は右側*/
 	z-index:1; /*他の要素より前に出します*/
-	background-color: white;
+	background-color: #fffacd;
 }
 ul li {
 	list-style-type:none;
@@ -86,13 +87,16 @@ ul li {
 	margin: 5px
 }
 #popup {
-  background: #F5F5DC;
+  text-align: center;
+  background: #c5ecbc;
   display: inline;
+
   bottom: 0;
-  left: 0;
-  padding: 20px;
+  margin: auto;
   position: fixed;
-  width: 78%;
+  width: 47%;
+  border: solid 3px #06c286;/*線*/
+  border-radius: 10px;/*角の丸み*/
 }
 #close{
 	text-align: right;
@@ -102,7 +106,19 @@ body {
 	margin: 0 0 0 0;
 	padding-top: 50px;
 }
+#ranks {
+  text-align: center;
+  background: #c5ecbc;
+  width: 88%;
+  border: solid 3px #06c286;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
 .wrapper {
 	margin: 0 auto 0 auto;
 	max-width: 1000px;
+}
+.posts {
+  width: 88%;
+  border: solid 3px #06c286;/*線*/
+  border-radius: 10px;/*角の丸み*/
 }
