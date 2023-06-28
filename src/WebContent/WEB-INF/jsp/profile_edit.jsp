@@ -12,12 +12,6 @@
   <c:forEach var="profile" items="${profilesList}">
     <table>
       <tr>
-        <td>
-        <img src="${profile.icon}" alt="アイコン">
-        <input type="file" name="photo" accept="image/*">
-        </td>
-      </tr>
-      <tr>
         <td><input type="text" name="name" value="${profile.name}"></td>
       </tr>
       <tr>

@@ -28,7 +28,6 @@
 <!-- ここからアイコン・名前・編集・ポイント -->
 <div class="profile-box">
 <c:forEach var="profile" items="${profilesList}">
-    <img src="${profile.icon}" alt="アイコン">
     <input type="text" name="name" value="${profile.name}" class="profile-name">
       <div class="edit-button">
       <form action="Profile_editServlet" method="GET">
@@ -43,11 +42,9 @@
 
 <!--ここから 投稿一覧 -->
 <div class="post-box">
-<c:forEach var="profile" items="${profilesList}">
-    <table>
+  <table>
+    <c:forEach var="post" items="${postsList}">
       <tr>
-        <td><img src="${profile.icon}" alt="アイコン"></td>
-          <c:forEach var="post" items="${postsList}">
         <td><input type="text" name="restaurant" value="${post.restaurant}" class="post-restaurant"></td>
       </tr>
       <tr>
@@ -65,9 +62,9 @@
         <td><img src="${post.photo}" alt="料理の写真" class="post-photo"></td>
       </tr>
     </c:forEach>
-    </table>
-  </c:forEach>
-  </div>
+  </table>
+</div>
+
 
 
 
@@ -75,6 +72,6 @@
 
 
 <!-- アイコン・名前・編集 -->
-
+</div>
 </body>
 </html>
