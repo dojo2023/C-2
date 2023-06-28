@@ -1,1 +1,37 @@
 @charset "UTF-8";
+body {
+	margin: 0 0 0 0;
+	padding-top: 50px;
+	background-color: #fffacd;
+}
+
+.wrapper {
+	margin: 0 auto 0 auto;
+	max-width: 1000px;
+}
+table{
+    border: 2px #808080 solid;
+    text-align: center;
+}
+
+.tenmei {
+    background-color:  #FFA500;    /* 背景色指定 */
+}
+
+th,td {
+    padding: 10px 20px;          /* 余白指定 */
+    width: 155px;
+}
+.delete {
+      display: center;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+.delete:hover {
+      background-color: #45a049; /* マウスオーバー時の背景色 */
+}

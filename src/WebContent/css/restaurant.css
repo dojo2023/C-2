@@ -110,7 +110,7 @@ li {
 
 
 table {
-    border-collapse:  collapse; /* セルの線を重ねる */
+    border-collapse:  collapse;
 }
 
 tr:nth-child(odd) {

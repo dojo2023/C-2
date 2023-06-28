@@ -57,7 +57,7 @@ body {
 nav {
 	position: fixed; /* 画面に固定して追従させます */
 	height: 100%;
-	top: 150px;
+	top: 100px;
 	right:0; /* 固定位置は右側 */
 	z-index:1; /*他の要素より前に出します*/
 	background-color: #fffacd;
@@ -125,4 +125,17 @@ li {
 .menu5 a{
 	display: block;
 	height: 100%;
+}
+#post_form{
+    border: 2px #808080 solid;
+    text-align: center;
+}
+
+.tenmei {
+    background-color:  #FFA500;    /* 背景色指定 */
+}
+
+th,td {
+    padding: 10px 20px;          /* 余白指定 */
+    width: 155px;
 }
