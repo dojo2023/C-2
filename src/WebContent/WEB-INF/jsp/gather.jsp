@@ -78,7 +78,7 @@
 			<table>
 
 			<tr>
-			    <td><img src="${'/buster_moon/img/'+=b.icon}">${b.name}</td>
+			    <td>${b.name}</td>
 			</tr>
 			<tr>
 			    <td>店名:${b.restaurant_name}</td>
