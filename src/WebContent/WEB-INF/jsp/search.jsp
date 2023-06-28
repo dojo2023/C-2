@@ -177,7 +177,6 @@
 </script>
 </body>
 </html>
-
 <!--
   <c:forEach var="r" items="${resutaurantList}" >
 	<tr>
