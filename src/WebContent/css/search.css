@@ -2,6 +2,7 @@
 body {
 	margin: 0 0 0 0;
 	padding-top: 50px;
+	background-color: #fffacd;
 }
 .wrapper {
 	margin: 0 auto 0 auto;
@@ -14,7 +15,7 @@ nav {
 	top: 100px;
 	right:0; /* 固定位置は右側 */
 	z-index:1; /*他の要素より前に出します*/
-	background-color: white;
+	background-color: #fffacd;
 }
 
 ul li {
