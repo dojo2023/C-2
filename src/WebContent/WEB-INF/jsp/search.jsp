@@ -161,7 +161,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="submit" name="SUBMIT" value="店舗詳細表示" >
+							<input type="submit" name="SUBMIT" value="店舗詳細表示" class="button2">
 						</td>
 					</tr>
   				</table>

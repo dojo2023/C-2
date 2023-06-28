@@ -103,11 +103,38 @@ select#restaurant_name {
 #tenpo_button{
 	display: center;
     padding: 5px 5px;
+    background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+
+#tenpo_button:hover {
+      background-color: #45a049; /* マウスオーバー時の背景色 */
 }
 
 #photo {
 	display: center;
     padding: 5px 5px;
+}
+
+::file-selector-button,
+::-webkit-file-upload-button {
+	display: center;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+
+::file-selector-button:hover,
+::-webkit-file-upload-button:hover{
+	background-color: #45a049; /* マウスオーバー時の背景色 */
 }
 
 

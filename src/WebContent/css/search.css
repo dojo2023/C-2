@@ -94,3 +94,33 @@ ul li {
     padding: 10px 20px;          /* 余白指定 */
     width: 155px;
 }
+
+.button1 {
+	 display: center;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+
+.button1:hover {
+      background-color: #45a049; /* マウスオーバー時の背景色 */
+}
+
+.button2 {
+	 display: center;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+
+.button2:hover {
+      background-color: #45a049; /* マウスオーバー時の背景色 */
+}
