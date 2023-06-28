@@ -5,6 +5,7 @@
 body {
 	margin: 0 0 0 0;
 	padding-top: 50px;
+	background-color: #fffacd;
 }
 
 .wrapper {
@@ -59,7 +60,7 @@ nav {
 	top: 150px;
 	right:0; /* 固定位置は右側 */
 	z-index:1; /*他の要素より前に出します*/
-	background-color: white;
+	background-color: #fffacd;
 }
 
 ul li {
