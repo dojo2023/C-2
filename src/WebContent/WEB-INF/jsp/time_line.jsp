@@ -11,13 +11,13 @@
 <body>
 <div class="wrapper">
 <div id="ranks">
-<h2>ランキング</h2>
+<h2>ポイントランキング</h2>
 <c:forEach var="p" items="${profilesList}">
 		<table id = junni>
 			<tr>
-			    <td>${p.name}</td>
-				<td><img src="${'/buster_moon/img/'+=p.icon}"></td>
-				<td>${p.t_point+p.g_point+p.c_point}</td>
+			    <td>｜${p.name}</td>
+				<td></td>
+				<td>${p.t_point+p.g_point+p.c_point}pt</td>
 			</tr>
 		</table>
 </c:forEach>
@@ -36,8 +36,8 @@
 <c:forEach var="e" items="${postsList}">
 <hr>
 <div class="posts">
-	<div><img src="${'/buster_moon/img/'+=e.icon}"></div>
-	<div>(投稿者名)${e.name}</div>
+	<div></div>
+	<div>${e.name}さんの投稿</div>
 	<div>店名：${e.restaurant}</div>
 		<div id="post_inf">
 		<table>
@@ -111,7 +111,6 @@
 			<table>
 			<tr>
 				<td>
-				<img src="${'/buster_moon/img/'+=c.icon}">
 				${c.name}
 				${c.date}
 				</td>
