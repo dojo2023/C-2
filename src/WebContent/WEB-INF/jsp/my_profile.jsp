@@ -42,27 +42,73 @@
 
 <!--ここから 投稿一覧 -->
 <div class="post-box">
+ <form id="post_form">
   <table>
     <c:forEach var="post" items="${postsList}">
       <tr>
-        <td><input type="text" name="restaurant" value="${post.restaurant}" class="post-restaurant"></td>
+        <th class="tenmei">店名</th>
+          <td>${post.restaurant}</td>
+        <th>ジャンル</th>
+          <td><c:if test="${post.genre==1}">
+						中華
+						</c:if>
+						<c:if test="${post.genre==2}">
+						ラーメン屋
+						</c:if>
+						<c:if test="${post.genre==3}">
+						イタリアン
+						</c:if>
+						<c:if test="${post.genre==4}">
+						和食・定食
+						</c:if>
+						<c:if test="${post.genre==5}">
+						カフェ
+						</c:if>
+						<c:if test="${post.genre==6}">
+						そば・うどん
+						</c:if>
+						<c:if test="${post.genre==7}">
+						ハンバーガー
+						</c:if>
+						<c:if test="${post.genre==8}">
+						スペイン料理
+						</c:if>
+						<c:if test="${post.genre==9}">
+						フレンチ
+						</c:if>
+						<c:if test="${post.genre==10}">
+						カレー
+						</c:if>
+						<c:if test="${post.genre==11}">
+						韓国料理
+						</c:if>
+						<c:if test="${post.genre==12}">
+						東南アジア料理
+						</c:if>
+						<c:if test="${post.genre==13}">
+						沖縄料理
+						</c:if></td>
       </tr>
       <tr>
-        <td><input type="text" name="genre" value="${post.genre}" class="post-genre"></td>
+        <th>徒歩時間</th>
+          <td>約${post.walk}分</td>
+          <td rowspan="3" colspan="3"><img src="${post.photo}" alt="料理の写真" class="post-photo"></td>
       </tr>
       <tr>
-        <td><input type="text" name="walk" value="${post.walk}" class="post-walk"></td>
+        <th>提供時間</th>
+          <td>約${post.serve}分</td>
       </tr>
       <tr>
-        <td><input type="text" name="serve" value="${post.serve}" class="post-serve"></td>
+        <th>価格</th>
+          <td>約${post.price}円</td>
       </tr>
       <tr>
-        <td><input type="text" name="price" value="${post.price}" class="post-price"></td>
-        <td><input type="text" name="text" value="${post.text}" class="post-text"></td>
-        <td><img src="${post.photo}" alt="料理の写真" class="post-photo"></td>
+        <th>レビュー</th>
+          <td>${post.text}</td>
       </tr>
     </c:forEach>
   </table>
+ </form>
 </div>
 
 
