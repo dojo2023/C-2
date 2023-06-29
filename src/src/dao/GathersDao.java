@@ -43,7 +43,7 @@ public class GathersDao {
 				
 				pStmt.setString(3, yearS+"-"+monthS+"-"+dateS);
 				
-				pStmt.setString(4, "100");
+				pStmt.setString(4, "17");
 			
 				pStmt.setString(5, gather.getRestaurant_name());
 			
