@@ -36,7 +36,7 @@
 <c:forEach var="e" items="${postsList}">
 <div class="posts">
 	<div></div>
-	<div>　${e.name}さんの投稿</div>
+	<div>　${e.name}さんの投稿 ${e.date}</div>
 	<hr class="ename">
 	<div>　店名：${e.restaurant}</div>
 		<div id="post_inf">
