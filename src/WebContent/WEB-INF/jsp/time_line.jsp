@@ -11,7 +11,7 @@
 <body>
 <div class="wrapper">
 <div id="ranks">
-<h2>ポイントランキング</h2>
+<h2 id="ranksH2">ポイントランキング</h2>
 <c:forEach var="p" items="${profilesList}">
 		<table id = junni>
 			<tr>
@@ -32,17 +32,17 @@
 			<li class="menu5"><a href="/buster_moon/My_profileServlet"></a></li>
 		</ul>
 	</nav>
-<label>
+<br>
 <c:forEach var="e" items="${postsList}">
-<hr>
 <div class="posts">
 	<div></div>
-	<div>${e.name}さんの投稿</div>
-	<div>店名：${e.restaurant}</div>
+	<div>　${e.name}さんの投稿</div>
+	<hr class="ename">
+	<div>　店名：${e.restaurant}</div>
 		<div id="post_inf">
 		<table>
 			<tr class="con">
-			<td>ジャンル:</td>
+			<td>　ジャンル:</td>
 				<td>
 					<c:if test="${e.genre==1}">
 					中華
@@ -89,16 +89,22 @@
 			<tr class="con"><td>提供時間:</td><td>${e.serve}分</td></tr>
 			<tr class="con"><td>価格:</td><td>${e.price}円</td></tr>
 		</table>
-		<div>${e.text}</div>
-		<div><img src="${'/buster_moon/img/'+=e.photo}"></div>
+		<hr class="ename">
+		<div>　${e.text}</div>
+		<div>　<img src="${'/buster_moon/img/'+=e.photo}" id="photo"></div>
 	</div>
 	<form method="POST" action="/buster_moon/Time_lineServlet">
 	<input type="hidden" name="ID" value="${e.id} ">
-	<input type="submit" name="SUBMIT" value="コメント表示" >
+	<input type="submit" name="SUBMIT" value="コメント表示" class="post_button">
 	</form>
 </div>
 <hr>
 </c:forEach >
+<br>
+<br>
+<br>
+<br>
+<br>
 </label>
 
 <div id="popup">
@@ -122,7 +128,7 @@
 				<td>${c.text}</td>
 				<td>
 					<c:if test="${users_id.equals(c.users_id) }">
-					<input type="submit" name="SUBMIT" value="削除" >
+					<input type="submit" name="SUBMIT" value="削除" class="post_button">
 					</c:if>
 				</td>
 			</tr>
@@ -137,11 +143,11 @@
 				<h3>コメント入力欄</h3>
 				<input type="hidden" name="POSTS_ID" value="${posts_id}">
 				<input type="text" name="TEXT" placeholder="コメント入力">
-				<input type="submit" name="SUBMIT" value="送信" >
+				<input type="submit" name="SUBMIT" value="送信" class="post_button">
 		</c:if>
 	</form>
 			<form method="POST" action="/buster_moon/Time_lineServlet" id = "close">
-			<input type="submit" name="SUBMIT" value="コメント欄を閉じる" >
+			<input type="submit" name="SUBMIT" value="コメント欄を閉じる" class="post_button">
 		</form>
 	</c:if>
 </div>

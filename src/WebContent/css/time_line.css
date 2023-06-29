@@ -8,11 +8,17 @@ body {
 	margin: 0 auto 0 auto;
 	max-width: 1000px;
 }
+
+.posts{
+	padding: 0 auto 0 auto;
+}
+
 /* メニューバー */
 .menubar {
 	position: fixed;  /*画面に固定して追従させます*/
 	height: 100%;
-	top: 100px;
+	padding:100px 0 0 0;
+	top: 0px;
 	right:0; /* 固定位置は右側*/
 	z-index:1; /*他の要素より前に出します*/
 	background-color: #fffacd;
@@ -90,7 +96,6 @@ ul li {
   text-align: center;
   background: #c5ecbc;
   display: inline;
-
   bottom: 0;
   margin: auto;
   position: fixed;
@@ -121,4 +126,31 @@ body {
   width: 88%;
   border: solid 3px #06c286;/*線*/
   border-radius: 10px;/*角の丸み*/
+}
+
+.post_button {
+      display: center;
+      padding: 5px 10px;
+      background-color: #4CAF50; /* ボタンの背景色 */
+      color: white; /* ボタンのテキスト色 */
+      font-size: 16px; /* ボタンのフォントサイズ */
+      border: none; /* ボタンのボーダー */
+      border-radius: 4px; /* ボタンの角丸 */
+      cursor: pointer; /* マウスオーバー時のカーソルスタイル */
+}
+.post_button:hover {
+      background-color: #45a049; /* マウスオーバー時の背景色 */
+}
+
+#ranksH2{
+	color:#45a049;
+}
+
+.ename{
+	margin: 0 0 0 0;
+}
+
+#photo{
+	height:200px;
+	margin:5px 5px 5px 5px;
 }

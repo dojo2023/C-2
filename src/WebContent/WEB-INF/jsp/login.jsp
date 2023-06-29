@@ -14,7 +14,7 @@
   <h1 id="logo">
     <img src="/buster_moon/img/ロゴ.jpg" width="100" height="100" alt="物知りプラス">物知りプラス
   </h1>
- <h2>ログイン</h2>
+ <h2 id="loginH2">ログイン</h2>
  <hr>
  <!-- ヘッダー（ここまで） -->
  <!-- メイン（ここから） -->
@@ -36,7 +36,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <input type="submit" name="LOGIN" value="ログイン">
+          <input type="submit" name="LOGIN" value="ログイン" class="post_button">
           <a href="/buster_moon/New_memberServlet">新規登録</a>
           <span id="error_message"></span>
         </td>

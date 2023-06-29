@@ -48,7 +48,7 @@
 
       <tr>
         <td colspan="2">
-          <input type="submit" name="REGIST" value="登録" >
+          <input type="submit" name="REGIST" value="登録" class="post_button">
         </td>
       </tr>
     </table>
