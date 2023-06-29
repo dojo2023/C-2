@@ -55,6 +55,8 @@ public class SearchServlet extends HttpServlet {
 		String serveString = request.getParameter("SERVE");
 		int serve = Integer.parseInt(serveString);
 			System.out.println(serve);
+		String random = request.getParameter("RANDOM");
+			System.out.println(random);
 
 		//検索処理を行う
 		RestaurantsDao kDao = new RestaurantsDao();

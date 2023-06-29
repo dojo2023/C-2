@@ -44,6 +44,9 @@ public class RestaurantsDao {
 							if (serve!=0) {
 								sql += " AND SERVE = ? ";
 							}
+//							if (random!=null) {
+//								sql += " ORDER BY RAND() LIMIT 1";
+//							}
 						sql += "GROUP BY RESTAURANT, GENRE ";
 				PreparedStatement pStmt = conn.prepareStatement(sql); //検索メソッド
 
